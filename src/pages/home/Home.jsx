@@ -81,7 +81,7 @@ const Home = () => {
               <div className="w-[44px] h-[44px] overflow-hidden rounded-[27px]">
                 <img
                   className="w-[140%] h-[140%] object-cover"
-                  src="/src/assets/avatar/a1.png"
+                  src="/assets/avatar/a1.png"
                   alt=""
                 />
               </div>
@@ -89,11 +89,11 @@ const Home = () => {
               <div>
                 <h2 className="text-xs mb-2">Азиза Муминова</h2>
                 <div className="star flex gap-2">
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/starDark.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/starDark.svg" alt="" />
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ const Home = () => {
               <div className="w-[44px] h-[44px] overflow-hidden rounded-[27px]">
                 <img
                   className="w-[140%] h-[140%] object-cover"
-                  src="/src/assets/avatar/a2.png"
+                  src="/assets/avatar/a2.png"
                   alt=""
                 />
               </div>
@@ -110,11 +110,11 @@ const Home = () => {
               <div>
                 <h2 className="text-xs mb-2">Андрей Туйгунов</h2>
                 <div className="star flex gap-2">
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/star.svg" alt="" />
-                  <img src="src/assets/icons/starDark.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/star.svg" alt="" />
+                  <img src="/assets/icons/starDark.svg" alt="" />
                 </div>
               </div>
             </div>
