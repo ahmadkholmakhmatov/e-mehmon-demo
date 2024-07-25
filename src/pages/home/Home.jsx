@@ -2,6 +2,10 @@ import { PiPlayCircleFill } from 'react-icons/pi';
 import { LiaUserCircleSolid } from 'react-icons/lia';
 import HotelList from '../../components/hotel-list/HotelList';
 import WelcomeTeam from '../../components/welcome-team/WelcomeTeam';
+import Footer from '../../components/footer/Footer';
+import PlaceSlider from '../../components/place-slider/PlaceSlider';
+import TestimonialSlider from '../../components/testimonial-slider/TestimonialSlider';
+import HeroSlider from '../../components/hero-slider/HeroSlider';
 
 const Home = () => {
   return (
@@ -44,12 +48,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="slider w-full h-[310px]"></div>
+        <HeroSlider />
       </div>
 
       <div className="search w-[1200px] h-[279px] mx-auto bg-white mt-[-98px] rounded-[40px] p-12 shadow-[0px_40px_60px_-32px_#777E901A]"></div>
 
-      <div className="info px-[120px] mt-[50px] mb-[100px]">
+      <div className="info px-[120px] mt-[70px] mb-[100px]">
         <div className="text-center mb-10">
           <h1 className="text-[32px] font-bold mb-4">
             Простые 3 шага для вашего идеального путешествия
@@ -174,9 +178,13 @@ const Home = () => {
         <HotelList />
       </div>
 
-      <div>
-        <WelcomeTeam />
-      </div>
+      <WelcomeTeam className="mb-[100px]" />
+
+      <PlaceSlider />
+
+      <TestimonialSlider />
+
+      <Footer />
     </div>
   );
 };

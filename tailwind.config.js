@@ -9,6 +9,7 @@ export default {
       colors: {
         'blue-20': 'rgba(50, 118, 255, 0.2)',
       },
+      display: ['group-hover'],
     },
   },
   plugins: [],
