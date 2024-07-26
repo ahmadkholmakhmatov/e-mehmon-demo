@@ -1,6 +1,6 @@
 const HeroCard = () => {
   return (
-    <div className="relative group w-[486px] h-[310px] rounded-3xl overflow-hidden">
+    <div className="relative group 2xl:w-[546px]  w-[486px] h-[310px] rounded-3xl overflow-hidden">
       <div className="absolute top-6 right-6 text-[#232E40] bg-[#FFC107] p-2 rounded-full text-xs">
         8.9
       </div>

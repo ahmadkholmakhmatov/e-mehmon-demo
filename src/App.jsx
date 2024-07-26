@@ -9,6 +9,7 @@ import Home from '../src/pages/home/Home';
 import HotelSingle from './pages/hotel-single/HotelSingle';
 import Login from './pages/login/Login';
 import NotFound from './pages/not-found/NotFound';
+import Hotels from './pages/hotels/Hotels';
 
 const App = () => {
   const auth = {
@@ -21,7 +22,8 @@ const App = () => {
         <Routes>
           <Route element={<PrivateRoutes auth={auth} />}>
             <Route element={<Home />} path="/" exact />
-            <Route element={<HotelSingle />} path="/hotel" />
+            <Route element={<Hotels />} path="/hotels" />
+            <Route element={<HotelSingle />} path="/hotels/hotel" />
             <Route path="*" element={<NotFound />} />
           </Route>
 

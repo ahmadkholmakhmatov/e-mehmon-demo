@@ -6,6 +6,10 @@ import Footer from '../../components/footer/Footer';
 import PlaceSlider from '../../components/place-slider/PlaceSlider';
 import TestimonialSlider from '../../components/testimonial-slider/TestimonialSlider';
 import HeroSlider from '../../components/hero-slider/HeroSlider';
+import CurrencyDropDown from '../../components/currency-dropdown/CurrencyDropdown';
+import LanguageDropdown from '../../components/language-dropdown/LanguageDropdown';
+import SearchForm from '../../components/search-form/SearchForm';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -14,13 +18,17 @@ const Home = () => {
         <nav className="flex justify-between items-center px-[120px] py-[45px]">
           <img src="/images/logoDark.svg" alt="" />
           <ul className="flex gap-x-6">
-            <li>Найти жилье</li>
+            <Link to="/hotels">
+              <li>Найти жилье</li>
+            </Link>
             <li>Куда сходить?</li>
             <li>Туры</li>
             <li>Транспорт</li>
           </ul>
 
-          <div className="login">
+          <div className="login flex items-center gap-6">
+            <CurrencyDropDown />
+            <LanguageDropdown />
             <button className="flex gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]">
               <LiaUserCircleSolid className="w-6 h-6" /> Войти
             </button>
@@ -51,7 +59,9 @@ const Home = () => {
         <HeroSlider />
       </div>
 
-      <div className="search w-[1200px] h-[279px] mx-auto bg-white mt-[-98px] rounded-[40px] p-12 shadow-[0px_40px_60px_-32px_#777E901A]"></div>
+      <div className="search w-[1200px] mx-auto bg-white mt-[-98px] rounded-[40px] p-12 shadow-[0px_40px_60px_-32px_#777E901A]">
+        <SearchForm />
+      </div>
 
       <div className="info px-[120px] mt-[70px] mb-[100px]">
         <div className="text-center mb-10">
