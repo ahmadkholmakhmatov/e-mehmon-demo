@@ -11,6 +11,82 @@ import LanguageDropdown from '../../components/language-dropdown/LanguageDropdow
 import SearchForm from '../../components/search-form/SearchForm';
 import { Link } from 'react-router-dom';
 
+const hotels = [
+  {
+    id: 1,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel1.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+  {
+    id: 2,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel2.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+  {
+    id: 3,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel3.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+  {
+    id: 4,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel4.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+
+  {
+    id: 5,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel3.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+  {
+    id: 6,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel4.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+  {
+    id: 7,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel1.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+  {
+    id: 8,
+    name: 'Hotel Neptun Tashkent Pool&Spa',
+    address: '8 ул. Лянгар, Ташкент',
+    price: 120,
+    imgSrc: '/assets/places/hotel2.png',
+    rating: 8.9,
+    status: 'Популярно',
+  },
+];
+
 const Home = () => {
   return (
     <div className="bg-[#fafafa] ">
@@ -185,7 +261,7 @@ const Home = () => {
             Упростите свои планы для путешествия – с нами это легко!
           </p>
         </div>
-        <HotelList />
+        <HotelList hotels={hotels} />
       </div>
 
       <WelcomeTeam className="mb-[100px]" />

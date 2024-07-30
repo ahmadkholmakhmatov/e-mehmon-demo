@@ -1,0 +1,9 @@
+.hotel-description-selector .ant-select .ant-select-selector {
+  background-color: #f8f8fa;
+  border: none;
+}
+
+.hotel-description-selector .ant-select {
+  border-radius: 16px;
+  overflow: hidden;
+}

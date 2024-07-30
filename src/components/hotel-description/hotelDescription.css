@@ -1,0 +1,7 @@
+.ant-tabs-nav-list .ant-tabs-tab {
+  padding: 0px;
+  padding-bottom: 30px;
+}
+.ant-tabs-nav-list .ant-tabs-tab:not(:first-child) {
+  margin-left: 24px;
+}
