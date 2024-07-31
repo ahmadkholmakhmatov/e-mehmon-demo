@@ -47,8 +47,6 @@ const TestimonialSlider = () => {
         spaceBetween={40}
         slidesPerView={3}
         loop={true}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
         className="-mr-40 "
       >
         <SwiperSlide>

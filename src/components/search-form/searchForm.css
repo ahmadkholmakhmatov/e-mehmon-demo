@@ -5,8 +5,9 @@
 .ant-tabs-nav-list .ant_tabs_tab:not(:first-child) {
   margin-left: 24px;
 } */
+
 .home-selector .ant-select .ant-select-selector {
-  /* padding: 16px; */
+  padding: 0 16px;
   background-color: #f8f8fa;
   border: none;
 }

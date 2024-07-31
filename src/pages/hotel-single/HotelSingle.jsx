@@ -16,6 +16,7 @@ import Footer from '../../components/footer/Footer';
 import HotelDescription from '../../components/hotel-description/HotelDescription';
 import { DatePicker, Select } from 'antd';
 import './hotelSingle.css';
+import { useCurrency } from '../../utils/CurrencyContext';
 
 const hotels = [
   {
@@ -57,6 +58,14 @@ const hotels = [
 ];
 
 const HotelSingle = () => {
+  const { currency } = useCurrency();
+  const price = 120;
+  const exchangeRates = {
+    USD: 1,
+    UZS: 11500, // Example conversion rate, adjust as needed
+  };
+  const convertedPrice = price * exchangeRates[currency];
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -135,7 +144,10 @@ const HotelSingle = () => {
               <div className="text-[#7D848B] text-base mb-6">
                 от
                 <span className="text-[#2F3138] text-[32px] font-bold">
-                  $120
+                  $
+                  {currency === 'USD'
+                    ? `${convertedPrice.toFixed(0)}`
+                    : `${convertedPrice.toFixed(0)}`}
                 </span>
                 /ночь
               </div>

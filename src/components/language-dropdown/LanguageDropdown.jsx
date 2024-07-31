@@ -1,33 +1,27 @@
+// LanguageDropdown.js
+import { Dropdown, Menu, Space } from 'antd';
 import { IoIosArrowDown } from 'react-icons/io';
-import { Dropdown, Space, Menu } from 'antd';
-import { useState } from 'react';
-
-const items = [
-  {
-    label: 'Русский',
-    key: '0',
-  },
-  {
-    label: 'Uzbek',
-    key: '1',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const LanguageDropdown = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState('Русский');
+  const { i18n } = useTranslation();
 
   const handleMenuClick = (e) => {
-    const selected = items.find((item) => item.key === e.key);
-    setSelectedLanguage(selected.label);
+    i18n.changeLanguage(e.key);
   };
 
-  const menu = <Menu onClick={handleMenuClick} items={items} />;
+  const menu = (
+    <Menu onClick={handleMenuClick}>
+      <Menu.Item key="en">English</Menu.Item>
+      <Menu.Item key="ru">Русский</Menu.Item>
+    </Menu>
+  );
 
   return (
     <Dropdown overlay={menu} trigger={['click']}>
       <a onClick={(e) => e.preventDefault()}>
         <Space>
-          {selectedLanguage}
+          {i18n.language === 'en' ? 'English' : 'Русский'}
           <IoIosArrowDown />
         </Space>
       </a>

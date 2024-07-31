@@ -1,33 +1,31 @@
+// CurrencyDropDown.js
+import { Dropdown, Menu, Space } from 'antd';
 import { IoIosArrowDown } from 'react-icons/io';
-import { Dropdown, Space, Menu } from 'antd';
-import { useState } from 'react';
-
-const items = [
-  {
-    label: 'USD',
-    key: '0',
-  },
-  {
-    label: 'UZS',
-    key: '1',
-  },
-];
+import { useTranslation } from 'react-i18next';
+import { useCurrency } from '../../utils/CurrencyContext';
 
 const CurrencyDropDown = () => {
-  const [selectedCurrency, setSelectedCurrency] = useState('USD');
+  const { t } = useTranslation();
+  const { currency, setCurrency } = useCurrency();
 
   const handleMenuClick = (e) => {
-    const selected = items.find((item) => item.key === e.key);
-    setSelectedCurrency(selected.label);
+    setCurrency(e.key);
   };
 
-  const menu = <Menu onClick={handleMenuClick} items={items} />;
+  console.log(currency);
+
+  const menu = (
+    <Menu onClick={handleMenuClick}>
+      <Menu.Item key="USD">{t('usd')}</Menu.Item>
+      <Menu.Item key="UZS">{t('uzs')}</Menu.Item>
+    </Menu>
+  );
 
   return (
     <Dropdown overlay={menu} trigger={['click']}>
       <a onClick={(e) => e.preventDefault()}>
         <Space>
-          {selectedCurrency}
+          {currency}
           <IoIosArrowDown />
         </Space>
       </a>

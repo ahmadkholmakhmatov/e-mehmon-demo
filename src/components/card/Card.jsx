@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useCurrency } from '../../utils/CurrencyContext';
 
 const Card = ({ hotel }) => {
+  const { currency } = useCurrency();
+  const exchangeRates = {
+    USD: 1,
+    UZS: 11500, // Example conversion rate, adjust as needed
+  };
+  const convertedPrice = hotel.price * exchangeRates[currency];
+  // console.log(convertedPrice);
   return (
     <Link to="/hotels/hotel">
       <div className="w-[282px] h-[410px]">
@@ -24,12 +32,15 @@ const Card = ({ hotel }) => {
           </h4>
           <p className="text-sm text-[#777E90] mb-3">{hotel.address}</p>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-4">
             <button className="bg-blue-20 px-6 py-4 text-base text-[#3276FF] rounded-2xl">
               Забронировать
             </button>
             <div className="text-base font-bold">
-              от ${hotel.price}
+              от $
+              {currency === 'USD'
+                ? `${convertedPrice.toFixed(0)}`
+                : `${convertedPrice.toFixed(0)}`}
               <span className="text-xs font-normal text-[#777E90]">/ночь</span>
             </div>
           </div>

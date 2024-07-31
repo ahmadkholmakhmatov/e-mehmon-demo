@@ -47,8 +47,6 @@ const PlaceSlider = () => {
         spaceBetween={25}
         slidesPerView={4}
         loop={true}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
       >
         <SwiperSlide>
           <SeasonCard />

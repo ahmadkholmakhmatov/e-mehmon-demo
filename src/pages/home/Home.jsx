@@ -10,6 +10,7 @@ import CurrencyDropDown from '../../components/currency-dropdown/CurrencyDropdow
 import LanguageDropdown from '../../components/language-dropdown/LanguageDropdown';
 import SearchForm from '../../components/search-form/SearchForm';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const hotels = [
   {
@@ -88,6 +89,7 @@ const hotels = [
 ];
 
 const Home = () => {
+  const { t } = useTranslation();
   return (
     <div className="bg-[#fafafa] ">
       <div className="hero w-full h-[848px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
@@ -112,14 +114,9 @@ const Home = () => {
         </nav>
 
         <div className="flex justify-between gap-x-28 max-w-[1200px] mx-auto my-[50px]">
-          <h1 className="max-w-[700px] text-[49px]">
-            Собирай чемодан, остальное мы возьмем на себя
-          </h1>
+          <h1 className="max-w-[700px] text-[49px]">{t('packSuit')}</h1>
           <div className="max-w-[384px]">
-            <p className="text-[16px] mb-4">
-              Добро пожаловать на наш уникальный портал, который предоставляет
-              полный спектр услуг для туристов в Узбекистане!
-            </p>
+            <p className="text-[16px] mb-4">{t('welcomePortal')}</p>
             <div className="flex justify-between items-center text-[16px]">
               <button className="px-6 py-4 bg-[#3276FF] rounded-2xl">
                 Все отели

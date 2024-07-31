@@ -22,8 +22,6 @@ const HeroSlider = () => {
         }}
         loop={true}
         modules={[Autoplay]}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
         className="-mr-40 "
       >
         <SwiperSlide>
