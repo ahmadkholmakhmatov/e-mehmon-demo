@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div className="text-[15px] text-[#777E90]">
-      <div className="flex gap-[145px] px-[120px] py-[60px] ">
+      <div className="flex gap-[145px] 2xl:w-[1600px] px-[120px] mx-auto py-[60px] ">
         <div>
           <img className="mb-4" src="/images/logoLight.svg" alt="" />
           <h5 className="text-[14px] mb-12">

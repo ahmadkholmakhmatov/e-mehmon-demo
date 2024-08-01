@@ -3,7 +3,7 @@ import { MdRemoveRedEye } from 'react-icons/md';
 import './imageGallery.css';
 import CustomModal from '../custom-modal/customModal';
 
-const ImageGallery = () => {
+const ImageGallery = ({ imgSrc }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -14,12 +14,14 @@ const ImageGallery = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  console.log(imgSrc);
   return (
     <div className="custom-grid">
       <div className="col-span-1 row-span-3">
         <img
-          className="w-full h-full object-cover rounded-2xl"
-          src="/assets/places/hotel1.png"
+          className="2xl:max-h-[573px] w-full h-full object-cover rounded-2xl"
+          src={imgSrc}
           alt="Main"
         />
       </div>

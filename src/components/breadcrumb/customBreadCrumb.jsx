@@ -2,13 +2,14 @@ import { Breadcrumb } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 
 // Define a mapping for pathnames to breadcrumb names
-const breadcrumbNameMap = {
-  '/': 'Главная',
-  '/hotels': 'Отели Ташкента',
-  '/hotels/hotel': 'Hotel Neptun Tashkent Pool&Spa',
-};
 
-const BreadcrumbComponent = () => {
+const BreadcrumbComponent = ({ name }) => {
+  const breadcrumbNameMap = {
+    '/': 'Главная',
+    '/hotels': 'Отели Ташкента',
+    '/hotels/hotel': name,
+  };
+
   const location = useLocation();
   const pathSnippets = location.pathname.split('/').filter((i) => i);
 

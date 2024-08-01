@@ -23,7 +23,7 @@ const TestimonialSlider = () => {
 
   return (
     <div className="bg-[#394253] text-white pl-[120px] py-20 overflow-hidden">
-      <div className="flex justify-between mr-[120px] mb-10">
+      <div className="flex justify-between 2xl:w-[1470px] mx-auto pr-[120px] mb-10">
         <h1 className=" text-[32px] font-bold">Что думают о нас туристы?</h1>
         <div className="navigation-buttons flex gap-4">
           <div
@@ -47,7 +47,7 @@ const TestimonialSlider = () => {
         spaceBetween={40}
         slidesPerView={3}
         loop={true}
-        className="-mr-40 "
+        className="2xl:w-[1680px] -mr-40 "
       >
         <SwiperSlide>
           <TestimonialCard />

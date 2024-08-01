@@ -1,6 +1,6 @@
 const WelcomeTeam = () => {
   return (
-    <div className="flex mx-auto 2xl:w-[1380px] lg:w-[1200px] h-[408px] bg-[#D8DCE4] rounded-[40px] overflow-hidden mb-[100px]">
+    <div className="flex mx-auto 2xl:w-[1360px] w-[1200px] h-[408px] bg-[#D8DCE4] rounded-[40px] overflow-hidden mb-[100px]">
       <div className="flex-grow flex-shrink-0 basis-[calc(56%-80px)] ml-20 my-[60px]">
         <h1 className="text-[32px] font-bold text-[#232E40] mb-4">
           Добро пожаловать в нашу семью арендодателей!

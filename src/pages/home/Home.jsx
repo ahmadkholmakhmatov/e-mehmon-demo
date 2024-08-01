@@ -9,7 +9,7 @@ import HeroSlider from '../../components/hero-slider/HeroSlider';
 import CurrencyDropDown from '../../components/currency-dropdown/CurrencyDropdown';
 import LanguageDropdown from '../../components/language-dropdown/LanguageDropdown';
 import SearchForm from '../../components/search-form/SearchForm';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const hotels = [
@@ -88,32 +88,54 @@ const hotels = [
   },
 ];
 
-const Home = () => {
+const Home = ({ auth }) => {
   const { t } = useTranslation();
+  const authentication = auth;
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (authentication.token) {
+      navigate('/profile');
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <div className="bg-[#fafafa] ">
       <div className="hero w-full h-[848px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
-        <nav className="flex justify-between items-center px-[120px] py-[45px]">
-          <img src="/images/logoDark.svg" alt="" />
+        <nav className="flex justify-between items-center px-[120px] 2xl:w-[1600px] mx-auto py-[45px]">
+          <Link to="/">
+            <img src="/images/logoDark.svg" alt="" />
+          </Link>
           <ul className="flex gap-x-6">
-            <Link to="/hotels">
+            <a href="#search">
               <li>Найти жилье</li>
-            </Link>
-            <li>Куда сходить?</li>
-            <li>Туры</li>
+            </a>
+
+            <a href="#search">
+              <li>Куда сходить?</li>
+            </a>
+            <a href="#place">
+              <li>Туры</li>
+            </a>
+
             <li>Транспорт</li>
           </ul>
-
           <div className="login flex items-center gap-6">
             <CurrencyDropDown />
             <LanguageDropdown />
-            <button className="flex gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]">
-              <LiaUserCircleSolid className="w-6 h-6" /> Войти
+            <button
+              className="flex gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]"
+              onClick={handleLogin}
+            >
+              <LiaUserCircleSolid className="w-6 h-6" />
+              {authentication.token ? 'Профиль' : 'Войти'}
             </button>
           </div>
         </nav>
 
-        <div className="flex justify-between gap-x-28 max-w-[1200px] mx-auto my-[50px]">
+        <div className="flex justify-between gap-x-28 px-[120px] 2xl:w-[1600px] xl:w-[1440px] mx-auto my-[50px]">
           <h1 className="max-w-[700px] text-[49px]">{t('packSuit')}</h1>
           <div className="max-w-[384px]">
             <p className="text-[16px] mb-4">{t('welcomePortal')}</p>
@@ -132,11 +154,14 @@ const Home = () => {
         <HeroSlider />
       </div>
 
-      <div className="search w-[1200px] mx-auto bg-white mt-[-98px] rounded-[40px] p-12 shadow-[0px_40px_60px_-32px_#777E901A]">
+      <div
+        id="search"
+        className="search 2xl:w-[1360px] w-[1200px] mx-auto bg-white mt-[-98px] rounded-[40px] p-12 shadow-[0px_40px_60px_-32px_#777E901A]"
+      >
         <SearchForm />
       </div>
 
-      <div className="info px-[120px] mt-[70px] mb-[100px]">
+      <div className="info 2xl:w-[1600px] px-[120px] mx-auto mt-[70px] mb-[100px]">
         <div className="text-center mb-10">
           <h1 className="text-[32px] font-bold mb-4">
             Простые 3 шага для вашего идеального путешествия
@@ -249,7 +274,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="px-[120px] mb-[100px]">
+      <div className="2xl:w-[1600px] px-[120px] mx-auto mb-[100px]">
         <div className="heading text-center mb-10">
           <h1 className="text-[32px] font-bold text-[#232E40] mb-4">
             Дома, которые нравятся гостям
@@ -263,7 +288,9 @@ const Home = () => {
 
       <WelcomeTeam className="mb-[100px]" />
 
-      <PlaceSlider />
+      <div id="place">
+        <PlaceSlider />
+      </div>
 
       <TestimonialSlider />
 

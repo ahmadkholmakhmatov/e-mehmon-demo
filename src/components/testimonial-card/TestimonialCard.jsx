@@ -2,7 +2,7 @@ import { FaQuoteLeft } from 'react-icons/fa';
 
 const TestimonialCard = () => {
   return (
-    <div className="bg-[#232E40] w-[486px] px-6 py-8 rounded-3xl">
+    <div className="bg-[#232E40] 2xl:w-[536px] w-[486px] px-6 py-8 rounded-3xl">
       <FaQuoteLeft className="text-[#777E90B2] text-opacity-70 mb-6" />
 
       <p className="text-base mb-6">

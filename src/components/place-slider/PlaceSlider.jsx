@@ -22,7 +22,7 @@ const PlaceSlider = () => {
   }, []);
 
   return (
-    <div className="px-[120px] mb-[100px]">
+    <div className="2xl:w-[1600px] px-[120px] mx-auto mb-[100px]">
       <div className="flex justify-between mb-10">
         <h1 className=" text-[32px] font-bold">Сезонные предложения</h1>
         <div className="navigation-buttons flex gap-4">

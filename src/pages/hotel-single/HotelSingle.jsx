@@ -17,6 +17,7 @@ import HotelDescription from '../../components/hotel-description/HotelDescriptio
 import { DatePicker, Select } from 'antd';
 import './hotelSingle.css';
 import { useCurrency } from '../../utils/CurrencyContext';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const hotels = [
   {
@@ -30,7 +31,7 @@ const hotels = [
   },
   {
     id: 2,
-    name: 'Hotel Neptun Tashkent Pool&Spa',
+    name: 'Saturn Hotel Great',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
     imgSrc: '/assets/places/hotel2.png',
@@ -57,14 +58,28 @@ const hotels = [
   },
 ];
 
-const HotelSingle = () => {
+const HotelSingle = ({ auth }) => {
+  const authentication = auth;
   const { currency } = useCurrency();
-  const price = 120;
+  const { state } = useLocation();
+
+  console.log(authentication);
+  const navigate = useNavigate();
+
   const exchangeRates = {
     USD: 1,
     UZS: 11500, // Example conversion rate, adjust as needed
   };
-  const convertedPrice = price * exchangeRates[currency];
+
+  const handleLogin = () => {
+    if (authentication.token) {
+      navigate('/profile');
+    } else {
+      navigate('/login');
+    }
+  };
+
+  const convertedPrice = state?.price * exchangeRates[currency];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,35 +87,41 @@ const HotelSingle = () => {
 
   return (
     <div className="bg-[#fafafa] ">
-      <nav className="flex bg-white justify-between items-center px-[120px] py-[21px] ">
-        <img src="/images/logoLight.svg" alt="" />
-        <ul className="flex gap-x-6">
-          <li>Найти жилье</li>
-          <li>Куда сходить?</li>
-          <li>Туры</li>
-          <li>Транспорт</li>
-        </ul>
+      <div className="bg-white">
+        <nav className="flex  justify-between items-center 2xl:w-[1600px] px-[120px] mx-auto py-[21px] ">
+          <Link to="/">
+            <img src="/images/logoLight.svg" alt="" />
+          </Link>
+          <ul className="flex gap-x-6">
+            <li>Найти жилье</li>
+            <li>Куда сходить?</li>
+            <li>Туры</li>
+            <li>Транспорт</li>
+          </ul>
 
-        <div className="login flex items-center gap-6">
-          <CurrencyDropDown />
-          <LanguageDropdown />
-          <button className="flex gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40] text-white">
-            <LiaUserCircleSolid className="w-6 h-6" /> Войти
-          </button>
-        </div>
-      </nav>
-      <div className="px-[120px] mt-[30px]">
-        <CustomBreadCrumb />
+          <div className="login flex items-center gap-6">
+            <CurrencyDropDown />
+            <LanguageDropdown />
+            <button
+              className="flex gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40] text-white"
+              onClick={handleLogin}
+            >
+              <LiaUserCircleSolid className="w-6 h-6" />
+              {authentication.token ? 'Профиль' : 'Войти'}
+            </button>
+          </div>
+        </nav>
+      </div>
+      <div className="2xl:w-[1600px] px-[120px] mx-auto mt-[30px]">
+        <CustomBreadCrumb name={state.name} />
         <div className="mt-[30px]">
           <div className="flex justify-between items-start mb-6">
             <div className="text-[#1D2635]">
-              <h1 className="text-[32px] font-bold">
-                Hotel Neptun Tashkent Pool&Spa
-              </h1>
+              <h1 className="text-[32px] font-bold">{state.name}</h1>
 
               <div className="flex items-center gap-3">
-                <PiMapPinArea className="w-6 h-6 text-[#B5B5B5] text-base" />8
-                ул. Лянгар, Ташкент
+                <PiMapPinArea className="w-6 h-6 text-[#B5B5B5] text-base" />
+                {state.address}
               </div>
             </div>
 
@@ -118,7 +139,7 @@ const HotelSingle = () => {
 
           <div className="flex justify-between gap-6">
             <div className="basis-[calc(66%-24px)]">
-              <ImageGallery />
+              <ImageGallery imgSrc={state.imgSrc} />
             </div>
 
             <div className="basis-[calc(34%-24px)] p-6 bg-[#FFFFFF] shadow-custom rounded-2xl flex flex-col justify-between">
@@ -215,7 +236,7 @@ const HotelSingle = () => {
         </div>
       </div>
 
-      <div className="flex justify-between gap-6 px-[120px] mb-8">
+      <div className="flex justify-between gap-6 2xl:w-[1600px] px-[120px] mx-auto mb-8">
         <div className="w-[calc(66%-24px)]">
           <HotelDescription />
         </div>
@@ -242,7 +263,7 @@ const HotelSingle = () => {
         </a>
       </div>
 
-      <div className="px-[120px] mb-[100px]">
+      <div className="2xl:w-[1600px] px-[120px] mx-auto mb-[100px]">
         <h1 className="text-[32px] font-bold text-[#232E40] mb-4">
           Похожие отели
         </h1>
@@ -251,7 +272,9 @@ const HotelSingle = () => {
 
       <WelcomeTeam className="mb-[100px]" />
 
-      <PlaceSlider />
+      <div id="place">
+        <PlaceSlider />
+      </div>
 
       <TestimonialSlider />
 

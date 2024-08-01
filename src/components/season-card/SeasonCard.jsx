@@ -1,7 +1,7 @@
 const SeasonCard = () => {
   return (
     <div>
-      <div className="relative w-[282px] h-[282px] rounded-3xl overflow-hidden mb-3">
+      <div className="relative 2xl:w-[321.25px] 2xl:h-[321.25px] w-[282px] h-[282px] rounded-3xl overflow-hidden mb-3">
         <div className="absolute top-3 left-3 text-[10px] font-medium text-white bg-[#232E40] p-2 rounded-3xl">
           Скидка 24%
         </div>
