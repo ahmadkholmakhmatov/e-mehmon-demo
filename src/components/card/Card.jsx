@@ -15,8 +15,8 @@ const Card = ({ hotel }) => {
   };
   // console.log(convertedPrice);
   return (
-    <div className="2xl:w-[316px] 2xl:h-[458px] w-[282px] h-[410px]">
-      <div className="relative 2xl:w-[316px] 2xl:h-[316px] w-[282px] h-[282px] overflow-hidden rounded-[20px] mb-3">
+    <div className="2xl:w-[316px] 2xl:h-[458px] lg:w-[282px] lg:h-[410px]">
+      <div className="relative 2xl:w-[316px] 2xl:h-[316px] lg:w-[282px] lg:h-[282px] overflow-hidden rounded-[20px] lg:mb-3">
         <div className="status absolute top-3 left-3 flex justify-center items-center w-[83px] h-[30px] backdrop-blur-2xl p-2 border border-[#3276FF] border-solid rounded-3xl text-xs text-white">
           {hotel.status}
         </div>
@@ -27,24 +27,24 @@ const Card = ({ hotel }) => {
         <img className="w-full h-full object-cover" src={hotel.imgSrc} alt="" />
       </div>
       <div>
-        <h4 className="text-[16px] text-[#232E40] font-bold mb-1">
+        <h4 className="lg:text-[16px] text-[#232E40] font-bold lg:mb-1">
           {hotel.name}
         </h4>
-        <p className="text-sm text-[#777E90] mb-3">{hotel.address}</p>
+        <p className="lg:text-sm text-[#777E90] lg:mb-3">{hotel.address}</p>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between lg:gap-4">
           <button
             onClick={handleClick}
-            className="bg-blue-20 px-6 py-4 text-base text-[#3276FF] rounded-2xl"
+            className="bg-blue-20 lg:px-6 lg:py-4 lg:text-base text-[#3276FF] rounded-2xl"
           >
             Забронировать
           </button>
-          <div className="text-base font-bold">
+          <div className="lg:text-base font-bold">
             от $
             {currency === 'USD'
               ? `${convertedPrice.toFixed(0)}`
               : `${convertedPrice.toFixed(0)}`}
-            <span className="text-xs font-normal text-[#777E90]">/ночь</span>
+            <span className="lg:text-xs font-normal text-[#777E90]">/ночь</span>
           </div>
         </div>
       </div>

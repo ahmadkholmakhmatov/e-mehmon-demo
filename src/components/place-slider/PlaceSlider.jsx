@@ -22,21 +22,23 @@ const PlaceSlider = () => {
   }, []);
 
   return (
-    <div className="2xl:w-[1600px] px-[120px] mx-auto mb-[100px]">
-      <div className="flex justify-between mb-10">
-        <h1 className=" text-[32px] font-bold">Сезонные предложения</h1>
-        <div className="navigation-buttons flex gap-4">
+    <div className="2xl:w-[1600px] xl:px-[120px] lg:px-[60px] mx-auto xl:mb-[100px] lg:mb-[60px]">
+      <div className="flex justify-between xl:mb-10 lg:mb-8">
+        <h1 className="xl:text-[32px] lg:text-[26px] font-bold">
+          Сезонные предложения
+        </h1>
+        <div className="navigation-buttons flex lg:gap-4 ">
           <div
-            className="prev-arrow px-[15px]  py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="prev-arrow xl:px-[15px] xl:py-[14px] lg:px-[15px] lg:py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handlePrev}
           >
-            <FaArrowLeftLong className="w-4  text-[#777E90]" />
+            <FaArrowLeftLong className="lg:w-4  text-[#777E90]" />
           </div>
           <div
-            className="next-arrow px-[15px]  py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="next-arrow xl:px-[15px]  xl:py-[14px] lg:px-[15px] lg:py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handleNext}
           >
-            <FaArrowRightLong className="w-4  text-[#777E90]" />
+            <FaArrowRightLong className="lg:w-4 text-[#777E90]" />
           </div>
         </div>
       </div>
@@ -44,8 +46,25 @@ const PlaceSlider = () => {
       <Swiper
         ref={sliderRef}
         // install Swiper modules
-        spaceBetween={25}
         slidesPerView={4}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 25,
+          },
+          // 1300: {
+          //   slidesPerView: 4,
+          //   spaceBetween: 25,
+          // },
+        }}
         loop={true}
       >
         <SwiperSlide>

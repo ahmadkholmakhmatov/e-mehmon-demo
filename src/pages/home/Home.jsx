@@ -102,11 +102,15 @@ const Home = ({ auth }) => {
   };
 
   return (
-    <div className="bg-[#fafafa] ">
-      <div className="hero w-full h-[848px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
-        <nav className="flex justify-between items-center px-[120px] 2xl:w-[1600px] mx-auto py-[45px]">
+    <div className="bg-[#fafafa] overflow-hidden">
+      <div className="hero w-full xl:h-[848px] lg:h-[628px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
+        <nav className="flex justify-between items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] lg:text-xs xl:px-[120px] xl:py-[45px] xl:text-sm  font-medium  mx-auto ">
           <Link to="/">
-            <img src="/images/logoDark.svg" alt="" />
+            <img
+              className="lg:w-40 xl:w-[184px]"
+              src="/images/logoDark.svg"
+              alt=""
+            />
           </Link>
           <ul className="flex gap-x-6">
             <a href="#search">
@@ -126,25 +130,29 @@ const Home = ({ auth }) => {
             <CurrencyDropDown />
             <LanguageDropdown />
             <button
-              className="flex gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]"
+              className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
               onClick={handleLogin}
             >
-              <LiaUserCircleSolid className="w-6 h-6" />
+              <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
               {authentication.token ? 'Профиль' : 'Войти'}
             </button>
           </div>
         </nav>
 
-        <div className="flex justify-between gap-x-28 px-[120px] 2xl:w-[1600px] xl:w-[1440px] mx-auto my-[50px]">
-          <h1 className="max-w-[700px] text-[49px]">{t('packSuit')}</h1>
-          <div className="max-w-[384px]">
-            <p className="text-[16px] mb-4">{t('welcomePortal')}</p>
-            <div className="flex justify-between items-center text-[16px]">
-              <button className="px-6 py-4 bg-[#3276FF] rounded-2xl">
+        <div className="flex justify-between 2xl:w-[1600px] xl:gap-x-28 xl:px-[120px] xl:w-[1440px] xl:my-[50px] lg:gap-x-20 lg:px-[60px] lg:my-[40px] sm:w-full mx-auto ">
+          <h1 className="xl:max-w-[700px] xl:text-[49px] lg:max-w-[560px] lg:text-[32px]">
+            {t('packSuit')}
+          </h1>
+          <div className="xl:max-w-[384px] lg:max-w-[300px]">
+            <p className="xl:text-[16px] lg:text-xs mb-4">
+              {t('welcomePortal')}
+            </p>
+            <div className="flex justify-between items-center xl:text-[16px] lg:text-xs">
+              <button className="xl:px-6 xl:py-4 lg:px-4 lg:py-3 bg-[#3276FF] rounded-2xl">
                 Все отели
               </button>
-              <button className="flex gap-x-2 px-6 py-4">
-                <PiPlayCircleFill className="w-6 h-6" />
+              <button className="flex items-center gap-x-2 xl:px-6 xl:py-4 lg:px-4 lg:py-3 ">
+                <PiPlayCircleFill className="xl:w-6 xl:h-6 lg:w-4 lg:h-4" />
                 Посмотреть видео
               </button>
             </div>
@@ -156,24 +164,24 @@ const Home = ({ auth }) => {
 
       <div
         id="search"
-        className="search 2xl:w-[1360px] w-[1200px] mx-auto bg-white mt-[-98px] rounded-[40px] p-12 shadow-[0px_40px_60px_-32px_#777E901A]"
+        className="search 2xl:w-[1360px] xl:w-[1200px]  bg-white xl:mt-[-78px] xl:p-12 sm:w-[904px] lg:mt-[-84px] lg:p-8 rounded-[40px] mx-auto shadow-[0px_40px_60px_-32px_#777E901A]"
       >
         <SearchForm />
       </div>
 
-      <div className="info 2xl:w-[1600px] px-[120px] mx-auto mt-[70px] mb-[100px]">
-        <div className="text-center mb-10">
-          <h1 className="text-[32px] font-bold mb-4">
+      <div className="info mx-auto 2xl:w-[1600px] xl:px-[120px] xl:mt-[70px] lg:px-[60px] lg:mt-12">
+        <div className="text-center xl:mb-10 lg:mb-7">
+          <h1 className="xl:text-[32px] xl:mb-4 lg:text-[28px] lg:mb-3 font-bold ">
             Простые 3 шага для вашего идеального путешествия
           </h1>
-          <p className="text-[18px] leading-6">
+          <p className="xl:text-[18px] xl:leading-6 lg:text-base lg:leading-5">
             Упростите свои планы для путешествия – с нами это легко!
           </p>
         </div>
 
         <div className="flex">
-          <div className="relative basis-[48%]">
-            <div className="w-[453px] h-[644px] rounded-3xl overflow-hidden ml-[85px]">
+          <div className="relative lg:basis-[48%]">
+            <div className="xl:w-[453px] xl:h-[644px] xl:ml-[85px] lg:w-[323px] lg:h-[460px] lg:ml-[60px] rounded-3xl overflow-hidden ">
               <img
                 className="w-full h-full object-cover"
                 src="/images/img.png"
@@ -181,7 +189,7 @@ const Home = ({ auth }) => {
               />
             </div>
 
-            <div className="absolute bottom-[90px] left-0 w-[364px] h-64 rounded-3xl border-[10px] border-l-0 border-[#F8F8FA] overflow-hidden ">
+            <div className="absolute left-0 xl:bottom-[90px] xl:w-[364px] xl:h-64 lg:bottom-[64px] lg:w-[260px] lg:h-[182px] rounded-3xl border-[10px] border-l-0 border-[#F8F8FA] overflow-hidden ">
               <img
                 className="w-full h-full object-cover "
                 src="/images/img2.png"
@@ -189,82 +197,131 @@ const Home = ({ auth }) => {
               />
             </div>
 
-            <div className="rating-card bg-white absolute top-12 left-[23px] flex w-52 h-20 p-[18px] gap-4 rounded-2xl shadow-custom">
-              <div className="w-[44px] h-[44px] overflow-hidden rounded-[27px]">
+            <div className="rating-card bg-white absolute flex xl:top-12 xl:left-[23px] xl:w-52 xl:h-20 xl:p-[18px] xl:gap-4 lg:top-[34px] lg:left-4 lg:w-[156px] lg:h-14 lg:p-[13px] lg:gap-2 rounded-2xl shadow-custom">
+              <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 overflow-hidden rounded-full">
                 <img
-                  className="w-[140%] h-[140%] object-cover"
+                  className="xl:w-[140%] xl:h-[140%] lg:w-[120%] lg:h-[120%] object-cover"
                   src="/assets/avatar/a1.png"
                   alt=""
                 />
               </div>
 
               <div>
-                <h2 className="text-xs mb-2">Азиза Муминова</h2>
+                <h2 className="xl:text-xs xl:mb-2 lg:text-[10px] lg:mb-1">
+                  Азиза Муминова
+                </h2>
                 <div className="star flex gap-2">
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/starDark.svg" alt="" />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/starDark.svg"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
 
-            <div className="rating-card bg-white absolute top-[172px] left-[364px] flex w-52 h-20 p-[18px] gap-4 rounded-2xl shadow-custom">
-              <div className="w-[44px] h-[44px] overflow-hidden rounded-[27px]">
+            <div className="rating-card bg-white absolute xl:top-[172px] xl:left-[364px] flex xl:w-52 xl:h-20 xl:p-[18px] xl:gap-4 lg:top-[123px] lg:left-[260px] lg:w-[156px] lg:h-14 lg:p-[13px] lg:gap-2 rounded-2xl shadow-custom">
+              <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 overflow-hidden rounded-full">
                 <img
-                  className="w-[140%] h-[140%] object-cover"
+                  className="xl:w-[140%] xl:h-[140%] lg:w-[120%] lg:h-[120%] object-cover"
                   src="/assets/avatar/a2.png"
                   alt=""
                 />
               </div>
 
               <div>
-                <h2 className="text-xs mb-2">Андрей Туйгунов</h2>
+                <h2 className="xl:text-xs xl:mb-2 lg:text-[10px] lg:mb-1">
+                  Андрей Туйгунов
+                </h2>
                 <div className="star flex gap-2">
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/star.svg" alt="" />
-                  <img src="/assets/icons/starDark.svg" alt="" />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/star.svg"
+                    alt=""
+                  />
+                  <img
+                    className="xl:w-4 lg:w-3"
+                    src="/assets/icons/starDark.svg"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="flex gap-6 flex-col flex-grow flex-shrink-0 basis-[52%] pl-10 py-14 pr-[100px]">
-            <div className="text-lg">
-              <div className="bg-[#D3DFFB] w-11 h-[34px] rounded-xl flex justify-center items-center mb-4 font-medium  text-[#3276FF]">
+          <div className="flex xl:gap-6 lg:gap-4 flex-col flex-grow flex-shrink-0 lg:basis-[52%] xl:pl-10 xl:py-14 xl:pr-[100px] lg:pl-7 lg:py-10 lg:pr-[72px]">
+            <div className="xl:text-lg lg:text-xs">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 lg:mb-2 lg:w-7 lg:h-6 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
                 01
               </div>
 
-              <h1 className="font-medium mb-2">Регистрация</h1>
-              <p className="text-[16px] leading-6">
+              <h1 className="font-medium xl:mb-2 lg:mb-[6px]">Регистрация</h1>
+              <p className="xl:text-[16px] xl:leading-6 lg:text-[10px] lg:leading-5">
                 Зарегистрируйтесь на нашем сайте, чтобы начать путешествие.
                 Укажите свое имя, адрес электронной почты и пароль, чтобы
                 создать учетную запись.
               </p>
             </div>
 
-            <div className="text-lg">
-              <div className="bg-[#D3DFFB] w-11 h-[34px] rounded-xl flex justify-center items-center mb-4 font-medium  text-[#3276FF]">
+            <div className="xl:text-lg lg:text-xs">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 lg:mb-2 lg:w-7 lg:h-6 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
                 02
               </div>
 
-              <h1 className="font-medium mb-2">Выбор отели и даты</h1>
-              <p className="text-[16px] leading-6">
+              <h1 className="font-medium xl:mb-2 lg:mb-[6px]">
+                Выбор отели и даты
+              </h1>
+              <p className="xl:text-[16px] xl:leading-6 lg:text-[10px] lg:leading-5">
                 Выберите желаемое место проживания и укажите даты вашего
                 пребывания. Просматривайте доступные варианты и добавляйте их в
                 корзину.
               </p>
             </div>
-            <div className="text-lg">
-              <div className="bg-[#D3DFFB] w-11 h-[34px] rounded-xl flex justify-center items-center mb-4 font-medium  text-[#3276FF]">
+
+            <div className="xl:text-lg lg:text-xs">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 lg:mb-2 lg:w-7 lg:h-6 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
                 03
               </div>
 
-              <h1 className="font-medium mb-2">Бронирование и оплата</h1>
-              <p className="text-[16px] leading-6">
+              <h1 className="font-medium xl:mb-2 lg:mb-[6px]">
+                Бронирование и оплата
+              </h1>
+              <p className="xl:text-[16px] xl:leading-6 lg:text-[10px] lg:leading-5">
                 Перейдите к корзине, где вы сможете проверить и подтвердить ваш
                 выбор. Затем выберите удобный способ оплаты и завершите
                 бронирование. Готово, ваше путешествие официально начато!
@@ -274,19 +331,19 @@ const Home = ({ auth }) => {
         </div>
       </div>
 
-      <div className="2xl:w-[1600px] px-[120px] mx-auto mb-[100px]">
-        <div className="heading text-center mb-10">
-          <h1 className="text-[32px] font-bold text-[#232E40] mb-4">
+      <div className="2xl:w-[1600px] xl:px-[120px] xl:mt-[100px] mx-auto xl:mb-[100px] lg:mt-[72px] lg:px-[60px] lg:mb-[60px]">
+        <div className="heading text-center xl:mb-10 lg:mb-7">
+          <h1 className="xl:text-[32px] lg:text-[26px] font-bold text-[#232E40] xl:mb-4 lg:mb-1">
             Дома, которые нравятся гостям
           </h1>
-          <p className="text-[18px] font-normal text-[#777E90]">
+          <p className="xl:text-[18px] lg:text-sm font-normal text-[#777E90]">
             Упростите свои планы для путешествия – с нами это легко!
           </p>
         </div>
         <HotelList hotels={hotels} />
       </div>
 
-      <WelcomeTeam className="mb-[100px]" />
+      <WelcomeTeam className="xl:mb-[100px]" />
 
       <div id="place">
         <PlaceSlider />

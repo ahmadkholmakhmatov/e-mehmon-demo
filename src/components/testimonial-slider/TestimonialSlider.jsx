@@ -22,21 +22,23 @@ const TestimonialSlider = () => {
   }, []);
 
   return (
-    <div className="bg-[#394253] text-white pl-[120px] py-20 overflow-hidden">
-      <div className="flex justify-between 2xl:w-[1470px] mx-auto pr-[120px] mb-10">
-        <h1 className=" text-[32px] font-bold">Что думают о нас туристы?</h1>
-        <div className="navigation-buttons flex gap-4">
+    <div className="bg-[#394253] text-white xl:pl-[120px] lg:pl-[60px] xl:py-20 lg:py-12 overflow-hidden">
+      <div className="flex justify-between 2xl:w-[1470px] mx-auto xl:pr-[120px] lg:pr-[60px] xl:mb-10 lg:mb-9">
+        <h1 className="xl:text-[32px] lg:text-[26px] font-bold">
+          Что думают о нас туристы?
+        </h1>
+        <div className="navigation-buttons flex xl:gap-4">
           <div
-            className="prev-arrow px-[15px]  py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="prev-arrow lg:px-[15px]  lg:py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handlePrev}
           >
-            <FaArrowLeftLong className="w-4  text-white" />
+            <FaArrowLeftLong className="lg:w-4  text-white" />
           </div>
           <div
-            className="next-arrow px-[15px]  py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="next-arrow lg:px-[15px]  lg:py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handleNext}
           >
-            <FaArrowRightLong className="w-4  text-white" />
+            <FaArrowRightLong className="lg:w-4  text-white" />
           </div>
         </div>
       </div>

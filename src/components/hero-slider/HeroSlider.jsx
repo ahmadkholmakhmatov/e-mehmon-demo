@@ -8,21 +8,21 @@ import HeroCard from '../hero-card/HeroCard';
 
 const HeroSlider = () => {
   return (
-    <div className=" 2xl:w-[1600px] xl:w-[1440px] mx-auto text-white pl-[120px] overflow-hidden">
+    <div className=" 2xl:w-[1600px] xl:w-[1440px] xl:pl-[120px] lg:w-full lg:pl-[60px] mx-auto text-white  overflow-hidden">
       <Swiper
         // install Swiper modules
 
         spaceBetween={40}
         slidesPerView={3}
         speed={1000}
-        autoplay={{
-          delay: 1500,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
+        // autoplay={{
+        //   delay: 1500,
+        //   disableOnInteraction: false,
+        //   pauseOnMouseEnter: true,
+        // }}
         loop={true}
         modules={[Autoplay]}
-        className="-mr-40 "
+        className="lg:-mr-40 "
       >
         <SwiperSlide>
           <HeroCard />
