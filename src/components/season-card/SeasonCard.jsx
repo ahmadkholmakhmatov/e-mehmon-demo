@@ -1,8 +1,8 @@
 const SeasonCard = () => {
   return (
     <div>
-      <div className="relative 2xl:w-[321.25px] 2xl:h-[321.25px] xl:w-[282px] xl:h-[282px] lg:w-[268px] lg:h-[268px] rounded-3xl overflow-hidden lg:mb-3">
-        <div className="absolute lg:top-3 lg:left-3 xl:text-[10px] xl:p-2 lg:p-1.5  lg:text-[10px]  font-medium text-white bg-[#232E40]  rounded-3xl">
+      <div className="relative 2xl:w-[321.25px] 2xl:h-[321.25px] xl:w-[282px] xl:h-[282px] lg:w-[268px] lg:h-[268px] md:w-full md:h-[330px] esm:w-full esm:h-[180px] rounded-3xl overflow-hidden lg:mb-3 md:mb-2 esm:mb-1">
+        <div className="absolute xl:top-3 xl:left-3 xl:text-[12px] esm:top-3 esm:left-3 md:text-[12px]  xl:p-2 md:p-1.5 esm:p-1 esm:text-[10px] lg:text-[10px] font-medium text-white bg-[#232E40]  rounded-3xl">
           Скидка 24%
         </div>
         <img
@@ -12,10 +12,12 @@ const SeasonCard = () => {
         />
       </div>
 
-      <div className="lg:text-lg font-semibold text-[#232E40] lg:mb-3">
+      <div className="md:text-lg esm:text-base font-semibold text-[#232E40] lg:mb-3 md:mb-2 esm:mb-1">
         Горы Кунгурбука
       </div>
-      <div className="lg:text-base font-semibold text-[#777E90]">от $240</div>
+      <div className="md:text-base esm:text-sm font-semibold text-[#777E90]">
+        от $240
+      </div>
     </div>
   );
 };

@@ -22,23 +22,23 @@ const PlaceSlider = () => {
   }, []);
 
   return (
-    <div className="2xl:w-[1600px] xl:px-[120px] lg:px-[60px] mx-auto xl:mb-[100px] lg:mb-[60px]">
-      <div className="flex justify-between xl:mb-10 lg:mb-8">
-        <h1 className="xl:text-[32px] lg:text-[26px] font-bold">
+    <div className="2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-5 esm:px-[10px] mx-auto xl:mb-[100px] lg:mb-[60px] md:mb-9 esm:mb-6 esm:mt-5">
+      <div className="flex justify-between xl:mb-10 lg:mb-8 md:mb-6 esm:mb-5">
+        <h1 className="xl:text-[32px] md:text-[26px] esm:text-2xl font-bold">
           Сезонные предложения
         </h1>
-        <div className="navigation-buttons flex lg:gap-4 ">
+        <div className="navigation-buttons md:flex md:gap-4 esm:hidden">
           <div
-            className="prev-arrow xl:px-[15px] xl:py-[14px] lg:px-[15px] lg:py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="prev-arrow md:px-[15px] md:py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handlePrev}
           >
             <FaArrowLeftLong className="lg:w-4  text-[#777E90]" />
           </div>
           <div
-            className="next-arrow xl:px-[15px]  xl:py-[14px] lg:px-[15px] lg:py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="next-arrow md:px-[15px] md:py-[14px] border-[1px] border-[#fafafa] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handleNext}
           >
-            <FaArrowRightLong className="lg:w-4 text-[#777E90]" />
+            <FaArrowRightLong className="md:w-4 text-[#777E90]" />
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ const PlaceSlider = () => {
         // install Swiper modules
         slidesPerView={4}
         breakpoints={{
-          640: {
+          340: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
@@ -57,7 +57,7 @@ const PlaceSlider = () => {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 25,
           },
           // 1300: {

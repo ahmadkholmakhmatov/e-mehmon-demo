@@ -23,7 +23,10 @@ const CurrencyDropDown = () => {
 
   return (
     <Dropdown overlay={menu} trigger={['click']}>
-      <a onClick={(e) => e.preventDefault()}>
+      <a
+        onClick={(e) => e.preventDefault()}
+        className="sm:text-base esm:text-xs"
+      >
         <Space>
           {currency}
           <IoIosArrowDown />

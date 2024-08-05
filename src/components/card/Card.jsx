@@ -15,8 +15,8 @@ const Card = ({ hotel }) => {
   };
   // console.log(convertedPrice);
   return (
-    <div className="2xl:w-[316px] 2xl:h-[458px] lg:w-[282px] lg:h-[410px]">
-      <div className="relative 2xl:w-[316px] 2xl:h-[316px] lg:w-[282px] lg:h-[282px] overflow-hidden rounded-[20px] lg:mb-3">
+    <div className="2xl:w-[316px] 2xl:h-[458px] lg:w-[282px] lg:h-[410px] md:w-[320px] md:h-[450px] esm:w-full esm:h-fit">
+      <div className="relative 2xl:w-[316px] 2xl:h-[316px] lg:w-[282px] lg:h-[282px] md:w-[320px] md:h-[320px] esm:w-full esm:h-[180px] overflow-hidden rounded-[20px] lg:mb-3 md:mb-2 esm:mb-1">
         <div className="status absolute top-3 left-3 flex justify-center items-center w-[83px] h-[30px] backdrop-blur-2xl p-2 border border-[#3276FF] border-solid rounded-3xl text-xs text-white">
           {hotel.status}
         </div>
@@ -27,24 +27,28 @@ const Card = ({ hotel }) => {
         <img className="w-full h-full object-cover" src={hotel.imgSrc} alt="" />
       </div>
       <div>
-        <h4 className="lg:text-[16px] text-[#232E40] font-bold lg:mb-1">
+        <h4 className="lg:text-[16px] md:text-lg esm:text-sm text-[#232E40] font-bold esm:mb-1">
           {hotel.name}
         </h4>
-        <p className="lg:text-sm text-[#777E90] lg:mb-3">{hotel.address}</p>
+        <p className="md:text-sm esm:text-xs text-[#777E90] lg:mb-3 md:mb-2 esm:mb-1">
+          {hotel.address}
+        </p>
 
-        <div className="flex items-center justify-between lg:gap-4">
+        <div className="flex md:flex-nowrap esm:flex-wrap items-center justify-between md:gap-4 esm:gap-2">
           <button
             onClick={handleClick}
-            className="bg-blue-20 lg:px-6 lg:py-4 lg:text-base text-[#3276FF] rounded-2xl"
+            className="bg-blue-20 md:px-6 md:py-4 esm:px-2 esm:py-3 order-2 md:text-base text-[#3276FF] rounded-2xl"
           >
             Забронировать
           </button>
-          <div className="lg:text-base font-bold">
+          <div className="md:text-base esm:text-sm font-bold">
             от $
             {currency === 'USD'
               ? `${convertedPrice.toFixed(0)}`
               : `${convertedPrice.toFixed(0)}`}
-            <span className="lg:text-xs font-normal text-[#777E90]">/ночь</span>
+            <span className="esm:text-xs font-normal text-[#777E90]">
+              /ночь
+            </span>
           </div>
         </div>
       </div>

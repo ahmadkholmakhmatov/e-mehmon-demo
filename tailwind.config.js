@@ -9,6 +9,9 @@ export default {
       colors: {
         'blue-20': 'rgba(50, 118, 255, 0.2)',
       },
+      screens: {
+        esm: '340px',
+      },
       display: ['group-hover'],
     },
   },

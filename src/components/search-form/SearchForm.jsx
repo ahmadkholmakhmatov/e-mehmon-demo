@@ -48,10 +48,10 @@ const SearchForm = () => {
       <TabPane tab="Отели" key="1">
         <form
           onSubmit={handleSumbit}
-          className="flex justify-between xl:gap-6 lg:gap-5 items-end xl:mt-8 lg:mt-5 text-[#777E90] xl:text-sm lg:text-xs"
+          className="flex lg:flex-nowrap esm:flex-wrap justify-between xl:gap-6 lg:gap-5 md:gap-3 esm:gap-2 items-end xl:mt-8 lg:mt-5 md:mt-4 text-[#777E90] xl:text-sm md:text-xs"
           action="sumbit"
         >
-          <div className="home-selector basis-[calc(20%-20px)] -mb-1">
+          <div className="home-selector lg:basis-[calc(20%-20px)] sm:basis-auto esm:basis-full -mb-1">
             <div className="mb-3">Куда хотите поехать?</div>
             <Select
               placeholder="г. Ташкент"
@@ -63,7 +63,7 @@ const SearchForm = () => {
             />
           </div>
 
-          <div className=" basis-[calc(20%-20px)]">
+          <div className="lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)]">
             <div className="mb-3">Заезд</div>
             <DatePicker
               onChange={(value) => setDates(dates.push(value))}
@@ -76,7 +76,7 @@ const SearchForm = () => {
             />
           </div>
 
-          <div className="  basis-[calc(20%-20px)]">
+          <div className="lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)]">
             <div className="mb-3">Выезд</div>
             <DatePicker
               suffixIcon={
@@ -90,7 +90,7 @@ const SearchForm = () => {
             />
           </div>
 
-          <div className="home-selector basis-[calc(20%-20px)] -mb-1">
+          <div className="home-selector lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] -mb-1">
             <div className="mb-3">Кол-во гостей</div>
             <Select
               placeholder="2 взрослых"
@@ -103,10 +103,11 @@ const SearchForm = () => {
           </div>
 
           <button
-            className="basis-[calc(20%-20px)] h-14 flex items-center justify-center gap-2 bg-[#3276FF] text-white rounded-2xl cursor-pointer"
+            className="lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] h-14 flex items-center justify-center gap-2 px-0 sm:px-2 bg-[#3276FF] text-white rounded-2xl cursor-pointer"
             type="sumbit"
           >
-            <LuSearch className="xl:w-6 xl:h-6 lg:w-4 lg:h-4" /> Начать поиск
+            <LuSearch className="xl:w-6 xl:h-6 lg:w-4 lg:h-4 esm:w-4 esm:h-4" />
+            Начать поиск
           </button>
         </form>
       </TabPane>

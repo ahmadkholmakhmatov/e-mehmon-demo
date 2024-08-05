@@ -1,5 +1,6 @@
 import { PiPlayCircleFill } from 'react-icons/pi';
 import { LiaUserCircleSolid } from 'react-icons/lia';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import HotelList from '../../components/hotel-list/HotelList';
 import WelcomeTeam from '../../components/welcome-team/WelcomeTeam';
 import Footer from '../../components/footer/Footer';
@@ -11,6 +12,8 @@ import LanguageDropdown from '../../components/language-dropdown/LanguageDropdow
 import SearchForm from '../../components/search-form/SearchForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
+import './home.css';
 
 const hotels = [
   {
@@ -92,6 +95,7 @@ const Home = ({ auth }) => {
   const { t } = useTranslation();
   const authentication = auth;
   const navigate = useNavigate();
+  const navRef = useRef();
 
   const handleLogin = () => {
     if (authentication.token) {
@@ -101,10 +105,14 @@ const Home = ({ auth }) => {
     }
   };
 
+  const showNavbar = () => {
+    navRef.current.classList.toggle('responsive_nav');
+  };
+
   return (
     <div className="bg-[#fafafa] overflow-hidden">
-      <div className="hero w-full xl:h-[848px] lg:h-[628px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
-        <nav className="flex justify-between items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] lg:text-xs xl:px-[120px] xl:py-[45px] xl:text-sm  font-medium  mx-auto ">
+      <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] esm:h-[550px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
+        <nav className="lg:flex justify-between items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] lg:text-xs xl:px-[120px] xl:py-[45px] xl:text-sm esm:hidden font-medium  mx-auto ">
           <Link to="/">
             <img
               className="lg:w-40 xl:w-[184px]"
@@ -139,20 +147,70 @@ const Home = ({ auth }) => {
           </div>
         </nav>
 
-        <div className="flex justify-between 2xl:w-[1600px] xl:gap-x-28 xl:px-[120px] xl:w-[1440px] xl:my-[50px] lg:gap-x-20 lg:px-[60px] lg:my-[40px] sm:w-full mx-auto ">
-          <h1 className="xl:max-w-[700px] xl:text-[49px] lg:max-w-[560px] lg:text-[32px]">
+        <header
+          x
+          className="esm:flex items-center justify-between py-5  sm:px-[20px] esm:px-[10px] lg:hidden"
+        >
+          <Link to="/">
+            <img
+              className="sm:w-[142px] esm:w-[120px]"
+              src="/images/logoDark.svg"
+              alt=""
+            />
+          </Link>
+
+          <div className="flex sm:gap-4 esm:gap-2">
+            <div className="login flex items-center sm:gap-6 esm:gap-2">
+              <CurrencyDropDown />
+              <LanguageDropdown />
+            </div>
+            <nav ref={navRef} className="z-20 flex flex-col">
+              <ul className="flex flex-col gap-x-6">
+                <a href="#search">
+                  <li>Найти жилье</li>
+                </a>
+
+                <a href="#search">
+                  <li>Куда сходить?</li>
+                </a>
+                <a href="#place">
+                  <li>Туры</li>
+                </a>
+                <a href="#place">
+                  <li>Транспорт</li>
+                </a>
+              </ul>
+              <button
+                className="flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]"
+                onClick={handleLogin}
+              >
+                <LiaUserCircleSolid className="w-6 h-6" />
+                {authentication.token ? 'Профиль' : 'Войти'}
+              </button>
+              <button className="nav-btn close-btn p-0" onClick={showNavbar}>
+                <FaTimes className="sm:w-6 sm:h-6 esm:w-5 esm:h-5" />
+              </button>
+            </nav>
+            <button className="nav-btn close-btn p-0" onClick={showNavbar}>
+              <FaBars className="sm:w-6 sm:h-6 esm:w-5 esm:h-5" />
+            </button>
+          </div>
+        </header>
+
+        <div className="flex lg:flex-nowrap esm:flex-wrap justify-between 2xl:w-[1600px] xl:gap-x-28 xl:px-[120px] xl:my-[50px] lg:gap-x-20 lg:px-[60px] lg:my-[40px] sm:px-5 esm:px-[10px] sm:my-6 esm:my-2 sm:gap-y-8 esm:gap-y-5 esm:w-full mx-auto">
+          <h1 className="xl:max-w-[700px] xl:text-[49px] lg:max-w-[560px] lg:text-[32px] esm:basis-[100%] sm:text-[30px] esm:text-2xl lg:text-left sm:text-center">
             {t('packSuit')}
           </h1>
-          <div className="xl:max-w-[384px] lg:max-w-[300px]">
-            <p className="xl:text-[16px] lg:text-xs mb-4">
+          <div className="xl:max-w-[384px] lg:max-w-[300px] esm:basis-[100%] lg:px-0 sm:px-20">
+            <p className="xl:text-[16px] lg:text-xs sm:text-[20px] esm:text-[14px] text-[#B7BFD5] mb-4">
               {t('welcomePortal')}
             </p>
-            <div className="flex justify-between items-center xl:text-[16px] lg:text-xs">
-              <button className="xl:px-6 xl:py-4 lg:px-4 lg:py-3 bg-[#3276FF] rounded-2xl">
+            <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
+              <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] rounded-2xl">
                 Все отели
               </button>
-              <button className="flex items-center gap-x-2 xl:px-6 xl:py-4 lg:px-4 lg:py-3 ">
-                <PiPlayCircleFill className="xl:w-6 xl:h-6 lg:w-4 lg:h-4" />
+              <button className="flex items-center gap-x-2 xl:px-6 xl:py-4 esm:px-4 esm:py-3 ">
+                <PiPlayCircleFill className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5" />
                 Посмотреть видео
               </button>
             </div>
@@ -164,24 +222,24 @@ const Home = ({ auth }) => {
 
       <div
         id="search"
-        className="search 2xl:w-[1360px] xl:w-[1200px]  bg-white xl:mt-[-78px] xl:p-12 sm:w-[904px] lg:mt-[-84px] lg:p-8 rounded-[40px] mx-auto shadow-[0px_40px_60px_-32px_#777E901A]"
+        className="search 2xl:w-[1360px] xl:w-[1200px]  bg-white xl:mt-[-78px] xl:p-12 lg:w-[904px] lg:mt-[-84px] lg:p-8 md:w-[728px] md:p-8 sm:mt-[-40px] esm:w-[92%] esm:mt-[-60px] esm:p-6 rounded-[40px] mx-auto shadow-[0px_40px_60px_-32px_#777E901A]"
       >
         <SearchForm />
       </div>
 
-      <div className="info mx-auto 2xl:w-[1600px] xl:px-[120px] xl:mt-[70px] lg:px-[60px] lg:mt-12">
-        <div className="text-center xl:mb-10 lg:mb-7">
-          <h1 className="xl:text-[32px] xl:mb-4 lg:text-[28px] lg:mb-3 font-bold ">
+      <div className="info mx-auto 2xl:w-[1600px] xl:px-[120px] xl:mt-[70px] lg:px-[60px] lg:mt-12 md:px-5 md:my-6 esm:px-[10px] esm:my-5 esm:w-full">
+        <div className="text-center xl:mb-10 lg:mb-7 md:mb-5 esm:mb-3">
+          <h1 className="xl:text-[32px] xl:mb-4 lg:text-[28px] lg:mb-3 md:text-2xl esm:text-xl esm:mb-3 font-bold ">
             Простые 3 шага для вашего идеального путешествия
           </h1>
-          <p className="xl:text-[18px] xl:leading-6 lg:text-base lg:leading-5">
+          <p className="xl:text-[18px] xl:leading-6 lg:text-base lg:leading-5 esm:text-sm esm:leading-4">
             Упростите свои планы для путешествия – с нами это легко!
           </p>
         </div>
 
-        <div className="flex">
-          <div className="relative lg:basis-[48%]">
-            <div className="xl:w-[453px] xl:h-[644px] xl:ml-[85px] lg:w-[323px] lg:h-[460px] lg:ml-[60px] rounded-3xl overflow-hidden ">
+        <div className="flex lg:flex-nowrap esm:flex-wrap">
+          <div className="relative lg:basis-[48%] esm:basis-full esm:mb-8">
+            <div className="xl:w-[453px] xl:h-[644px] xl:ml-[85px] lg:w-[323px] lg:h-[460px] lg:ml-[60px] md:w-[80%] md:h-[400px] esm:h-[380px] esm:w-[86%] lg:mx-0 esm:mx-auto rounded-3xl overflow-hidden">
               <img
                 className="w-full h-full object-cover"
                 src="/images/img.png"
@@ -189,7 +247,7 @@ const Home = ({ auth }) => {
               />
             </div>
 
-            <div className="absolute left-0 xl:bottom-[90px] xl:w-[364px] xl:h-64 lg:bottom-[64px] lg:w-[260px] lg:h-[182px] rounded-3xl border-[10px] border-l-0 border-[#F8F8FA] overflow-hidden ">
+            <div className="absolute left-0 xl:bottom-[90px] xl:w-[364px] xl:h-64 lg:bottom-[64px] lg:w-[260px] lg:h-[182px] esm:bottom-[15%] md:w-[260px] md:h-[182px] esm:w-[186px] esm:h-[142px] rounded-3xl border-[10px] border-l-0 border-[#F8F8FA] overflow-hidden ">
               <img
                 className="w-full h-full object-cover "
                 src="/images/img2.png"
@@ -197,42 +255,42 @@ const Home = ({ auth }) => {
               />
             </div>
 
-            <div className="rating-card bg-white absolute flex xl:top-12 xl:left-[23px] xl:w-52 xl:h-20 xl:p-[18px] xl:gap-4 lg:top-[34px] lg:left-4 lg:w-[156px] lg:h-14 lg:p-[13px] lg:gap-2 rounded-2xl shadow-custom">
-              <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 overflow-hidden rounded-full">
+            <div className="rating-card bg-white absolute flex items-center xl:top-12 xl:left-[23px] xl:w-52 xl:h-20 xl:p-[18px] xl:gap-4 lg:top-[34px] lg:left-4 lg:gap-2 md:top-[10%] md:left-[5%] md:w-[156px] md:h-14 md:p-[13px] md:gap-2 esm:top-[10%] esm:left-[0%] esm:w-[136px] esm:h-12 esm:p-2 esm:gap-1 rounded-2xl shadow-custom">
+              <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 esm:w-6 esm:h-6 overflow-hidden rounded-full">
                 <img
-                  className="xl:w-[140%] xl:h-[140%] lg:w-[120%] lg:h-[120%] object-cover"
+                  className="xl:w-[140%] xl:h-[140%] esm:w-[120%] esm:h-[120%] object-cover"
                   src="/assets/avatar/a1.png"
                   alt=""
                 />
               </div>
 
               <div>
-                <h2 className="xl:text-xs xl:mb-2 lg:text-[10px] lg:mb-1">
+                <h2 className="xl:mb-2 md:text-[10px] esm:text-[9px] xl:text-xs esm:mb-1 ">
                   Азиза Муминова
                 </h2>
-                <div className="star flex gap-2">
+                <div className="star flex lg:gap-2 esm:gap-1">
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/starDark.svg"
                     alt=""
                   />
@@ -240,42 +298,42 @@ const Home = ({ auth }) => {
               </div>
             </div>
 
-            <div className="rating-card bg-white absolute xl:top-[172px] xl:left-[364px] flex xl:w-52 xl:h-20 xl:p-[18px] xl:gap-4 lg:top-[123px] lg:left-[260px] lg:w-[156px] lg:h-14 lg:p-[13px] lg:gap-2 rounded-2xl shadow-custom">
-              <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 overflow-hidden rounded-full">
+            <div className="rating-card bg-white absolute xl:top-[172px] xl:left-[364px] flex xl:w-52 xl:h-20 xl:p-[18px] xl:gap-4 lg:top-[123px] lg:left-[260px] md:w-[156px] md:h-14 md:gap-2 md:top-[30%] md:right-[5%] md:p-[13px] esm:top-[30%] esm:right-[0%] esm:w-[136px] esm:h-12 esm:p-2 esm:gap-1 rounded-2xl shadow-custom">
+              <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 esm:w-6 esm:h-6 overflow-hidden rounded-full">
                 <img
-                  className="xl:w-[140%] xl:h-[140%] lg:w-[120%] lg:h-[120%] object-cover"
+                  className="xl:w-[140%] xl:h-[140%] md:w-[120%] md:h-[120%] object-cover"
                   src="/assets/avatar/a2.png"
                   alt=""
                 />
               </div>
 
               <div>
-                <h2 className="xl:text-xs xl:mb-2 lg:text-[10px] lg:mb-1">
+                <h2 className="xl:mb-2 md:text-[10px] esm:text-[9px] xl:text-xs esm:mb-1 ">
                   Андрей Туйгунов
                 </h2>
-                <div className="star flex gap-2">
+                <div className="star flex lg:gap-2 esm:gap-1">
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/star.svg"
                     alt=""
                   />
                   <img
-                    className="xl:w-4 lg:w-3"
+                    className="xl:w-4 esm:w-3"
                     src="/assets/icons/starDark.svg"
                     alt=""
                   />
@@ -284,44 +342,46 @@ const Home = ({ auth }) => {
             </div>
           </div>
 
-          <div className="flex xl:gap-6 lg:gap-4 flex-col flex-grow flex-shrink-0 lg:basis-[52%] xl:pl-10 xl:py-14 xl:pr-[100px] lg:pl-7 lg:py-10 lg:pr-[72px]">
-            <div className="xl:text-lg lg:text-xs">
-              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 lg:mb-2 lg:w-7 lg:h-6 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
+          <div className="flex xl:gap-6 esm:gap-4 flex-col flex-grow flex-shrink-0 lg:basis-[52%] esm:basis-full xl:pl-10 xl:py-14 xl:pr-[100px] lg:pl-7 lg:py-10 lg:pr-[72px]">
+            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-[#232E40]">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
                 01
               </div>
 
-              <h1 className="font-medium xl:mb-2 lg:mb-[6px]">Регистрация</h1>
-              <p className="xl:text-[16px] xl:leading-6 lg:text-[10px] lg:leading-5">
+              <h1 className="font-medium xl:mb-2 esm:mb-[6px] esm:text-base">
+                Регистрация
+              </h1>
+              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-[#777E90]">
                 Зарегистрируйтесь на нашем сайте, чтобы начать путешествие.
                 Укажите свое имя, адрес электронной почты и пароль, чтобы
                 создать учетную запись.
               </p>
             </div>
 
-            <div className="xl:text-lg lg:text-xs">
-              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 lg:mb-2 lg:w-7 lg:h-6 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
+            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-[#232E40]">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
                 02
               </div>
 
-              <h1 className="font-medium xl:mb-2 lg:mb-[6px]">
+              <h1 className="font-medium xl:mb-2 esm:mb-[6px] esm:text-base">
                 Выбор отели и даты
               </h1>
-              <p className="xl:text-[16px] xl:leading-6 lg:text-[10px] lg:leading-5">
+              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-[#777E90]">
                 Выберите желаемое место проживания и укажите даты вашего
                 пребывания. Просматривайте доступные варианты и добавляйте их в
                 корзину.
               </p>
             </div>
 
-            <div className="xl:text-lg lg:text-xs">
-              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 lg:mb-2 lg:w-7 lg:h-6 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
+            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-[#232E40]">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
                 03
               </div>
 
-              <h1 className="font-medium xl:mb-2 lg:mb-[6px]">
+              <h1 className="font-medium xl:mb-2 esm:mb-[6px] esm:text-base">
                 Бронирование и оплата
               </h1>
-              <p className="xl:text-[16px] xl:leading-6 lg:text-[10px] lg:leading-5">
+              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-[#777E90]">
                 Перейдите к корзине, где вы сможете проверить и подтвердить ваш
                 выбор. Затем выберите удобный способ оплаты и завершите
                 бронирование. Готово, ваше путешествие официально начато!
@@ -331,12 +391,12 @@ const Home = ({ auth }) => {
         </div>
       </div>
 
-      <div className="2xl:w-[1600px] xl:px-[120px] xl:mt-[100px] mx-auto xl:mb-[100px] lg:mt-[72px] lg:px-[60px] lg:mb-[60px]">
-        <div className="heading text-center xl:mb-10 lg:mb-7">
-          <h1 className="xl:text-[32px] lg:text-[26px] font-bold text-[#232E40] xl:mb-4 lg:mb-1">
+      <div className="2xl:w-[1600px] xl:px-[120px] xl:mt-[100px] mx-auto xl:mb-[100px] lg:mt-[72px] lg:px-[60px] lg:mb-[60px] md:mt-[50px] md:px-[20px] md:mb-7 esm:px-[10px] esm:mb-5">
+        <div className="heading text-center xl:mb-10 md:mb-7 esm:mb-5">
+          <h1 className="xl:text-[32px] md:text-[26px] esm:text-[24px] font-bold text-[#232E40] xl:mb-4 esm:mb-1">
             Дома, которые нравятся гостям
           </h1>
-          <p className="xl:text-[18px] lg:text-sm font-normal text-[#777E90]">
+          <p className="xl:text-[18px] esm:text-sm  font-normal text-[#777E90]">
             Упростите свои планы для путешествия – с нами это легко!
           </p>
         </div>
