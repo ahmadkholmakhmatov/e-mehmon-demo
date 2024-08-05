@@ -51,7 +51,7 @@ const SearchForm = () => {
           className="flex lg:flex-nowrap esm:flex-wrap justify-between xl:gap-6 lg:gap-5 md:gap-3 esm:gap-2 items-end xl:mt-8 lg:mt-5 md:mt-4 text-[#777E90] xl:text-sm md:text-xs"
           action="sumbit"
         >
-          <div className="home-selector lg:basis-[calc(20%-20px)] sm:basis-auto esm:basis-full -mb-1">
+          <div className="home-selector lg:basis-[calc(20%-20px)] sm:basis-full esm:basis-full -mb-1">
             <div className="mb-3">Куда хотите поехать?</div>
             <Select
               placeholder="г. Ташкент"

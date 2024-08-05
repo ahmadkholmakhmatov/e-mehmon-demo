@@ -111,28 +111,30 @@ const Home = ({ auth }) => {
 
   return (
     <div className="bg-[#fafafa] overflow-hidden">
-      <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] esm:h-[550px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
-        <nav className="lg:flex justify-between items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] lg:text-xs xl:px-[120px] xl:py-[45px] xl:text-sm esm:hidden font-medium  mx-auto ">
+      <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] sm:h-[680px] esm:h-[550px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
+        <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
           <Link to="/">
             <img
-              className="lg:w-40 xl:w-[184px]"
+              className="lg:w-40  xl:w-[184px]"
               src="/images/logoDark.svg"
               alt=""
             />
           </Link>
-          <ul className="flex gap-x-6">
+          <ul className="flex  gap-x-6">
             <a href="#search">
-              <li>Найти жилье</li>
+              <li className="xl:text-sm lg:text-xs">Найти жилье</li>
             </a>
 
             <a href="#search">
-              <li>Куда сходить?</li>
+              <li className="xl:text-sm lg:text-xs">Куда сходить?</li>
             </a>
             <a href="#place">
-              <li>Туры</li>
+              <li className="xl:text-sm lg:text-xs">Туры</li>
             </a>
 
-            <li>Транспорт</li>
+            <a href="">
+              <li className="xl:text-sm lg:text-xs">Транспорт</li>
+            </a>
           </ul>
           <div className="login flex items-center gap-6">
             <CurrencyDropDown />
@@ -159,12 +161,12 @@ const Home = ({ auth }) => {
             />
           </Link>
 
-          <div className="flex sm:gap-4 esm:gap-2">
-            <div className="login flex items-center sm:gap-6 esm:gap-2">
+          <div className="h-div flex sm:gap-4 esm:gap-2">
+            <div className="h-div login flex items-center sm:gap-6 esm:gap-2">
               <CurrencyDropDown />
               <LanguageDropdown />
             </div>
-            <nav ref={navRef} className="z-20 flex flex-col">
+            <nav ref={navRef} className="mobile-nav z-20 flex flex-col">
               <ul className="flex flex-col gap-x-6">
                 <a href="#search">
                   <li>Найти жилье</li>
@@ -201,7 +203,7 @@ const Home = ({ auth }) => {
           <h1 className="xl:max-w-[700px] xl:text-[49px] lg:max-w-[560px] lg:text-[32px] esm:basis-[100%] sm:text-[30px] esm:text-2xl lg:text-left sm:text-center">
             {t('packSuit')}
           </h1>
-          <div className="xl:max-w-[384px] lg:max-w-[300px] esm:basis-[100%] lg:px-0 sm:px-20">
+          <div className="xl:max-w-[384px] lg:max-w-[300px] esm:basis-[100%] lg:px-0 sm:px-10">
             <p className="xl:text-[16px] lg:text-xs sm:text-[20px] esm:text-[14px] text-[#B7BFD5] mb-4">
               {t('welcomePortal')}
             </p>
@@ -222,7 +224,7 @@ const Home = ({ auth }) => {
 
       <div
         id="search"
-        className="search 2xl:w-[1360px] xl:w-[1200px]  bg-white xl:mt-[-78px] xl:p-12 lg:w-[904px] lg:mt-[-84px] lg:p-8 md:w-[728px] md:p-8 sm:mt-[-40px] esm:w-[92%] esm:mt-[-60px] esm:p-6 rounded-[40px] mx-auto shadow-[0px_40px_60px_-32px_#777E901A]"
+        className="search 2xl:w-[1360px] xl:w-[1200px]  bg-white xl:mt-[-78px] xl:p-12 lg:w-[904px] lg:mt-[-84px] lg:p-8 md:w-[728px] md:p-8 sm:mt-[-60px] esm:w-[92%] esm:mt-[-80px] esm:p-6 rounded-[40px] mx-auto shadow-[0px_40px_60px_-32px_#777E901A]"
       >
         <SearchForm />
       </div>

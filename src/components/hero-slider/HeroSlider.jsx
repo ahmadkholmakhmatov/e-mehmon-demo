@@ -36,7 +36,7 @@ const HeroSlider = () => {
         // }}
         loop={true}
         modules={[Autoplay]}
-        className="lg:-mr-40 sm:-mr-20 esm:-mr-32"
+        className="lg:-mr-40 sm:-mr-40 esm:-mr-32"
       >
         <SwiperSlide>
           <HeroCard />
