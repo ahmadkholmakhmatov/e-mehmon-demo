@@ -20,9 +20,15 @@ const BreadcrumbComponent = ({ name }) => {
     return (
       <Breadcrumb.Item key={url}>
         {isLast ? (
-          <span className="text-gray-500">{breadcrumbNameMap[url]}</span>
+          <span className="text-gray-500 text-[15px]">
+            {breadcrumbNameMap[url]}
+          </span>
         ) : (
-          <Link to={url} style={{ color: 'black' }}>
+          <Link
+            to={url}
+            className="esm:text-xs"
+            style={{ color: 'black', fontSize: '15px' }}
+          >
             {breadcrumbNameMap[url]}
           </Link>
         )}
@@ -36,7 +42,11 @@ const BreadcrumbComponent = ({ name }) => {
       {location.pathname === '/' ? (
         <span className="text-gray-500">{breadcrumbNameMap['/']}</span>
       ) : (
-        <Link to="/" style={{ color: 'black' }}>
+        <Link
+          to="/"
+          className="esm:text-xs"
+          style={{ color: 'black', fontSize: '15px' }}
+        >
           {breadcrumbNameMap['/']}
         </Link>
       )}

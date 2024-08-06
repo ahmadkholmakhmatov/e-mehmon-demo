@@ -3,6 +3,7 @@ import LanguageDropdown from '../../components/language-dropdown/LanguageDropdow
 import { DownOutlined } from '@ant-design/icons';
 import { LiaUserCircleSolid } from 'react-icons/lia';
 import { FaRegShareFromSquare } from 'react-icons/fa6';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { PiMapPinArea } from 'react-icons/pi';
 import { MdRemoveRedEye } from 'react-icons/md';
 import { FaRegBookmark } from 'react-icons/fa';
@@ -18,6 +19,7 @@ import { DatePicker, Select } from 'antd';
 import './hotelSingle.css';
 import { useCurrency } from '../../utils/CurrencyContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 const hotels = [
   {
@@ -62,6 +64,7 @@ const HotelSingle = ({ auth }) => {
   const authentication = auth;
   const { currency } = useCurrency();
   const { state } = useLocation();
+  const navRef = useRef();
 
   console.log(authentication);
   const navigate = useNavigate();
@@ -78,6 +81,9 @@ const HotelSingle = ({ auth }) => {
       navigate('/login');
     }
   };
+  const showNavbar = () => {
+    navRef.current.classList.toggle('responsive_nav');
+  };
 
   const convertedPrice = state?.price * exchangeRates[currency];
 
@@ -88,63 +94,131 @@ const HotelSingle = ({ auth }) => {
   return (
     <div className="bg-[#fafafa] ">
       <div className="bg-white">
-        <nav className="flex  justify-between items-center 2xl:w-[1600px] px-[120px] mx-auto py-[21px] ">
+        <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
           <Link to="/">
-            <img src="/images/logoLight.svg" alt="" />
+            <img
+              className="lg:w-40  xl:w-[184px]"
+              src="/images/logoLight.svg"
+              alt=""
+            />
           </Link>
-          <ul className="flex gap-x-6">
-            <li>Найти жилье</li>
-            <li>Куда сходить?</li>
-            <li>Туры</li>
-            <li>Транспорт</li>
-          </ul>
+          <ul className="flex  gap-x-6">
+            <a href="#search">
+              <li className="xl:text-sm lg:text-xs">Найти жилье</li>
+            </a>
 
+            <a href="#search">
+              <li className="xl:text-sm lg:text-xs">Куда сходить?</li>
+            </a>
+            <a href="#place">
+              <li className="xl:text-sm lg:text-xs">Туры</li>
+            </a>
+
+            <a href="">
+              <li className="xl:text-sm lg:text-xs">Транспорт</li>
+            </a>
+          </ul>
           <div className="login flex items-center gap-6">
             <CurrencyDropDown />
             <LanguageDropdown />
             <button
-              className="flex gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40] text-white"
+              className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl text-white bg-[#232E40]"
               onClick={handleLogin}
             >
-              <LiaUserCircleSolid className="w-6 h-6" />
+              <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
               {authentication.token ? 'Профиль' : 'Войти'}
             </button>
           </div>
         </nav>
-      </div>
-      <div className="2xl:w-[1600px] px-[120px] mx-auto mt-[30px]">
-        <CustomBreadCrumb name={state.name} />
-        <div className="mt-[30px]">
-          <div className="flex justify-between items-start mb-6">
-            <div className="text-[#1D2635]">
-              <h1 className="text-[32px] font-bold">{state.name}</h1>
 
-              <div className="flex items-center gap-3">
-                <PiMapPinArea className="w-6 h-6 text-[#B5B5B5] text-base" />
+        <header
+          x
+          className="esm:flex items-center justify-between py-5 text-[#232E40] sm:px-[20px] esm:px-[10px] lg:hidden"
+        >
+          <Link to="/">
+            <img
+              className="sm:w-[142px] esm:w-[120px]"
+              src="/images/logoLight.svg"
+              alt=""
+            />
+          </Link>
+
+          <div className="h-div flex sm:gap-4 esm:gap-2">
+            <div className="h-div login flex items-center sm:gap-6 esm:gap-2">
+              <CurrencyDropDown />
+              <LanguageDropdown />
+            </div>
+            <nav ref={navRef} className="mobile-nav z-20 flex flex-col">
+              <ul className="flex flex-col gap-x-6">
+                <a href="#search">
+                  <li>Найти жилье</li>
+                </a>
+
+                <a href="#search">
+                  <li>Куда сходить?</li>
+                </a>
+                <a href="#place">
+                  <li>Туры</li>
+                </a>
+                <a href="#place">
+                  <li>Транспорт</li>
+                </a>
+              </ul>
+              <button
+                className="flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40] text-white"
+                onClick={handleLogin}
+              >
+                <LiaUserCircleSolid className="w-6 h-6" />
+                {authentication.token ? 'Профиль' : 'Войти'}
+              </button>
+              <button className="nav-btn close-btn p-0" onClick={showNavbar}>
+                <FaTimes className="sm:w-6 sm:h-6 esm:w-5 esm:h-5 text-black" />
+              </button>
+            </nav>
+            <button className="nav-btn close-btn p-0" onClick={showNavbar}>
+              <FaBars className="sm:w-6 sm:h-6 esm:w-5 esm:h-5 text-black" />
+            </button>
+          </div>
+        </header>
+      </div>
+
+      <div className="2xl:w-[1600px] xl:px-[120px] mx-auto xl:mt-[30px] esm:px-[10px] esm:mt-5">
+        <div className="sm:block esm:hidden">
+          <CustomBreadCrumb name={state.name} />
+        </div>
+        <div className="sm:mt-[30px] esm:mt-0">
+          <div className="flex esm:flex-wrap justify-between items-start sm:mb-6 esm:mb-4">
+            <div className="text-[#1D2635]">
+              <h1 className="text-[32px] esm:text-[30px] font-bold">
+                {state.name}
+              </h1>
+
+              <div className="flex items-center gap-3 sm:mb-0 esm:mb-4">
+                <PiMapPinArea className="sm:w-6 sm:h-6 esm:w-5 esm:h-5 text-[#B5B5B5] sm:text-base esm:text-sm" />
                 {state.address}
               </div>
             </div>
 
-            <div className="flex gap-6 text-base text-[#2F3138] font-medium">
-              <button className="flex items-center gap-2">
-                <FaRegBookmark className="w-6 h-6" />
+            <div className="flex sm:gap-6 esm:gap-4 sm:text-base esm:text-sm text-[#2F3138] font-medium">
+              <button className="flex items-center sm:gap-2 esm:gap-1">
+                <FaRegBookmark className="sm:w-6 sm:h-6 esm:w-5 esm:h-5" />
                 Сохранить
               </button>
-              <button className="flex items-center gap-2 ">
-                <FaRegShareFromSquare className="w-6 h-6" />
+              <button className="flex items-center sm:gap-2 esm:gap-1">
+                <FaRegShareFromSquare className="sm:w-6 sm:h-6 esm:w-5 esm:h-5" />
                 Поделиться
               </button>
             </div>
           </div>
 
-          <div className="flex justify-between gap-6">
-            <div className="basis-[calc(66%-24px)]">
+          <div className="flex esm:flex-wrap justify-between sm:gap-6 esm:gap-5">
+            <div className="sm:basis-[calc(66%-24px)] esm:basis-full">
               <ImageGallery imgSrc={state.imgSrc} />
             </div>
 
-            <div className="basis-[calc(34%-24px)] p-6 bg-[#FFFFFF] shadow-custom rounded-2xl flex flex-col justify-between">
-              <div className="flex justify-between mb-[41px]">
-                <div className="flex items-center gap-2 text-[15px] text-[#7D848B]">
+            <div className="sm:basis-[calc(34%-24px)] esm:basis-full sm:p-6 esm:p-5 bg-[#FFFFFF] shadow-custom rounded-2xl flex flex-col justify-between">
+              <div className="flex justify-between sm:mb-[41px] esm:mb-[38px]">
+                <div className="flex items-center gap-2 sm:text-[15px] esm:text-base text-[#7D848B]">
                   <div className="w-8 h-8 rounded-full overflow-hidden">
                     <img
                       className="w-full h-full object-cover"
@@ -154,7 +228,7 @@ const HotelSingle = ({ auth }) => {
                   </div>
                   Meros Group
                 </div>
-                <div className="flex gap-2 items-center text-[15px] text-[#3B71FE]">
+                <div className="flex gap-2 items-center sm:text-[15px] esm:text-base text-[#3B71FE]">
                   <div className="bg-[#FFC107] p-2 rounded-full text-xs text-black ">
                     8.9
                   </div>
@@ -221,7 +295,7 @@ const HotelSingle = ({ auth }) => {
                 </div>
 
                 <button
-                  className="py-4 w-full bg-[#3276FF] text-base font-medium text-[#FFFFFF] rounded-2xl mb-8"
+                  className="py-4 w-full bg-[#3276FF] text-base font-medium text-[#FFFFFF] rounded-2xl sm:mb-8 esm:mb-5"
                   type="sumbit"
                 >
                   Просмотреть наличие мест
@@ -236,34 +310,35 @@ const HotelSingle = ({ auth }) => {
         </div>
       </div>
 
-      <div className="flex justify-between gap-6 2xl:w-[1600px] px-[120px] mx-auto mb-8">
-        <div className="w-[calc(66%-24px)]">
+      <div className="flex md:flex-nowrap esm:flex-wrap justify-between gap-6 2xl:w-[1600px] xl:px-[120px] esm:px-[10px] mx-auto mb-8">
+        <div className="md:w-[calc(66%-24px)] esm:w-full md:order-1 esm:order-2">
           <HotelDescription />
         </div>
-        <a
-          className="basis-[calc(34%-24px)] h-[230px]"
-          href="https://maps.app.goo.gl/fEw17c2n9mEDVgfq5"
-          target="_blank"
-        >
-          <div className=" mt-6 relative rounded-2xl overflow-hidden">
+
+        <div className="md:basis-[calc(34%-24px)] esm:basis-full md:order-2 esm:order-1 md:h-[230px] esm:h-[244px] md:mt-6 esm:mt-5 relative rounded-2xl overflow-hidden">
+          <a
+            className="block w-full h-full"
+            href="https://maps.app.goo.gl/fEw17c2n9mEDVgfq5"
+            target="_blank"
+          >
             <img
               className="w-full h-full object-cover rounded-2xl"
               src="/assets/map.png"
               alt="Side 3"
             />
-            <div className="absolute inset-0  flex items-center justify-center">
-              <div className="flex items-center justify-center px-6 py-4 gap-2 bg-[#181C32] bg-opacity-20 border-[1px] border-[#181C32] border-opacity-20 rounded-2xl">
-                <MdRemoveRedEye className="text-white w-6 h-6" />
-                <span className="text-white text-base font-medium">
-                  Показать на карте
-                </span>
-              </div>
+          </a>
+          <div className="absolute inset-0  flex items-center justify-center">
+            <div className="flex items-center justify-center px-6 py-4 gap-2 bg-[#181C32] bg-opacity-20 border-[1px] border-[#181C32] border-opacity-20 rounded-2xl">
+              <MdRemoveRedEye className="text-white w-6 h-6" />
+              <span className="text-white text-base font-medium">
+                Показать на карте
+              </span>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
-      <div className="2xl:w-[1600px] px-[120px] mx-auto mb-[100px]">
+      <div className="2xl:w-[1600px] xl:px-[120px] esm:px-[10px] mx-auto xl:mb-[100px] esm:mb-5">
         <h1 className="text-[32px] font-bold text-[#232E40] mb-4">
           Похожие отели
         </h1>

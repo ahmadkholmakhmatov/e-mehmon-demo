@@ -41,7 +41,7 @@ const HotelDescription = () => {
                   для комфортного отдыха, а также:
                 </div>
               </div>
-              <div className="grid grid-cols-3 grid-rows-4 gap-x-10 gap-y-6">
+              <div className="grid md:grid-cols-3 md:grid-rows-4 md:gap-x-10 md:gap-y-6 esm:grid-cols-2 esm:gap-x-5 esm:gap-y-5">
                 <div className="flex items-center min-w-fit">
                   <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
                     <img src="/assets/amenties/hotel.svg" alt="" />
@@ -134,7 +134,7 @@ const HotelDescription = () => {
                 loop={true}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
-                className="-mr-40 "
+                className="md:-mr-40 esm:-mr-48"
               >
                 <SwiperSlide>
                   <RatingCard />

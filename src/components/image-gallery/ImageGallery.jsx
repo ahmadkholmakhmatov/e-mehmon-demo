@@ -18,7 +18,7 @@ const ImageGallery = ({ imgSrc }) => {
   console.log(imgSrc);
   return (
     <div className="custom-grid">
-      <div className="col-span-1 row-span-3">
+      <div className="sm:col-span-1 sm:row-span-3 esm:col-span-3 esm:row-start-1">
         <img
           className="2xl:max-h-[573px] w-full h-full object-cover rounded-2xl"
           src={imgSrc}
@@ -26,7 +26,7 @@ const ImageGallery = ({ imgSrc }) => {
         />
       </div>
 
-      <div className="col-start-2 row-start-1">
+      <div className="sm:col-start-2 sm:row-start-1 esm:col-start-1 esm:row-start-2">
         <img
           className="w-full h-full object-cover rounded-2xl"
           src="/assets/places/hotel1.png"
@@ -34,7 +34,7 @@ const ImageGallery = ({ imgSrc }) => {
         />
       </div>
 
-      <div className="col-start-2 row-start-2 ">
+      <div className="sm:col-start-2 sm:row-start-2 esm:col-start-2 esm:row-start-2">
         <img
           className="w-full h-full object-cover rounded-2xl"
           src="/assets/places/hotel1.png"
@@ -42,10 +42,13 @@ const ImageGallery = ({ imgSrc }) => {
         />
       </div>
 
-      <div className="col-start-2 row-start-3" onClick={showModal}>
+      <div
+        className="sm:col-start-2 sm:row-start-3 esm:col-start-3 esm:row-start-2"
+        onClick={showModal}
+      >
         <div className="relative rounded-2xl overflow-hidden">
           <img
-            className="w-full h-full lg:max-h-[150px] 2xl:max-h-[175px] object-cover rounded-2xl"
+            className="w-full h-full lg:max-h-[150px] 2xl:max-h-[175px] esm:max-h-[166px] object-cover rounded-2xl"
             src="/assets/places/hotel4.png"
             alt="Side 3"
           />
