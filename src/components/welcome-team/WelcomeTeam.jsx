@@ -10,7 +10,7 @@ const WelcomeTeam = () => {
           туристов. Создайте сотрудничество как в Airbnb и начните приключение
           без слов, станьте частью нашей гостеприимной семьи.
         </p>
-        <button className="xl:px-6 xl:py-4 md:px-5 md:py-3 esm:px-4 esm:py-3 bg-[#3276FF] xl:text-base esm:text-sm font-medium text-white rounded-2xl">
+        <button className="hover:bg-blue-800 hover:text-white transition-colors duration-500 xl:px-6 xl:py-4 md:px-5 md:py-3 esm:px-4 esm:py-3 bg-[#3276FF] xl:text-base esm:text-sm font-medium text-white rounded-2xl">
           Присоединиться
         </button>
       </div>

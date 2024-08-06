@@ -64,3 +64,8 @@
     border-radius: 1rem;
   }
 }
+@media only screen and (max-width: 1023px) {
+  .custom-grid {
+    gap: 1rem; /* This matches the gap-6 in Tailwind */
+  }
+}

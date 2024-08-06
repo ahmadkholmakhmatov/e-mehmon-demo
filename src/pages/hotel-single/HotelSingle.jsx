@@ -200,23 +200,23 @@ const HotelSingle = ({ auth }) => {
             </div>
 
             <div className="flex md:gap-6 sm:gap-5 esm:gap-4 sm:text-base esm:text-sm text-[#2F3138] font-medium">
-              <button className="flex items-center sm:gap-2 esm:gap-1">
+              <button className="hover:scale-105 transition-transform duration-500 flex items-center sm:gap-2 esm:gap-1">
                 <FaRegBookmark className="md:w-6 md:h-6 esm:w-5 esm:h-5" />
                 Сохранить
               </button>
-              <button className="flex items-center sm:gap-2 esm:gap-1">
+              <button className="hover:scale-105 transition-transform duration-500 flex items-center sm:gap-2 esm:gap-1">
                 <FaRegShareFromSquare className="md:w-6 md:h-6 esm:w-5 esm:h-5" />
                 Поделиться
               </button>
             </div>
           </div>
 
-          <div className="flex md:flex-nowrap esm:flex-wrap justify-between sm:gap-6 esm:gap-5">
-            <div className="md:basis-[calc(66%-24px)] esm:basis-full">
+          <div className="flex md:flex-nowrap esm:flex-wrap justify-between lg:gap-6 md:gap-3 esm:gap-5">
+            <div className="lg:basis-[calc(66%-24px)] md:basis-[calc(63%-12px)] esm:basis-full">
               <ImageGallery imgSrc={state.imgSrc} />
             </div>
 
-            <div className="md:basis-[calc(34%-24px)] esm:basis-full sm:p-6 esm:p-5 bg-[#FFFFFF] shadow-custom rounded-2xl flex flex-col justify-between">
+            <div className="lg:basis-[calc(34%-24px)] md:basis-[calc(37%-12px)] esm:basis-full lg:p-6 md:p-3 sm:p-6 esm:p-5 bg-[#FFFFFF] shadow-custom rounded-2xl flex flex-col justify-between">
               <div className="flex justify-between sm:mb-[41px] esm:mb-[38px]">
                 <div className="flex items-center gap-2 sm:text-[15px] esm:text-base text-[#7D848B]">
                   <div className="w-8 h-8 rounded-full overflow-hidden">
@@ -239,9 +239,8 @@ const HotelSingle = ({ auth }) => {
               <div className="text-[#7D848B] text-base mb-6">
                 от
                 <span className="text-[#2F3138] text-[32px] font-bold">
-                  $
                   {currency === 'USD'
-                    ? `${convertedPrice.toFixed(0)}`
+                    ? `$${convertedPrice.toFixed(0)}`
                     : `${convertedPrice.toFixed(0)}`}
                 </span>
                 /ночь
@@ -295,7 +294,7 @@ const HotelSingle = ({ auth }) => {
                 </div>
 
                 <button
-                  className="py-4 w-full bg-[#3276FF] text-base font-medium text-[#FFFFFF] rounded-2xl md:mb-8 sm:mb-6 esm:mb-5"
+                  className="hover:scale-105 transition-transform duration-500 py-4 w-full bg-[#3276FF] text-base font-medium text-[#FFFFFF] rounded-2xl md:mb-8 sm:mb-6 esm:mb-5"
                   type="sumbit"
                 >
                   Просмотреть наличие мест
@@ -310,32 +309,33 @@ const HotelSingle = ({ auth }) => {
         </div>
       </div>
 
-      <div className="flex md:flex-nowrap esm:flex-wrap justify-between gap-6 2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-[30px] sm:px-5 esm:px-[10px] mx-auto mb-8">
-        <div className="md:w-[calc(66%-24px)] esm:w-full md:order-1 esm:order-2">
+      <div className="flex md:flex-nowrap esm:flex-wrap justify-between lg:gap-6 md:gap-4 esm:gap-4 2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-[30px] sm:px-5 esm:px-[10px] mx-auto mb-8">
+        <div className="lg:w-[calc(66%-24px)] md:w-[calc(63%-16px)] esm:w-full md:order-1 esm:order-2">
           <HotelDescription />
         </div>
 
-        <div className="md:basis-[calc(34%-24px)] esm:basis-full md:order-2 esm:order-1 md:h-[230px] sm:h-[250px] esm:h-[244px] md:px-0 sm:px-[40px] md:mt-6 esm:mt-5 relative rounded-2xl overflow-hidden">
-          <a
-            className="block w-full h-full"
-            href="https://maps.app.goo.gl/fEw17c2n9mEDVgfq5"
-            target="_blank"
-          >
+        <a
+          className="block lg:basis-[calc(34%-24px)] md:basis-[calc(37%-16px)] esm:basis-full md:order-2 esm:order-1"
+          href="https://maps.app.goo.gl/fEw17c2n9mEDVgfq5"
+          target="_blank"
+        >
+          <div className="esm:basis-full md:h-[230px] sm:h-[250px] esm:h-[244px] md:px-0 sm:px-[40px] md:mt-6 esm:mt-5 relative rounded-2xl overflow-hidden">
             <img
               className="w-full h-full object-cover rounded-2xl"
               src="/assets/map.png"
               alt="Side 3"
             />
-          </a>
-          <div className="absolute inset-0  flex items-center justify-center">
-            <div className="flex items-center justify-center px-6 py-4 gap-2 bg-[#181C32] bg-opacity-20 border-[1px] border-[#181C32] border-opacity-20 rounded-2xl">
-              <MdRemoveRedEye className="text-white w-6 h-6" />
-              <span className="text-white text-base font-medium">
-                Показать на карте
-              </span>
+
+            <div className="absolute inset-0  flex items-center justify-center">
+              <div className="flex items-center justify-center px-6 py-4 gap-2 bg-[#181C32] bg-opacity-20 border-[1px] border-[#181C32] border-opacity-20 rounded-2xl">
+                <MdRemoveRedEye className="text-white w-6 h-6" />
+                <span className="text-white text-base font-medium">
+                  Показать на карте
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <div className="2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-[30px] sm:px-5 esm:px-[10px] mx-auto xl:mb-[100px] sm:mb-7 esm:mb-5">

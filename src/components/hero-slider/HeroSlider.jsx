@@ -29,11 +29,11 @@ const HeroSlider = () => {
           },
         }}
         speed={1000}
-        // autoplay={{
-        //   delay: 1500,
-        //   disableOnInteraction: false,
-        //   pauseOnMouseEnter: true,
-        // }}
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
         loop={true}
         modules={[Autoplay]}
         className="lg:-mr-40 sm:-mr-40 esm:-mr-32"

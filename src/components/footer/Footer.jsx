@@ -12,9 +12,16 @@ const Footer = () => {
             Лучшая платформа для бронирования отелей в Узбекистане
           </h5>
           <div className="socials flex lg:justify-start esm:justify-center xl:gap-6 lg:gap-4 esm:gap-3">
-            <img src="/assets/icons/facebook.svg" alt="" />
-            <img src="/assets/icons/instagram.svg" alt="" />
-            <img src="/assets/icons/telegram.svg" alt="" />
+            <a href="https://www.facebook.com" target="_blank">
+              <img src="/assets/icons/facebook.svg" alt="" />
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <img src="/assets/icons/instagram.svg" alt="" />
+            </a>
+
+            <a href="https://www.telegram.com" target="_blank">
+              <img src="/assets/icons/telegram.svg" alt="" />
+            </a>
           </div>
         </div>
         <div className="lg:flex esm:hidden flex-col xl:gap-3 lg:gap-2 lg:pt-16">

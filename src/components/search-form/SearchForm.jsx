@@ -103,7 +103,7 @@ const SearchForm = () => {
           </div>
 
           <button
-            className="lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] h-14 flex items-center justify-center gap-2 px-0 sm:px-2 bg-[#3276FF] text-white rounded-2xl cursor-pointer"
+            className="hover:scale-105 transition-transform duration-500 lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] h-14 flex items-center justify-center gap-2 px-0 sm:px-2 bg-[#3276FF] text-white rounded-2xl cursor-pointer"
             type="sumbit"
           >
             <LuSearch className="xl:w-6 xl:h-6 lg:w-4 lg:h-4 esm:w-4 esm:h-4" />

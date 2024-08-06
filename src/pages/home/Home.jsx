@@ -183,7 +183,7 @@ const Home = ({ auth }) => {
                 </a>
               </ul>
               <button
-                className="flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]"
+                className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]"
                 onClick={handleLogin}
               >
                 <LiaUserCircleSolid className="w-6 h-6" />
@@ -208,10 +208,10 @@ const Home = ({ auth }) => {
               {t('welcomePortal')}
             </p>
             <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
-              <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] rounded-2xl">
+              <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] hover:bg-blue-700 hover:text-white rounded-2xl">
                 Все отели
               </button>
-              <button className="flex items-center gap-x-2 xl:px-6 xl:py-4 esm:px-4 esm:py-3 ">
+              <button className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-6 xl:py-4 esm:px-4 esm:py-3">
                 <PiPlayCircleFill className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5" />
                 Посмотреть видео
               </button>
