@@ -22,7 +22,7 @@ const TestimonialSlider = () => {
   }, []);
 
   return (
-    <div className="bg-[#394253] text-white xl:pl-[120px] lg:pl-[60px] md:px-5 esm:px-[10px] xl:py-20 md:py-12 esm:py-[20px] overflow-hidden">
+    <div className="bg-[#394253] text-white xl:pl-[120px] lg:pl-[60px] md:px-5 sm:px-5 esm:px-[10px] xl:py-20 md:py-12 esm:py-[20px] overflow-hidden">
       <div className="flex justify-between 2xl:w-[1470px] mx-auto xl:pr-[120px] lg:pr-[60px] md:pr-5 esm:pr-[10px] xl:mb-10 md:mb-9 esm:mb-5">
         <h1 className="xl:text-[32px] lg:text-[26px] esm:text-[22px] font-bold">
           Что думают о нас туристы?

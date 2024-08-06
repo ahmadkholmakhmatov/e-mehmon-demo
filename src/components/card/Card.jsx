@@ -16,7 +16,7 @@ const Card = ({ hotel }) => {
   // console.log(convertedPrice);
   return (
     <div className="2xl:w-[316px] 2xl:h-[458px] xl:w-full lg:w-[282px] lg:h-[410px] md:w-[320px] md:h-[450px] esm:w-full esm:h-fit">
-      <div className="relative 2xl:w-[316px] 2xl:h-[316px] xl:w-full lg:w-[282px] lg:h-[282px] md:w-[320px] md:h-[320px] esm:w-full esm:h-[180px] overflow-hidden rounded-[20px] lg:mb-3 md:mb-2 esm:mb-1">
+      <div className="relative 2xl:w-[316px] 2xl:h-[316px] xl:w-full lg:w-[282px] lg:h-[282px] md:w-[320px] md:h-[320px] sm:h-[262px] esm:w-full esm:h-[180px] overflow-hidden rounded-[20px] lg:mb-3 md:mb-2 esm:mb-1">
         <div className="status absolute top-3 left-3 flex justify-center items-center w-[83px] h-[30px] backdrop-blur-2xl p-2 border border-[#3276FF] border-solid rounded-3xl text-xs text-white">
           {hotel.status}
         </div>
@@ -37,11 +37,11 @@ const Card = ({ hotel }) => {
         <div className="flex md:flex-nowrap esm:flex-wrap items-center justify-between md:gap-4 esm:gap-2">
           <button
             onClick={handleClick}
-            className="bg-blue-20 md:px-6 md:py-4 esm:px-2 esm:py-3 md:order-1 esm:order-2 md:text-base text-[#3276FF] rounded-2xl"
+            className="bg-blue-20 md:px-6 md:py-4 esm:px-2 esm:py-3 sm:order-1 esm:order-2 md:text-base text-[#3276FF] rounded-2xl"
           >
             Забронировать
           </button>
-          <div className="md:text-base esm:text-sm font-bold md:order-2 esm:order-1">
+          <div className="md:text-base esm:text-sm font-bold sm:order-2 esm:order-1">
             от $
             {currency === 'USD'
               ? `${convertedPrice.toFixed(0)}`

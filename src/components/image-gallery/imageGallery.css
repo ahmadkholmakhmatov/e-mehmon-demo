@@ -19,10 +19,33 @@
   border-radius: 1rem;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 639px) {
   .custom-grid {
     display: grid;
     grid-template-rows: 400px auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem; /* This matches the gap-6 in Tailwind */
+  }
+
+  .custom-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem; /* This matches the rounded-2xl in Tailwind */
+  }
+
+  .custom-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .custom-grid {
+    display: grid;
+    grid-template-rows: 460px auto;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem; /* This matches the gap-6 in Tailwind */
   }

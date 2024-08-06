@@ -22,7 +22,7 @@ const PlaceSlider = () => {
   }, []);
 
   return (
-    <div className="2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-5 esm:px-[10px] mx-auto xl:mb-[100px] lg:mb-[60px] md:mb-9 esm:mb-6 esm:mt-5">
+    <div className="2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-5 sm:px-5 esm:px-[10px] mx-auto xl:mb-[100px] lg:mb-[60px] md:mb-9 esm:mb-6 esm:mt-5">
       <div className="flex justify-between xl:mb-10 lg:mb-8 md:mb-6 esm:mb-5">
         <h1 className="xl:text-[32px] md:text-[26px] esm:text-2xl font-bold">
           Сезонные предложения

@@ -12,7 +12,7 @@ const { TabPane } = Tabs;
 
 const HotelDescription = () => {
   return (
-    <div className="w-full mt-10 overflow-hidden">
+    <div className="w-full md:mt-10 esm:mt-5 overflow-hidden">
       <Tabs defaultActiveKey="1">
         <TabPane style={{ padding: 0 }} tab="Описание" key="1">
           <Space className="block text-[#1D2635] ">
@@ -42,75 +42,75 @@ const HotelDescription = () => {
                 </div>
               </div>
               <div className="grid md:grid-cols-3 md:grid-rows-4 md:gap-x-10 md:gap-y-6 esm:grid-cols-2 esm:gap-x-5 esm:gap-y-5">
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/hotel.svg" alt="" />
                   </div>
                   Роскошные номера
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/pool.svg" alt="" />
                   </div>
                   Превосходные бассейны
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/drink.svg" alt="" />
                   </div>
                   Элегантные бары
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/dish.svg" alt="" />
                   </div>
                   Изысканные рестораны
                 </div>
 
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/tv.svg" alt="" />
                   </div>
                   Техника высшего класса
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/towels.svg" alt="" />
                   </div>
                   Спа-центр
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/drink.svg" alt="" />
                   </div>
                   Элегантные бары
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/bed.svg" alt="" />
                   </div>
                   Качественная мебель
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/hotel.svg" alt="" />
                   </div>
                   Роскошные номера
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/towels.svg" alt="" />
                   </div>
                   Спа-центр
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/bucket.svg" alt="" />
                   </div>
                   Обслуживание на уровне
                 </div>
-                <div className="flex items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] p-2 rounded-full">
+                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
+                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
                     <img src="/assets/amenties/pool.svg" alt="" />
                   </div>
                   Превосходные бассейны

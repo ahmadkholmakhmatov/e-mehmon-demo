@@ -182,41 +182,41 @@ const HotelSingle = ({ auth }) => {
         </header>
       </div>
 
-      <div className="2xl:w-[1600px] xl:px-[120px] mx-auto xl:mt-[30px] esm:px-[10px] esm:mt-5">
+      <div className="2xl:w-[1600px] xl:px-[120px] mx-auto xl:mt-[30px] sm:px-5 sm:mt-7 esm:px-[10px] esm:mt-5">
         <div className="sm:block esm:hidden">
           <CustomBreadCrumb name={state.name} />
         </div>
-        <div className="sm:mt-[30px] esm:mt-0">
-          <div className="flex esm:flex-wrap justify-between items-start sm:mb-6 esm:mb-4">
+        <div className="md:mt-[30px] sm:mt-5 esm:mt-0">
+          <div className="flex esm:flex-wrap justify-between items-start md:mb-6 sm:mb-5 esm:mb-4">
             <div className="text-[#1D2635]">
-              <h1 className="text-[32px] esm:text-[30px] font-bold">
+              <h1 className="md:text-[32px] esm:text-[30px] font-bold">
                 {state.name}
               </h1>
 
-              <div className="flex items-center gap-3 sm:mb-0 esm:mb-4">
+              <div className="flex items-center gap-3 md:mb-0 sm:mb-5 esm:mb-4">
                 <PiMapPinArea className="sm:w-6 sm:h-6 esm:w-5 esm:h-5 text-[#B5B5B5] sm:text-base esm:text-sm" />
                 {state.address}
               </div>
             </div>
 
-            <div className="flex sm:gap-6 esm:gap-4 sm:text-base esm:text-sm text-[#2F3138] font-medium">
+            <div className="flex md:gap-6 sm:gap-5 esm:gap-4 sm:text-base esm:text-sm text-[#2F3138] font-medium">
               <button className="flex items-center sm:gap-2 esm:gap-1">
-                <FaRegBookmark className="sm:w-6 sm:h-6 esm:w-5 esm:h-5" />
+                <FaRegBookmark className="md:w-6 md:h-6 esm:w-5 esm:h-5" />
                 Сохранить
               </button>
               <button className="flex items-center sm:gap-2 esm:gap-1">
-                <FaRegShareFromSquare className="sm:w-6 sm:h-6 esm:w-5 esm:h-5" />
+                <FaRegShareFromSquare className="md:w-6 md:h-6 esm:w-5 esm:h-5" />
                 Поделиться
               </button>
             </div>
           </div>
 
-          <div className="flex esm:flex-wrap justify-between sm:gap-6 esm:gap-5">
-            <div className="sm:basis-[calc(66%-24px)] esm:basis-full">
+          <div className="flex md:flex-nowrap esm:flex-wrap justify-between sm:gap-6 esm:gap-5">
+            <div className="md:basis-[calc(66%-24px)] esm:basis-full">
               <ImageGallery imgSrc={state.imgSrc} />
             </div>
 
-            <div className="sm:basis-[calc(34%-24px)] esm:basis-full sm:p-6 esm:p-5 bg-[#FFFFFF] shadow-custom rounded-2xl flex flex-col justify-between">
+            <div className="md:basis-[calc(34%-24px)] esm:basis-full sm:p-6 esm:p-5 bg-[#FFFFFF] shadow-custom rounded-2xl flex flex-col justify-between">
               <div className="flex justify-between sm:mb-[41px] esm:mb-[38px]">
                 <div className="flex items-center gap-2 sm:text-[15px] esm:text-base text-[#7D848B]">
                   <div className="w-8 h-8 rounded-full overflow-hidden">
@@ -273,7 +273,7 @@ const HotelSingle = ({ auth }) => {
                   </div>
                 </div>
 
-                <div className="hotel-description-selector mb-4">
+                <div className="hotel-description-selector mb-4 ">
                   <div className="mb-3">Кол-во гостей</div>
                   <Select
                     // prefix={<UserOutlined />}
@@ -295,7 +295,7 @@ const HotelSingle = ({ auth }) => {
                 </div>
 
                 <button
-                  className="py-4 w-full bg-[#3276FF] text-base font-medium text-[#FFFFFF] rounded-2xl sm:mb-8 esm:mb-5"
+                  className="py-4 w-full bg-[#3276FF] text-base font-medium text-[#FFFFFF] rounded-2xl md:mb-8 sm:mb-6 esm:mb-5"
                   type="sumbit"
                 >
                   Просмотреть наличие мест
@@ -310,12 +310,12 @@ const HotelSingle = ({ auth }) => {
         </div>
       </div>
 
-      <div className="flex md:flex-nowrap esm:flex-wrap justify-between gap-6 2xl:w-[1600px] xl:px-[120px] esm:px-[10px] mx-auto mb-8">
+      <div className="flex md:flex-nowrap esm:flex-wrap justify-between gap-6 2xl:w-[1600px] xl:px-[120px] sm:px-5 esm:px-[10px] mx-auto mb-8">
         <div className="md:w-[calc(66%-24px)] esm:w-full md:order-1 esm:order-2">
           <HotelDescription />
         </div>
 
-        <div className="md:basis-[calc(34%-24px)] esm:basis-full md:order-2 esm:order-1 md:h-[230px] esm:h-[244px] md:mt-6 esm:mt-5 relative rounded-2xl overflow-hidden">
+        <div className="md:basis-[calc(34%-24px)] esm:basis-full md:order-2 esm:order-1 md:h-[230px] sm:h-[250px] esm:h-[244px] md:px-0 sm:px-[40px] md:mt-6 esm:mt-5 relative rounded-2xl overflow-hidden">
           <a
             className="block w-full h-full"
             href="https://maps.app.goo.gl/fEw17c2n9mEDVgfq5"
@@ -338,14 +338,14 @@ const HotelSingle = ({ auth }) => {
         </div>
       </div>
 
-      <div className="2xl:w-[1600px] xl:px-[120px] esm:px-[10px] mx-auto xl:mb-[100px] esm:mb-5">
-        <h1 className="text-[32px] font-bold text-[#232E40] mb-4">
+      <div className="2xl:w-[1600px] xl:px-[120px] sm:px-5 esm:px-[10px] mx-auto xl:mb-[100px] sm:mb-7 esm:mb-5">
+        <h1 className="md:text-[32px] sm:text-[30px] esm:text-[26px] font-bold text-[#232E40] mb-4">
           Похожие отели
         </h1>
         <HotelList hotels={hotels} />
       </div>
 
-      <WelcomeTeam className="mb-[100px]" />
+      <WelcomeTeam />
 
       <div id="place">
         <PlaceSlider />
