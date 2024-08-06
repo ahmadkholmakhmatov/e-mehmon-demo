@@ -166,7 +166,7 @@ const Home = ({ auth }) => {
               <CurrencyDropDown />
               <LanguageDropdown />
             </div>
-            <nav ref={navRef} className="mobile-nav z-20 flex flex-col">
+            <nav ref={navRef} className="h-mobile-nav z-20 flex flex-col">
               <ul className="flex flex-col gap-x-6">
                 <a href="#search">
                   <li>Найти жилье</li>

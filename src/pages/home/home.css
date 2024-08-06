@@ -8,7 +8,7 @@ header {
   color: var(--textColor);
 }
 
-.mobile-nav a {
+.h-mobile-nav a {
   margin: 0 1rem;
   color: var(--textColor);
   text-decoration: none;
@@ -27,7 +27,7 @@ header .nav-btn {
 }
 
 header .h-div,
-.mobile-nav {
+.h-mobile-nav {
   display: flex;
   align-items: center;
 }
@@ -37,7 +37,7 @@ header .h-div,
     opacity: 1;
   }
 
-  header .mobile-nav {
+  header .h-mobile-nav {
     position: fixed;
     top: -100vh;
     left: 0;
@@ -56,7 +56,7 @@ header .h-div,
     transform: translateY(100vh);
   }
 
-  .mobile-nav .close-btn {
+  .h-mobile-nav .close-btn {
     position: absolute;
     top: 2rem;
     right: 2rem;
