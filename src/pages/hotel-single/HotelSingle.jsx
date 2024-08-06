@@ -94,7 +94,7 @@ const HotelSingle = ({ auth }) => {
   return (
     <div className="bg-[#fafafa] ">
       <div className="bg-white">
-        <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
+        <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[21px] esm:hidden font-medium  mx-auto ">
           <Link to="/">
             <img
               className="lg:w-40  xl:w-[184px]"

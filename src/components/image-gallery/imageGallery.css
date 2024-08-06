@@ -1,6 +1,6 @@
 .custom-grid {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 150px 150px 150px;
   grid-template-columns: auto 180px;
   gap: 1.5rem; /* This matches the gap-6 in Tailwind */
 }
@@ -22,7 +22,7 @@
 @media only screen and (max-width: 639px) {
   .custom-grid {
     display: grid;
-    grid-template-rows: 400px auto;
+    grid-template-rows: 400px 160px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem; /* This matches the gap-6 in Tailwind */
   }
@@ -45,7 +45,7 @@
 @media only screen and (max-width: 767px) {
   .custom-grid {
     display: grid;
-    grid-template-rows: 460px auto;
+    grid-template-rows: 460px 160px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem; /* This matches the gap-6 in Tailwind */
   }

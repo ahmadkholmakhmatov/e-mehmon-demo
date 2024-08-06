@@ -20,7 +20,7 @@ const ImageGallery = ({ imgSrc }) => {
     <div className="custom-grid">
       <div className="md:col-span-1 md:row-span-3 esm:col-span-3 esm:row-start-1">
         <img
-          className="2xl:max-h-[573px] w-full h-full object-cover rounded-2xl"
+          className="w-full h-full object-cover rounded-2xl"
           src={imgSrc}
           alt="Main"
         />
@@ -46,9 +46,9 @@ const ImageGallery = ({ imgSrc }) => {
         className="md:col-start-2 md:row-start-3 esm:col-start-3 esm:row-start-2"
         onClick={showModal}
       >
-        <div className="relative rounded-2xl overflow-hidden">
+        <div className="w-full h-full relative rounded-2xl overflow-hidden">
           <img
-            className="w-full h-full lg:max-h-[150px] 2xl:max-h-[175px] sm:max-h-[178px]: esm:max-h-[166px] object-cover rounded-2xl"
+            className="w-full h-full  object-cover rounded-2xl"
             src="/assets/places/hotel4.png"
             alt="Side 3"
           />
