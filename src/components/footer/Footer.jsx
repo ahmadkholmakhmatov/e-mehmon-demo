@@ -45,7 +45,7 @@ const Footer = () => {
       </div>
       <hr className="border-[0px] border-b-[1px]" />
 
-      <p className="xl:py-[60px] lg:py-[30px] md:py-5 esm:py-[10px] text-center">
+      <p className="xl:py-[60px] text-[15px] lg:py-[30px] md:py-5 esm:py-[10px] text-center">
         E-Mehmon © 2023. Все права защищены.
       </p>
     </div>

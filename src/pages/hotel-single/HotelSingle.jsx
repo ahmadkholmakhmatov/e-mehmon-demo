@@ -182,7 +182,7 @@ const HotelSingle = ({ auth }) => {
         </header>
       </div>
 
-      <div className="2xl:w-[1600px] xl:px-[120px] mx-auto xl:mt-[30px] sm:px-5 sm:mt-7 esm:px-[10px] esm:mt-5">
+      <div className="2xl:w-[1600px] xl:px-[120px] mx-auto lg:px-[60px] md:px-[30px] sm:px-5 sm:mt-7 esm:px-[10px] esm:mt-5">
         <div className="sm:block esm:hidden">
           <CustomBreadCrumb name={state.name} />
         </div>
@@ -310,7 +310,7 @@ const HotelSingle = ({ auth }) => {
         </div>
       </div>
 
-      <div className="flex md:flex-nowrap esm:flex-wrap justify-between gap-6 2xl:w-[1600px] xl:px-[120px] sm:px-5 esm:px-[10px] mx-auto mb-8">
+      <div className="flex md:flex-nowrap esm:flex-wrap justify-between gap-6 2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-[30px] sm:px-5 esm:px-[10px] mx-auto mb-8">
         <div className="md:w-[calc(66%-24px)] esm:w-full md:order-1 esm:order-2">
           <HotelDescription />
         </div>
@@ -338,7 +338,7 @@ const HotelSingle = ({ auth }) => {
         </div>
       </div>
 
-      <div className="2xl:w-[1600px] xl:px-[120px] sm:px-5 esm:px-[10px] mx-auto xl:mb-[100px] sm:mb-7 esm:mb-5">
+      <div className="2xl:w-[1600px] xl:px-[120px] lg:px-[60px] md:px-[30px] sm:px-5 esm:px-[10px] mx-auto xl:mb-[100px] sm:mb-7 esm:mb-5">
         <h1 className="md:text-[32px] sm:text-[30px] esm:text-[26px] font-bold text-[#232E40] mb-4">
           Похожие отели
         </h1>
