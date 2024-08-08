@@ -1,27 +1,24 @@
-import { useState } from 'react';
 import { MdRemoveRedEye } from 'react-icons/md';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 import './imageGallery.css';
-import CustomModal from '../custom-modal/customModal';
+import { useState } from 'react';
 
-const ImageGallery = ({ imgSrc }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+const images = [
+  { src: '/assets/places/hotel1.png' },
+  { src: '/assets/places/hotel2.png' },
+  { src: '/assets/places/hotel3.png' },
+  { src: '/assets/places/hotel4.png' },
+]; // Your image URLs
 
-  console.log(imgSrc);
+const ImageGallery = () => {
+  const [basicExampleOpen, setBasicExampleOpen] = useState(false);
   return (
     <div className="custom-grid">
       <div className="md:col-span-1 md:row-span-3 esm:col-span-3 esm:row-start-1">
         <img
           className="w-full h-full object-cover rounded-2xl"
-          src={imgSrc}
+          src={images[0].src}
           alt="Main"
         />
       </div>
@@ -29,7 +26,7 @@ const ImageGallery = ({ imgSrc }) => {
       <div className="md:col-start-2 md:row-start-1 esm:col-start-1 esm:row-start-2">
         <img
           className="w-full h-full object-cover rounded-2xl"
-          src="/assets/places/hotel1.png"
+          src={images[1].src}
           alt="Side 1"
         />
       </div>
@@ -37,19 +34,21 @@ const ImageGallery = ({ imgSrc }) => {
       <div className="md:col-start-2 md:row-start-2 esm:col-start-2 esm:row-start-2">
         <img
           className="w-full h-full object-cover rounded-2xl"
-          src="/assets/places/hotel1.png"
+          src={images[2].src}
           alt="Side 2"
         />
       </div>
 
       <div
         className="md:col-start-2 md:row-start-3 esm:col-start-3 esm:row-start-2"
-        onClick={showModal}
+        onClick={() => {
+          setBasicExampleOpen(true);
+        }}
       >
         <div className="w-full h-full relative rounded-2xl overflow-hidden">
           <img
             className="w-full h-full  object-cover rounded-2xl"
-            src="/assets/places/hotel4.png"
+            src={images[3].src}
             alt="Side 3"
           />
           <div className="absolute inset-0 bg-[#1C2534] bg-opacity-40 backdrop-blur-sm flex items-center justify-center">
@@ -63,10 +62,10 @@ const ImageGallery = ({ imgSrc }) => {
         </div>
       </div>
 
-      <CustomModal
-        isModalOpen={isModalOpen}
-        handleCancel={handleCancel}
-        handleOk={handleOk}
+      <Lightbox
+        open={basicExampleOpen}
+        close={() => setBasicExampleOpen(false)}
+        slides={images}
       />
     </div>
   );

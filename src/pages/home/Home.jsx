@@ -11,8 +11,11 @@ import CurrencyDropDown from '../../components/currency-dropdown/CurrencyDropdow
 import LanguageDropdown from '../../components/language-dropdown/LanguageDropdown';
 import SearchForm from '../../components/search-form/SearchForm';
 import { Link, useNavigate } from 'react-router-dom';
+import Video from 'yet-another-react-lightbox/plugins/video';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
 import { useTranslation } from 'react-i18next';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './home.css';
 
 const hotels = [
@@ -108,6 +111,8 @@ const Home = ({ auth }) => {
   const showNavbar = () => {
     navRef.current.classList.toggle('responsive_nav');
   };
+
+  const [basicExampleOpen, setBasicExampleOpen] = useState(false);
 
   return (
     <div className="bg-[#fafafa] overflow-hidden">
@@ -211,10 +216,37 @@ const Home = ({ auth }) => {
               <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] hover:bg-blue-700 hover:text-white rounded-2xl">
                 Все отели
               </button>
-              <button className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-6 xl:py-4 esm:px-4 esm:py-3">
+              <button
+                onClick={() => setBasicExampleOpen(true)}
+                className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-6 xl:py-4 esm:px-4 esm:py-3"
+              >
                 <PiPlayCircleFill className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5" />
                 Посмотреть видео
               </button>
+
+              <Lightbox
+                render={{ buttonPrev: () => null, buttonNext: () => null }}
+                plugins={[Video]}
+                open={basicExampleOpen}
+                close={() => setBasicExampleOpen(false)}
+                carousel={{ finite: true }}
+                video={{
+                  loop: false,
+                }}
+                slides={[
+                  {
+                    type: 'video',
+
+                    sources: [
+                      {
+                        src: '/assets/video.mp4',
+                        type: 'video/mp4',
+                      },
+                    ],
+                  },
+                  // ...
+                ]}
+              />
             </div>
           </div>
         </div>

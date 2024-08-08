@@ -19,7 +19,10 @@ import { DatePicker, Select } from 'antd';
 import './hotelSingle.css';
 import { useCurrency } from '../../utils/CurrencyContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ShareButtons from '../../components/share-buttons/ShareButtons';
 
 const hotels = [
   {
@@ -61,6 +64,10 @@ const hotels = [
 ];
 
 const HotelSingle = ({ auth }) => {
+  const [firstDate, setFirstDate] = useState(null);
+  const [secondDate, setSecondDate] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [guests, setGuests] = useState(null);
   const authentication = auth;
   const { currency } = useCurrency();
   const { state } = useLocation();
@@ -68,6 +75,7 @@ const HotelSingle = ({ auth }) => {
 
   console.log(authentication);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const exchangeRates = {
     USD: 1,
@@ -87,9 +95,30 @@ const HotelSingle = ({ auth }) => {
 
   const convertedPrice = state?.price * exchangeRates[currency];
 
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = {
+      firstDate,
+      secondDate,
+      guests,
+    };
+    console.log(formData);
   };
+
+  async function copyToClip() {
+    try {
+      await navigator.clipboard.writeText(
+        `http://localhost:5173${location.pathname}`
+      );
+      toast.success('URL successfully copied!');
+    } catch (error) {
+      toast.error('Failed to copy the URL');
+    }
+  }
 
   return (
     <div className="bg-[#fafafa] ">
@@ -193,21 +222,42 @@ const HotelSingle = ({ auth }) => {
                 {state.name}
               </h1>
 
-              <div className="flex items-center gap-3 md:mb-0 sm:mb-5 esm:mb-4">
+              <div className="flex items-center gap-3 md:mb-6 sm:mb-5 esm:mb-4">
                 <PiMapPinArea className="sm:w-6 sm:h-6 esm:w-5 esm:h-5 text-[#B5B5B5] sm:text-base esm:text-sm" />
                 {state.address}
               </div>
             </div>
 
             <div className="flex md:gap-6 sm:gap-5 esm:gap-4 sm:text-base esm:text-sm text-[#2F3138] font-medium">
-              <button className="hover:scale-105 transition-transform duration-500 flex items-center sm:gap-2 esm:gap-1">
+              <button
+                onClick={() => {
+                  copyToClip();
+                }}
+                className="hover:scale-105 transition-transform duration-500 flex items-center sm:gap-2 esm:gap-1"
+              >
                 <FaRegBookmark className="md:w-6 md:h-6 esm:w-5 esm:h-5" />
                 Сохранить
               </button>
-              <button className="hover:scale-105 transition-transform duration-500 flex items-center sm:gap-2 esm:gap-1">
-                <FaRegShareFromSquare className="md:w-6 md:h-6 esm:w-5 esm:h-5" />
-                Поделиться
-              </button>
+
+              <div className="relative ">
+                <button
+                  onClick={toggleVisibility}
+                  className="hover:scale-105 transition-transform duration-500 flex items-center sm:gap-2 esm:gap-1"
+                >
+                  <FaRegShareFromSquare className="md:w-6 md:h-6 esm:w-5 esm:h-5" />
+                  Поделиться
+                </button>
+
+                {isVisible && (
+                  <div className="absolute md:bottom-0  esm:top-[140%]">
+                    <ShareButtons
+                      toggleVisibility={toggleVisibility}
+                      url={window.location.href}
+                      title={'Check this hotel'}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -257,6 +307,7 @@ const HotelSingle = ({ auth }) => {
                     <DatePicker
                       className="bg-[#F8F8FA]  text-[#1D2635] flex border-none rounded-2xl p-4"
                       // suffixIcon={<PiCalendarDotsLight className=" -order-1" />}
+                      onChange={(date, dateString) => setFirstDate(dateString)}
                       placeholder="6/11/2023"
                       // onChange={(value) => setDates(dates.push(value))}
                     />
@@ -266,6 +317,7 @@ const HotelSingle = ({ auth }) => {
                     <div className="mb-3">Выезд</div>
                     <DatePicker
                       className="bg-[#F8F8FA]  text-[#1D2635] rounded-2xl flex border-none p-4"
+                      onChange={(date, dateString) => setSecondDate(dateString)}
                       // onChange={(value) => setDates(dates.push(value))}
                       placeholder="7/11/2023"
                     />
@@ -279,7 +331,7 @@ const HotelSingle = ({ auth }) => {
                     placeholder="2 взрослых"
                     suffixIcon={<DownOutlined />}
                     className="w-full h-14 bg-[#F8F8FA] border-none"
-                    // onChange={(e) => setGuests(e.target.value)}
+                    onChange={(value) => setGuests(value)}
                     options={[
                       {
                         value: '2взрослых',
@@ -354,6 +406,19 @@ const HotelSingle = ({ auth }) => {
       <TestimonialSlider />
 
       <Footer />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

@@ -18,7 +18,10 @@
     "react-i18next": "^15.0.0",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.25.1",
-    "swiper": "^11.1.7"
+    "react-share": "^5.1.0",
+    "react-toastify": "^10.0.5",
+    "swiper": "^11.1.7",
+    "yet-another-react-lightbox": "^3.21.2"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
