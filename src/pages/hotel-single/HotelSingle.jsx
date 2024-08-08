@@ -75,7 +75,6 @@ const HotelSingle = ({ auth }) => {
 
   console.log(authentication);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const exchangeRates = {
     USD: 1,
@@ -111,9 +110,7 @@ const HotelSingle = ({ auth }) => {
 
   async function copyToClip() {
     try {
-      await navigator.clipboard.writeText(
-        `http://localhost:5173${location.pathname}`
-      );
+      await navigator.clipboard.writeText(window.location.href);
       toast.success('URL successfully copied!');
     } catch (error) {
       toast.error('Failed to copy the URL');
