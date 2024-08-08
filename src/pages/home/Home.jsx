@@ -209,11 +209,11 @@ const Home = ({ auth }) => {
         </header>
 
         <div className="flex lg:flex-nowrap esm:flex-wrap justify-between 2xl:w-[1600px] xl:gap-x-28 xl:px-[120px] xl:my-[50px] lg:gap-x-20 lg:px-[60px] lg:my-[40px] sm:px-5 esm:px-[10px] sm:my-6 esm:my-2 sm:gap-y-8 esm:gap-y-5 esm:w-full mx-auto">
-          <h1 className="xl:max-w-[700px] xl:text-[49px] lg:max-w-[560px] lg:text-[32px] esm:basis-[100%] sm:text-[30px] esm:text-2xl lg:text-left sm:text-center">
+          <h1 className="xl:max-w-[700px] xl:text-[49px] xl:leading-[68.6px] lg:max-w-[560px] lg:text-[32px] esm:basis-[100%] sm:text-[30px] esm:text-2xl lg:text-left sm:text-center">
             {t('packSuit')}
           </h1>
           <div className="xl:max-w-[384px] lg:max-w-[300px] esm:basis-[100%] lg:px-0 sm:px-10">
-            <p className="xl:text-[16px] lg:text-xs sm:text-[20px] esm:text-[14px] text-[#B7BFD5] mb-4">
+            <p className="xl:text-[16px] xl:leading-[25.6px] lg:text-xs sm:text-[20px] esm:text-[14px] text-[#B7BFD5] mb-4">
               {t('welcomePortal')}
             </p>
             <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
