@@ -127,18 +127,20 @@ const Home = ({ auth }) => {
           </Link>
           <ul className="flex  gap-x-6">
             <a href="#search">
-              <li className="xl:text-sm lg:text-xs">Найти жилье</li>
+              <li className="xl:text-sm lg:text-xs">{t('header.firstWord')}</li>
             </a>
 
             <a href="#search">
-              <li className="xl:text-sm lg:text-xs">Куда сходить?</li>
+              <li className="xl:text-sm lg:text-xs">
+                {t('header.secondWord')}
+              </li>
             </a>
             <a href="#place">
-              <li className="xl:text-sm lg:text-xs">Туры</li>
+              <li className="xl:text-sm lg:text-xs">{t('header.thirdWord')}</li>
             </a>
 
             <a href="">
-              <li className="xl:text-sm lg:text-xs">Транспорт</li>
+              <li className="xl:text-sm lg:text-xs">{t('header.forthWord')}</li>
             </a>
           </ul>
           <div className="login flex items-center gap-6">
@@ -149,7 +151,9 @@ const Home = ({ auth }) => {
               onClick={handleLogin}
             >
               <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
-              {authentication.token ? 'Профиль' : 'Войти'}
+              {authentication.token
+                ? t('header.fifthWord')
+                : t('header.sixWord')}
             </button>
           </div>
         </nav>
@@ -214,14 +218,14 @@ const Home = ({ auth }) => {
             </p>
             <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
               <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] hover:bg-blue-700 hover:text-white rounded-2xl">
-                Все отели
+                {t('firstButton')}
               </button>
               <button
                 onClick={() => setBasicExampleOpen(true)}
                 className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-6 xl:py-4 esm:px-4 esm:py-3"
               >
                 <PiPlayCircleFill className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5" />
-                Посмотреть видео
+                {t('secondButton')}
               </button>
 
               <Lightbox

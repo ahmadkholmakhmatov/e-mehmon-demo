@@ -10,6 +10,17 @@ const resources = {
       packSuit: "Pack your suitcase, we'll take care of the rest.",
       welcomePortal:
         'Welcome to our unique portal, which provides a full range of services for tourists in Uzbekistan!',
+      firstButton: 'All hotels',
+      secondButton: 'Watch video',
+      header: {
+        firstWord: 'Find accommodation',
+        secondWord: 'Where to go?',
+        thirdWord: 'Tours',
+        forthWord: 'Transport',
+        fifthWord: 'Profile',
+        sixWord: 'Login',
+      },
+
       usd: 'USD',
       uzs: 'UZS',
     },
@@ -19,6 +30,16 @@ const resources = {
       packSuit: 'Собирай чемодан, остальное мы возьмем на себя',
       welcomePortal:
         'Добро пожаловать на наш уникальный портал, который предоставляет полный спектр услуг для туристов в Узбекистане!',
+      firstButton: 'Все отели',
+      secondButton: 'Посмотреть видео',
+      header: {
+        firstWord: 'Найти жилье',
+        secondWord: 'Куда сходить?',
+        thirdWord: 'Туры',
+        forthWord: 'Транспорт',
+        fifthWord: 'Профиль',
+        sixWord: 'Войти',
+      },
       usd: 'USD',
       uzs: 'UZS',
     },
