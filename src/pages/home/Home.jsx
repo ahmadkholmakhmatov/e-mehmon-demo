@@ -15,8 +15,9 @@ import Video from 'yet-another-react-lightbox/plugins/video';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { useTranslation } from 'react-i18next';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import './home.css';
+import { AuthContext } from '../../utils/AuthContext';
 
 const hotels = [
   {
@@ -94,14 +95,15 @@ const hotels = [
   },
 ];
 
-const Home = ({ auth }) => {
+const Home = () => {
   const { t } = useTranslation();
-  const authentication = auth;
   const navigate = useNavigate();
   const navRef = useRef();
 
+  const { isAuthenticated } = useContext(AuthContext);
+
   const handleLogin = () => {
-    if (authentication.token) {
+    if (isAuthenticated) {
       navigate('/profile');
     } else {
       navigate('/login');
@@ -151,9 +153,7 @@ const Home = ({ auth }) => {
               onClick={handleLogin}
             >
               <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
-              {authentication.token
-                ? t('header.fifthWord')
-                : t('header.sixWord')}
+              {isAuthenticated ? t('header.fifthWord') : t('header.sixWord')}
             </button>
           </div>
         </nav>
@@ -196,7 +196,7 @@ const Home = ({ auth }) => {
                 onClick={handleLogin}
               >
                 <LiaUserCircleSolid className="w-6 h-6" />
-                {authentication.token ? 'Профиль' : 'Войти'}
+                {isAuthenticated ? 'Профиль' : 'Войти'}
               </button>
               <button className="nav-btn close-btn p-0" onClick={showNavbar}>
                 <FaTimes className="sm:w-6 sm:h-6 esm:w-5 esm:h-5" />

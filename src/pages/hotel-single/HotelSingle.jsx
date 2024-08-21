@@ -19,10 +19,11 @@ import { DatePicker, Select } from 'antd';
 import './hotelSingle.css';
 import { useCurrency } from '../../utils/CurrencyContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ShareButtons from '../../components/share-buttons/ShareButtons';
+import { AuthContext } from '../../utils/AuthContext';
 
 const hotels = [
   {
@@ -63,17 +64,16 @@ const hotels = [
   },
 ];
 
-const HotelSingle = ({ auth }) => {
+const HotelSingle = () => {
   const [firstDate, setFirstDate] = useState(null);
   const [secondDate, setSecondDate] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [guests, setGuests] = useState(null);
-  const authentication = auth;
+  const { isAuthenticated } = useContext(AuthContext);
   const { currency } = useCurrency();
   const { state } = useLocation();
   const navRef = useRef();
 
-  console.log(authentication);
   const navigate = useNavigate();
 
   const exchangeRates = {
@@ -82,7 +82,7 @@ const HotelSingle = ({ auth }) => {
   };
 
   const handleLogin = () => {
-    if (authentication.token) {
+    if (isAuthenticated) {
       navigate('/profile');
     } else {
       navigate('/login');
@@ -152,7 +152,7 @@ const HotelSingle = ({ auth }) => {
               onClick={handleLogin}
             >
               <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
-              {authentication.token ? 'Профиль' : 'Войти'}
+              {isAuthenticated ? 'Профиль' : 'Войти'}
             </button>
           </div>
         </nav>
@@ -195,7 +195,7 @@ const HotelSingle = ({ auth }) => {
                 onClick={handleLogin}
               >
                 <LiaUserCircleSolid className="w-6 h-6" />
-                {authentication.token ? 'Профиль' : 'Войти'}
+                {isAuthenticated ? 'Профиль' : 'Войти'}
               </button>
               <button className="nav-btn close-btn p-0" onClick={showNavbar}>
                 <FaTimes className="sm:w-6 sm:h-6 esm:w-5 esm:h-5 text-black" />

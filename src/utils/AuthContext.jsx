@@ -1,0 +1,38 @@
+import { createContext, useState } from 'react';
+import axiosInstance from './axiosInstance';
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem('token')
+  );
+
+  const login = async (credentials) => {
+    try {
+      const response = await axiosInstance.post('/account/me/', credentials);
+      const { access, refresh } = response.data;
+
+      localStorage.setItem('token', access);
+      localStorage.setItem('tokenExpiry', Date.now() + refresh * 1000);
+      setIsAuthenticated(true);
+
+      return response.data;
+    } catch (error) {
+      console.error('Login failed', error);
+      throw error;
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('tokenExpiry');
+    setIsAuthenticated(false);
+  };
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

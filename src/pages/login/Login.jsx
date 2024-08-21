@@ -77,13 +77,13 @@ const Login = () => {
 
   const accountCodeSentMutation = useMutation({ mutationFn: accountCodeSent });
 
-  const onCodeChange = (text) => {
+  const onChange = (text) => {
     setCode(text);
 
     setLoginFormData({ ...loginFormData, code });
   };
   const sharedProps = {
-    onCodeChange,
+    onChange,
   };
 
   const handleSentCode = async (e) => {
