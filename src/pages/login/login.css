@@ -1,0 +1,13 @@
+.ant-otp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.ant-otp .ant-otp-input {
+  width: 64px;
+  height: 72px;
+  border: none;
+  font-size: 24px;
+}

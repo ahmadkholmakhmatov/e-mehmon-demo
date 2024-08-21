@@ -37,8 +37,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
-  const [code, setCode] = useState(null);
-  const [loginFormData, setLoginFormData] = useState({
+  const [formData, setFormData] = useState({
     email: null,
     password: null,
     code: null,
@@ -46,7 +45,7 @@ const Login = () => {
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
-    setLoginFormData({ ...loginFormData, email: e.target.value });
+    setFormData({ ...formData, email: e.target.value });
   };
 
   const accountRegisterMutation = useMutation({
@@ -78,22 +77,23 @@ const Login = () => {
   const accountCodeSentMutation = useMutation({ mutationFn: accountCodeSent });
 
   const onChange = (text) => {
-    setCode(text);
-
-    setLoginFormData({ ...loginFormData, code });
+    console.log('OTP input:', text);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      code: Number(text),
+    }));
   };
   const sharedProps = {
     onChange,
   };
 
   const handleSentCode = async (e) => {
-    console.log(code);
     e.preventDefault();
     {
-      console.log({ email: loginFormData.email, code: loginFormData.code });
+      console.log({ email: formData.email, code: formData.code });
     }
     accountCodeSentMutation.mutate(
-      { email: loginFormData.email, code: code },
+      { email: formData.email, code: formData.code },
 
       {
         onSuccess: (data) => {
@@ -236,7 +236,7 @@ const Login = () => {
                   </p>
                   <p className="text-base text-[#777E90]">
                     Мы отправили код верификации для подтверждения электронный
-                    почты {loginFormData.email}
+                    почты {formData.email}
                   </p>
                 </div>
 
@@ -264,7 +264,7 @@ const Login = () => {
               </h1>
               <p className="text-[18px] text-[#777E90]">
                 Код подтверждения был отправлен на электронный адрес
-                {loginFormData.email}
+                {formData.email}
               </p>
             </div>
             <form className="w-[46%] mb-6" onSubmit={handleSentCode}>
@@ -308,7 +308,7 @@ const Login = () => {
                   </p>
                   <p className="text-base text-[#777E90]">
                     Мы отправили код верификации для подтверждения электронный
-                    почты {loginFormData.email}
+                    почты {formData.email}
                   </p>
                 </div>
 
