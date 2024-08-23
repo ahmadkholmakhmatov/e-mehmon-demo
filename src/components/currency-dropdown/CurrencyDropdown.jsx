@@ -12,8 +12,6 @@ const CurrencyDropDown = () => {
     setCurrency(e.key);
   };
 
-  console.log(currency);
-
   const menu = (
     <Menu onClick={handleMenuClick}>
       <Menu.Item key="USD">{t('usd')}</Menu.Item>
