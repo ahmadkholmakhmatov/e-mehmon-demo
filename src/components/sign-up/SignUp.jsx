@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { Input } from 'antd';
+import { Input, Statistic } from 'antd';
 import { HiOutlineMail } from 'react-icons/hi';
 import axiosInstance from '../../utils/axiosInstance';
 import { MdLockOutline } from 'react-icons/md';
+import { LuRefreshCw } from 'react-icons/lu';
 import { LuEye } from 'react-icons/lu';
 import { TbEyeClosed } from 'react-icons/tb';
 import { GoX } from 'react-icons/go';
+import './signUp.css';
 
 const accountRegister = async (email) => {
   try {
@@ -53,6 +55,8 @@ const SignUp = ({ setIsLogin }) => {
     confirmPassword: null,
     code: null,
   });
+
+  const { Countdown } = Statistic;
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
@@ -160,6 +164,12 @@ const SignUp = ({ setIsLogin }) => {
     }
   };
 
+  const onTimeChange = (val) => {
+    if (typeof val === 'number' && 4.95 * 1000 < val && val < 5 * 1000) {
+      console.log('changed!');
+    }
+  };
+
   return (
     <>
       {!isCodeCame && (
@@ -185,6 +195,7 @@ const SignUp = ({ setIsLogin }) => {
             />
             <button
               type="submit"
+              disabled={!email}
               className="block w-full bg-[#3276FF] p-4 rounded-2xl text-white text-base active:opacity-20 active:transition-opacity active:duration-200"
             >
               Продолжить
@@ -246,13 +257,18 @@ const SignUp = ({ setIsLogin }) => {
             </p>
           </div>
           <form className="w-[46%] mb-6" onSubmit={handleSentCode}>
-            <Input.OTP
-              className="mb-6 border-none"
-              length={4}
-              {...sharedProps}
-            />
-            <div className="text-center mb-6">time</div>
+            <Input.OTP className="border-none" length={4} {...sharedProps} />
+            <div className="flex justify-center items-center mb-0.5 text-sm text-[#777E90] font-medium">
+              <LuRefreshCw className="w-[14px] h-[14px] mr-[3px]" /> Запросить
+              код еще раз через
+              <Countdown
+                value={Date.now() + 2 * 60 * 1000}
+                format="mm:ss"
+                onChange={onTimeChange}
+              />
+            </div>
             <button
+              disabled={!formData.code}
               type="submit"
               className="block w-full bg-[#3276FF] p-4 rounded-2xl text-white text-base active:opacity-20 active:transition-opacity active:duration-200"
             >
@@ -283,16 +299,19 @@ const SignUp = ({ setIsLogin }) => {
                 <MdLockOutline className="w-6 h-6 text-[#B7BFD5]" />
               </div>
               <Input.Password
-                className="py-[17.5px] pr-4 pl-0 border-none text-base shadow-none text-[#B7BFD5] rounded-l-none rounded-r-2xl"
+                className="py-[17.5px] pr-4 pl-0 border-none text-base shadow-none text-[#232E40] rounded-l-none rounded-r-2xl"
                 placeholder="input password"
                 name="password"
                 value={formData.password}
                 onChange={(e) => handlePasswordChange(e)}
                 iconRender={(visible) =>
                   visible ? (
-                    <LuEye className="w-6 h-6" />
+                    <LuEye className="w-6 h-6" style={{ color: '#B7BFD5' }} />
                   ) : (
-                    <TbEyeClosed className="w-6 h-6" />
+                    <TbEyeClosed
+                      className="w-6 h-6"
+                      style={{ color: '#B7BFD5' }}
+                    />
                   )
                 }
               />
@@ -306,22 +325,26 @@ const SignUp = ({ setIsLogin }) => {
                 <MdLockOutline className="w-6 h-6 text-[#B7BFD5]" />
               </div>
               <Input.Password
-                className="py-[17.5px] pr-4 pl-0 border-none text-base shadow-none text-[#B7BFD5] rounded-l-none rounded-r-2xl"
+                className="py-[17.5px] pr-4 pl-0 border-none text-base shadow-none text-[#232E40] rounded-l-none rounded-r-2xl"
                 placeholder="input password"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={(e) => handlePasswordChange(e)}
                 iconRender={(visible) =>
                   visible ? (
-                    <LuEye className="w-6 h-6" />
+                    <LuEye className="w-6 h-6" style={{ color: '#B7BFD5' }} />
                   ) : (
-                    <TbEyeClosed className="w-6 h-6" />
+                    <TbEyeClosed
+                      className="w-6 h-6"
+                      style={{ color: '#B7BFD5' }}
+                    />
                   )
                 }
               />
             </div>
 
             <button
+              disabled={!formData.password && !formData.confirmPassword}
               type="submit"
               className="block w-full bg-[#3276FF] p-4 rounded-2xl text-white text-base active:opacity-20 active:transition-opacity active:duration-200"
             >

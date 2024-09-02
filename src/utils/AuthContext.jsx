@@ -8,6 +8,8 @@ export const AuthProvider = ({ children }) => {
     !!localStorage.getItem('token')
   );
 
+  const [userData, setUserData] = useState({});
+
   const login = async (credentials) => {
     try {
       const response = await axiosInstance.post('/account/me/', credentials);
@@ -31,7 +33,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, login, logout, setUserData, userData }}
+    >
       {children}
     </AuthContext.Provider>
   );

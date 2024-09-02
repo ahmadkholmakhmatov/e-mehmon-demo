@@ -1,0 +1,22 @@
+.ant-input-affix-wrapper {
+  border: none;
+}
+
+.ant-input-affix-wrapper-focused {
+  border: none;
+  box-shadow: none !important;
+}
+.ant-statistic {
+  height: 44px;
+}
+
+.ant-statistic .ant-statistic-content {
+  height: 100%;
+}
+
+.ant-statistic .ant-statistic-content .ant-statistic-content-value {
+  margin-left: 2.5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #777e90;
+}
