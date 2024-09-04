@@ -7,11 +7,20 @@ import { BiSolidUserRectangle } from 'react-icons/bi';
 import PersonalData from '../personal-data/PersonalData';
 
 // src/components/AccountManagement.js
-const AccountManagement = ({ activeDetail, setActiveDetail }) => {
+const AccountManagement = ({
+  activeDetail,
+  setActiveDetail,
+  setShowSidebar,
+}) => {
   const renderDetailSection = () => {
     if (activeDetail === 'personal') {
-      return <PersonalData />;
+      setShowSidebar(false);
+      return <PersonalData setActiveDetail={setActiveDetail} />;
+    } else if (activeDetail === 'notification') {
+      setShowSidebar(false);
+      return <div>Hello</div>;
     }
+
     // Add more detail sections if needed
     return null;
   };
@@ -22,7 +31,7 @@ const AccountManagement = ({ activeDetail, setActiveDetail }) => {
         <div>{renderDetailSection()}</div>
       ) : (
         <div className="mb-6">
-          <h1 className="text-[#232E40] text-2xl font-bold mb-2">
+          <h1 className="text-[#1a1c1e] text-2xl font-bold mb-2">
             Управление аккаунтом
           </h1>
           <p className="text-[#777E90] text-sm">
@@ -43,6 +52,7 @@ const AccountManagement = ({ activeDetail, setActiveDetail }) => {
             title="Предпочтения"
             description="Измените язык, валюту и требования к доступной среде."
             icon={LuSettings2}
+            onClick={() => setActiveDetail('notification')}
           />
           <Card
             title="Безопасность"

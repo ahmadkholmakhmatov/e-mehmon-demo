@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
       const { access, refresh } = response.data;
 
       localStorage.setItem('token', access);
-      localStorage.setItem('tokenExpiry', Date.now() + refresh * 1000);
+      localStorage.setItem('refresh', refresh);
       setIsAuthenticated(true);
 
       return response.data;
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('tokenExpiry');
+    localStorage.removeItem('refresh');
     setIsAuthenticated(false);
   };
 

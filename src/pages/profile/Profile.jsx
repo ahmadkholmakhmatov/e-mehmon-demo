@@ -1,6 +1,6 @@
 import { useContext, useRef } from 'react';
 import { AuthContext } from '../../utils/AuthContext';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CurrencyDropDown from '../../components/currency-dropdown/CurrencyDropdown';
 import LanguageDropdown from '../../components/language-dropdown/LanguageDropdown';
 import { LiaUserCircleSolid } from 'react-icons/lia';
@@ -12,8 +12,7 @@ import AccountManagement from '../../components/account-management/AccountManage
 
 const Profile = () => {
   const { isAuthenticated } = useContext(AuthContext);
-  const location = useLocation();
-  console.log(location);
+
   const navRef = useRef();
 
   const navigate = useNavigate();
@@ -30,12 +29,11 @@ const Profile = () => {
     }
   };
 
-  const { logout, userData } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const handleClick = () => {
     logout();
     navigate('/');
   };
-  console.log(userData);
   return (
     <div className="bg-[#fafafa] ">
       <div className="bg-white">
