@@ -6,10 +6,17 @@ import { MdLockOutline } from 'react-icons/md';
 import { TbCreditCard } from 'react-icons/tb';
 
 import axiosInstance from '../../utils/axiosInstance';
-import AvatarUploader from '../account-management/AvatarUploader';
+import AvatarUploader from '../account-management/avatar-uploader/AvatarUploader';
+import AvatarEditUploader from '../account-management/avatar-uploader/AvatarEditUploader';
+import NameInput from './input-fields/NameInput';
+import UsernameInput from './input-fields/UsernameInput';
+import GenderInput from './input-fields/GenderInput';
+import PassportDataForm from './input-fields/PassportDataForm';
 
 const PersonalData = ({ setActiveDetail }) => {
   const [user, setUser] = useState({});
+  const [isAvatarAvailable, setIsAvatarAvailable] = useState(null);
+
   const handleSectionClick = (section) => {
     setActiveDetail(section);
   };
@@ -23,21 +30,19 @@ const PersonalData = ({ setActiveDetail }) => {
       const response = await axiosInstance.get(`account/users/74/`);
       console.log(response.data);
       setUser(response.data);
+      if (response.data.avatar === 'users/default.png') {
+        setIsAvatarAvailable(false);
+      } else {
+        setIsAvatarAvailable(true);
+      }
     } catch (error) {
       console.error('Login failed', error);
       throw error;
     }
   };
 
-  const [users, setUsers] = useState({
-    avatar: 'initial-avatar-url', // replace with the initial avatar URL or default image
-  });
-
-  const handleAvatarSave = (newAvatar) => {
-    setUsers((prevUser) => ({
-      ...prevUser,
-      avatar: newAvatar,
-    }));
+  const handleInputField = () => {
+    getUserData();
   };
 
   return (
@@ -109,55 +114,32 @@ const PersonalData = ({ setActiveDetail }) => {
         </div>
 
         <div className="flex gap-4 mb-6">
-          <img className="w-16 h-16 rounded-full" src={users.avatar} alt="" />
-
+          <img
+            className="w-16 h-16 rounded-full"
+            src={`https://api.emehmon.xdevs.uz/media/${user.avatar}`}
+            alt=""
+          />
           <div>
             <p className="text-[#777E90] mb-3">
               Выберите изображение для загрузки
             </p>
-            <AvatarUploader onSave={handleAvatarSave} />
+            {isAvatarAvailable ? (
+              <AvatarEditUploader onUploadSuccess={handleInputField} />
+            ) : (
+              <AvatarUploader onUploadSuccess={handleInputField} />
+            )}
           </div>
         </div>
 
         <div className="w-full text-[#232E40]">
-          <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
-            <div className="flex">
-              <div className="font-medium w-[180px] mr-6">Имя</div>
-              <div>{user.first_name ? user.first_name : 'Enter name'}</div>
-            </div>
+          <NameInput user={user} onUploadSuccess={handleInputField} />
 
-            <button className="hover:scale-110">
-              <span className="flex gap-2 items-center text-[#3276FF]">
-                <LuPencilLine /> Изменить
-              </span>
-            </button>
-          </div>
-
-          <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
-            <div className="flex">
-              <div className="font-medium w-[180px] mr-6">Отображаемое имя</div>
-              <div>
-                {user.username === user.email ? (
-                  <span className="text-[#777E90]">
-                    Укажите имя, которое будет отображаться на сайте
-                  </span>
-                ) : (
-                  user.name
-                )}
-              </div>
-            </div>
-
-            <button className="hover:scale-110">
-              <span className="flex gap-2 items-center text-[#3276FF]">
-                <LuPencilLine /> Изменить
-              </span>
-            </button>
-          </div>
+          <UsernameInput user={user} onUploadSuccess={handleInputField} />
 
           <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
             <div className="flex">
               <div className="font-medium w-[180px] mr-6">Email</div>
-              <div>{user.username}</div>
+              <div>{user.email}</div>
             </div>
 
             <button className="hover:scale-110">
@@ -187,6 +169,10 @@ const PersonalData = ({ setActiveDetail }) => {
               </span>
             </button>
           </div>
+
+          <GenderInput user={user} onUploadSuccess={handleInputField} />
+
+          <PassportDataForm user={user} onUploadSuccess={handleInputField} />
         </div>
       </main>
     </div>
