@@ -4,7 +4,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import { AuthProvider } from './utils/AuthContext';
+
 import PrivateRoutes from './utils/PrivateRoutes';
 import Home from './pages/home/Home';
 import HotelSingle from './pages/hotel-single/HotelSingle';
@@ -15,21 +15,19 @@ import Profile from './pages/profile/Profile';
 
 const App = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route element={<PrivateRoutes />}>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="/hotels" element={<Hotels />} />
-          <Route path="/hotels/hotel" element={<HotelSingle />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/login" />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <Routes>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/hotels/hotel" element={<HotelSingle />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
 };
 

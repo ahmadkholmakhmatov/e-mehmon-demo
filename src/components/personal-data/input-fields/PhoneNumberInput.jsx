@@ -1,28 +1,22 @@
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 import { useState } from 'react';
 import axiosInstance from '../../../utils/axiosInstance';
 import { LuPencilLine } from 'react-icons/lu';
 import { FaRegCircleCheck } from 'react-icons/fa6';
-import { Select } from 'antd';
+import './phoneNumberInput.css';
 
-const GenderInput = ({ user, onUploadSuccess }) => {
-  //input field visible
+function PhoneNumberInput({ user, onUploadSuccess }) {
   const [isInput, setIsInput] = useState(null);
-  const [gender, setGender] = useState(user?.gender || '');
+  const [value, setValue] = useState();
 
   const token = localStorage.getItem('token');
-
-  const onChange = (value) => {
-    setGender(value);
-  };
-  const onSearch = (value) => {
-    console.log('search:', value);
-  };
 
   const handleInput = async () => {
     try {
       const response = await axiosInstance.put(
         `/account/users/update_profile/`,
-        { gender: gender },
+        { phone: value },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -31,8 +25,9 @@ const GenderInput = ({ user, onUploadSuccess }) => {
         }
       );
       setIsInput(null);
-      setGender('');
+
       onUploadSuccess();
+      setValue('');
       console.log(response);
     } catch (error) {
       console.error('Login failed', error);
@@ -42,33 +37,23 @@ const GenderInput = ({ user, onUploadSuccess }) => {
   return (
     <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
       <div className="flex">
-        <div className="font-medium w-[180px] mr-6">Пол</div>
+        <div className="font-medium w-[180px] mr-6">Номер телефона</div>
         {!isInput ? (
           <div>
-            {!user.gender ? (
-              <span className="text-[#777E90]">Укажите ваш пол</span>
+            {!user.phone ? (
+              <span className="text-[#777E90]">
+                Номер телефона, по которому с вами смогут связаться
+              </span>
             ) : (
-              <span>{user.gender === 'man' ? 'мужчина' : 'женщина'}</span>
+              user.phone
             )}
           </div>
         ) : (
-          <div>
-            <Select
-              showSearch
-              placeholder="Select a gender"
-              optionFilterProp="label"
-              onChange={onChange}
-              onSearch={onSearch}
-              options={[
-                {
-                  value: 'man',
-                  label: 'мужчина',
-                },
-                {
-                  value: 'woman',
-                  label: 'женщина',
-                },
-              ]}
+          <div className="phone-input">
+            <PhoneInput
+              placeholder="Enter phone number"
+              value={value}
+              onChange={setValue}
             />
           </div>
         )}
@@ -86,11 +71,11 @@ const GenderInput = ({ user, onUploadSuccess }) => {
         <button
           onClick={handleInput}
           className={`hover:scale-110 ${
-            !gender
+            !value
               ? 'text-[#777E90] text-sm cursor-not-allowed'
               : 'text-[#4DD282] '
           }`}
-          disabled={!gender} // Disable the button if either field is empty
+          disabled={!value} // Disable the button if either field is empty
         >
           <span className="flex gap-2 items-center ">
             <FaRegCircleCheck /> Сохранить
@@ -99,6 +84,6 @@ const GenderInput = ({ user, onUploadSuccess }) => {
       )}
     </div>
   );
-};
+}
 
-export default GenderInput;
+export default PhoneNumberInput;

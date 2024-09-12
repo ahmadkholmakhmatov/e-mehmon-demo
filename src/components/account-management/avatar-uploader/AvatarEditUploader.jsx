@@ -130,7 +130,7 @@ const AvatarEditUploader = ({ onUploadSuccess }) => {
       <div className="flex gap-4">
         <button
           onClick={() => setIsModalEditOpen(true)}
-          className="hover:scale-110"
+          className="hover:scale-110 text-sm"
         >
           <span className="flex gap-2 items-center text-[#3276FF]">
             <LuPencilLine /> Изменить
@@ -139,7 +139,7 @@ const AvatarEditUploader = ({ onUploadSuccess }) => {
 
         <button
           onClick={() => setIsModalDeleteOpen(true)}
-          className="hover:scale-110"
+          className="hover:scale-110 text-sm"
         >
           <span className="flex items-center gap-2 text-[#FF4E4E]">
             <MdOutlineDeleteOutline /> Удалить

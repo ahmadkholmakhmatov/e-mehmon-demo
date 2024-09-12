@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AccountManagement from '../account-management/AccountManagement';
 import { LiaUserCircleSolid } from 'react-icons/lia';
 import { LuBellRing, LuHeart } from 'react-icons/lu';
@@ -6,26 +6,28 @@ import { SlHandbag } from 'react-icons/sl';
 import { FaHospital } from 'react-icons/fa6';
 import { MdOutlineRateReview } from 'react-icons/md';
 import ProfileBreadCrumb from '../breadcrumb/ProfileBreadCrumb';
+import { AuthContext } from '../../utils/AuthContext';
 
 const Layout = () => {
-  const [activeSection, setActiveSection] = useState('account'); // Default section
+  const { activeSectionDefault } = useContext(AuthContext);
+  const [activeSection, setActiveSection] = useState(activeSectionDefault); // Default section
   const [activeDetail, setActiveDetail] = useState(null); // New state to track active detail
   const [showSidebar, setShowSidebar] = useState(true);
 
-  console.log(showSidebar);
+  useEffect(() => {
+    setActiveSection(activeSectionDefault);
+  }, [activeSectionDefault]);
 
   const handleBreadcrumbBack = (section, detail) => {
     setActiveSection(section);
     setActiveDetail(detail);
     if (!detail) {
-      // If returning to a main section, show the sidebar
       setShowSidebar(true);
     }
   };
 
   const renderSection = () => {
     if (activeDetail) {
-      // Render details when activeDetail is set
       return (
         <AccountManagement
           activeDetail={activeDetail}

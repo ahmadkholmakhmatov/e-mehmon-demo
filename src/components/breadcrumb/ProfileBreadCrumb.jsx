@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-
+import './profilebread.css';
 // src/components/Breadcrumb.js
 const ProfileBreadCrumb = ({ activeSection, activeDetail, onBack }) => {
   const navigate = useNavigate();
@@ -46,7 +46,10 @@ const ProfileBreadCrumb = ({ activeSection, activeDetail, onBack }) => {
     <nav className="mb-4 text-sm">
       {breadcrumbItems.map((item, index) => (
         <span key={index}>
-          <button onClick={item.onClick} className="text-[#3276FF]">
+          <button
+            onClick={item.onClick}
+            className={`text-[black] ${index === breadcrumbItems.length - 1 ? 'important-text' : ''}`}
+          >
             {item.name}
           </button>
           {index < breadcrumbItems.length - 1 && <span> &gt; </span>}

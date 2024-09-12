@@ -1,5 +1,5 @@
 // src/components/PersonalData.js
-import { useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa6';
 import { LuBellRing, LuPencilLine, LuSettings2 } from 'react-icons/lu';
 import { MdLockOutline } from 'react-icons/md';
@@ -12,34 +12,34 @@ import NameInput from './input-fields/NameInput';
 import UsernameInput from './input-fields/UsernameInput';
 import GenderInput from './input-fields/GenderInput';
 import PassportDataForm from './input-fields/PassportDataForm';
+import PhoneNumberInput from './input-fields/PhoneNumberInput';
+import { AuthContext } from '../../utils/AuthContext';
 
 const PersonalData = ({ setActiveDetail }) => {
   const [user, setUser] = useState({});
+  const { setUserData } = useContext(AuthContext);
   const [isAvatarAvailable, setIsAvatarAvailable] = useState(null);
 
+  const id = localStorage.getItem('id');
   const handleSectionClick = (section) => {
     setActiveDetail(section);
   };
 
-  useEffect(() => {
-    getUserData();
-  }, []);
-
-  const getUserData = async () => {
+  const getUserData = useCallback(async () => {
     try {
-      const response = await axiosInstance.get(`account/users/74/`);
+      const response = await axiosInstance.get(`account/users/${id}/`);
       console.log(response.data);
       setUser(response.data);
-      if (response.data.avatar === 'users/default.png') {
-        setIsAvatarAvailable(false);
-      } else {
-        setIsAvatarAvailable(true);
-      }
+      setUserData(response.data);
+      setIsAvatarAvailable(response.data.avatar !== 'users/default.png');
     } catch (error) {
       console.error('Login failed', error);
-      throw error;
     }
-  };
+  }, [id, setUserData]);
+
+  useEffect(() => {
+    getUserData();
+  }, [getUserData]);
 
   const handleInputField = () => {
     getUserData();
@@ -149,26 +149,7 @@ const PersonalData = ({ setActiveDetail }) => {
             </button>
           </div>
 
-          <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
-            <div className="flex">
-              <div className="font-medium w-[180px] mr-6">Номер телефона</div>
-              <div>
-                {user.phone ? (
-                  user.phone
-                ) : (
-                  <span className="text-[#777E90]">
-                    Номер телефона, по которому с вами смогут связаться
-                  </span>
-                )}
-              </div>
-            </div>
-
-            <button className="hover:scale-110">
-              <span className="flex gap-2 items-center text-[#3276FF]">
-                <LuPencilLine /> Изменить
-              </span>
-            </button>
-          </div>
+          <PhoneNumberInput user={user} onUploadSuccess={handleInputField} />
 
           <GenderInput user={user} onUploadSuccess={handleInputField} />
 

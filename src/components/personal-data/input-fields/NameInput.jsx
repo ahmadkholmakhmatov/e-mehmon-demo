@@ -66,7 +66,7 @@ const NameInput = ({ user, onUploadSuccess }) => {
           onClick={() => setIsInputName(true)}
           className="hover:scale-110"
         >
-          <span className="flex gap-2 items-center text-[#3276FF]">
+          <span className="flex gap-2 items-center text-[#3276FF] text-sm">
             <LuPencilLine /> Изменить
           </span>
         </button>
@@ -77,7 +77,7 @@ const NameInput = ({ user, onUploadSuccess }) => {
           onClick={handleName}
           className={`hover:scale-110 ${
             !firstName || !lastName
-              ? 'text-[#777E90] cursor-not-allowed'
+              ? 'text-[#777E90] text-sm cursor-not-allowed'
               : 'text-[#4DD282] '
           }`}
           disabled={!firstName || !lastName} // Disable the button if either field is empty

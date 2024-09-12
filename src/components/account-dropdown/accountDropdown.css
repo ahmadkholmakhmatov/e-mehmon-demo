@@ -1,0 +1,11 @@
+.ant-dropdown .account-dropdown .ant-dropdown-menu {
+  padding: 4px;
+  border-radius: 16px;
+}
+
+.ant-dropdown .account-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+  padding: 16px;
+  color: #232e40;
+  font-size: medium;
+  border-radius: 12px;
+}

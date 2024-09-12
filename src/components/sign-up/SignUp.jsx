@@ -10,35 +10,21 @@ import { LuEye } from 'react-icons/lu';
 import { TbEyeClosed } from 'react-icons/tb';
 import { GoX } from 'react-icons/go';
 import './signUp.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 const accountRegister = async (email) => {
-  try {
-    const response = await axiosInstance.post('/account/register/', email);
-    return response;
-  } catch (error) {
-    console.error('Login failed', error);
-  }
+  const response = await axiosInstance.post('/account/register/', email);
+  return response;
 };
 
 const accountCodeSent = async (data) => {
-  try {
-    const response = await axiosInstance.post('/account/verify-code/', data);
-    return response;
-  } catch (error) {
-    console.error('Login failed', error);
-  }
+  const response = await axiosInstance.post('/account/verify-code/', data);
+  return response;
 };
 
 const accountConfirmRegister = async (data) => {
-  try {
-    const response = await axiosInstance.post(
-      '/account/confirm-register/',
-      data
-    );
-    return response;
-  } catch (error) {
-    console.error('Login failed', error);
-  }
+  const response = await axiosInstance.post('/account/confirm-register/', data);
+  return response;
 };
 
 const SignUp = ({ setIsLogin }) => {
@@ -77,16 +63,20 @@ const SignUp = ({ setIsLogin }) => {
           console.log('Response from server:', data);
           setIsCodeSent(true);
           setIsCodeCame(true);
-
-          // You can do something with the response here
         },
         onError: (error) => {
-          console.error('Error during registration', error.message);
+          console.error(
+            'Error during registration',
+            error.response?.data.email[0] || error.message
+          );
+          setIsCodeSent(false);
+          setIsCodeCame(false);
+          toast.error(error.response?.data.email[0] || error.message);
         },
       }
-    ); // Reset the input field after submission
+    );
 
-    setEmail('');
+    setEmail(''); // Reset the email input
   };
 
   const accountCodeSentMutation = useMutation({
@@ -113,16 +103,16 @@ const SignUp = ({ setIsLogin }) => {
       { email: formData.email, code: formData.code },
 
       {
-        onSuccess: (data) => {
-          console.log('Response from server:', data);
+        onSuccess: () => {
           setIsPassword(true);
-          // You can do something with the response here
+          toast.success('Code verified! You can now set your password.');
         },
         onError: (error) => {
-          console.error('Error during registration', error.message);
+          console.error('Error verifying code', error.message);
+          toast.error('Invalid code. Please try again.');
         },
       }
-    ); // Reset the input field after submission
+    );
   };
 
   const accountConfirmRegisterMutation = useMutation({
@@ -139,28 +129,32 @@ const SignUp = ({ setIsLogin }) => {
 
   const handleConfirmRegister = async (e) => {
     e.preventDefault();
+    console.log(formData.email);
     if (formData.password === formData.confirmPassword) {
       accountConfirmRegisterMutation.mutate(
         { email: formData.email, password: formData.password },
         {
           onSuccess: (data) => {
             const { access } = data.data;
-            console.log(data);
-            // const token = localStorage.getItem('token');
             localStorage.setItem('token', access);
+            toast.success(
+              'Registration successful! Redirecting to the homepage.'
+            );
 
             setTimeout(() => {
               if (access === localStorage.getItem('token')) {
                 navigate('/');
               }
             }, 2000);
-            // You can do something with the response here
           },
           onError: (error) => {
             console.error('Error during registration', error.message);
+            toast.error('Registration failed. Please try again.');
           },
         }
       );
+    } else {
+      toast.error('Passwords are not matched');
     }
   };
 
@@ -207,6 +201,38 @@ const SignUp = ({ setIsLogin }) => {
               Войти в аккаунт
             </span>
           </div>
+        </div>
+      )}
+      {isCodeCame && !isPassword && (
+        <div className="basis-[65%] flex flex-col justify-center items-center">
+          <div className="text-center w-[46%] mb-8">
+            <h1 className="font-bold text-[32px] text-[#232E40] mb-4">
+              Подтверждение почты
+            </h1>
+            <p className="text-[18px] text-[#777E90]">
+              Код подтверждения был отправлен на электронный адрес
+              {formData.email}
+            </p>
+          </div>
+          <form className="w-[46%] mb-6" onSubmit={handleSentCode}>
+            <Input.OTP className="border-none" length={4} {...sharedProps} />
+            <div className="flex justify-center items-center mb-0.5 text-sm text-[#777E90] font-medium">
+              <LuRefreshCw className="w-[14px] h-[14px] mr-[3px]" /> Запросить
+              код еще раз через
+              <Countdown
+                value={Date.now() + 2 * 60 * 1000}
+                format="mm:ss"
+                onChange={onTimeChange}
+              />
+            </div>
+            <button
+              disabled={!formData.code}
+              type="submit"
+              className="block w-full bg-[#3276FF] p-4 rounded-2xl text-white text-base active:opacity-20 active:transition-opacity active:duration-200"
+            >
+              Продолжить
+            </button>
+          </form>
           <div
             onClick={() => setIsCodeSent(false)}
             className={`fixed z-10 inset-0 flex justify-center items-center transition-colors ${isCodeSent ? 'visible bg-[#232E40]/20 ' : 'invisible'}`}
@@ -243,38 +269,6 @@ const SignUp = ({ setIsLogin }) => {
               </button>
             </div>
           </div>
-        </div>
-      )}
-      {isCodeCame && !isPassword && (
-        <div className="basis-[65%] flex flex-col justify-center items-center">
-          <div className="text-center w-[46%] mb-8">
-            <h1 className="font-bold text-[32px] text-[#232E40] mb-4">
-              Подтверждение почты
-            </h1>
-            <p className="text-[18px] text-[#777E90]">
-              Код подтверждения был отправлен на электронный адрес
-              {formData.email}
-            </p>
-          </div>
-          <form className="w-[46%] mb-6" onSubmit={handleSentCode}>
-            <Input.OTP className="border-none" length={4} {...sharedProps} />
-            <div className="flex justify-center items-center mb-0.5 text-sm text-[#777E90] font-medium">
-              <LuRefreshCw className="w-[14px] h-[14px] mr-[3px]" /> Запросить
-              код еще раз через
-              <Countdown
-                value={Date.now() + 2 * 60 * 1000}
-                format="mm:ss"
-                onChange={onTimeChange}
-              />
-            </div>
-            <button
-              disabled={!formData.code}
-              type="submit"
-              className="block w-full bg-[#3276FF] p-4 rounded-2xl text-white text-base active:opacity-20 active:transition-opacity active:duration-200"
-            >
-              Продолжить
-            </button>
-          </form>
         </div>
       )}
       {isCodeCame && isPassword && (
@@ -353,6 +347,17 @@ const SignUp = ({ setIsLogin }) => {
           </form>
         </div>
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000} // Close toast after 5 seconds
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

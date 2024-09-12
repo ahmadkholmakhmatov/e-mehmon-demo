@@ -43,7 +43,7 @@ const UsernameInput = ({ user, onUploadSuccess }) => {
                 Укажите имя, которое будет отображаться на сайте
               </span>
             ) : (
-              user.username
+              <span className="italic">{`@${user.username}`}</span>
             )}
           </div>
         ) : (
@@ -61,7 +61,7 @@ const UsernameInput = ({ user, onUploadSuccess }) => {
 
       {!isInput && (
         <button onClick={() => setIsInput(true)} className="hover:scale-110">
-          <span className="flex gap-2 items-center text-[#3276FF]">
+          <span className="flex gap-2 items-center text-[#3276FF] text-sm">
             <LuPencilLine /> Изменить
           </span>
         </button>
@@ -71,7 +71,9 @@ const UsernameInput = ({ user, onUploadSuccess }) => {
         <button
           onClick={handleInput}
           className={`hover:scale-110 ${
-            !username ? 'text-[#777E90] cursor-not-allowed' : 'text-[#4DD282] '
+            !username
+              ? 'text-[#777E90] text-sm cursor-not-allowed'
+              : 'text-[#4DD282] '
           }`}
           disabled={!username} // Disable the button if either field is empty
         >

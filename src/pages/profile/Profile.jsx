@@ -9,9 +9,13 @@ import { FaBars } from 'react-icons/fa6';
 import Footer from '../../components/footer/Footer';
 import Layout from '../../components/layout/Layout';
 import AccountManagement from '../../components/account-management/AccountManagement';
+import { useTranslation } from 'react-i18next';
+import NotificationDropdown from '../../components/notification-dropdown/NotificationDropdown';
+import AccountDropdown from '../../components/account-dropdown/AccountDropdown';
 
 const Profile = () => {
   const { isAuthenticated } = useContext(AuthContext);
+  const { t } = useTranslation();
 
   const navRef = useRef();
 
@@ -29,11 +33,6 @@ const Profile = () => {
     }
   };
 
-  const { logout } = useContext(AuthContext);
-  const handleClick = () => {
-    logout();
-    navigate('/');
-  };
   return (
     <div className="bg-[#fafafa] ">
       <div className="bg-white">
@@ -61,16 +60,21 @@ const Profile = () => {
               <li className="xl:text-sm lg:text-xs">Транспорт</li>
             </a>
           </ul>
-          <div className="login flex items-center gap-6">
+          <div className="login flex items-center gap-6 text-black">
             <CurrencyDropDown />
             <LanguageDropdown />
-            <button
-              className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl text-white bg-[#232E40]"
-              onClick={handleLogin}
-            >
-              <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
-              {isAuthenticated ? 'Профиль' : 'Войти'}
-            </button>
+            <NotificationDropdown />
+            {isAuthenticated && <AccountDropdown />}
+
+            {!isAuthenticated && (
+              <button
+                className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
+                onClick={handleLogin}
+              >
+                <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
+                {t('header.sixWord')}
+              </button>
+            )}
           </div>
         </nav>
 
@@ -107,6 +111,7 @@ const Profile = () => {
                   <li>Транспорт</li>
                 </a>
               </ul>
+
               <button
                 className="flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40] text-white"
                 onClick={handleLogin}
@@ -129,7 +134,6 @@ const Profile = () => {
         <AccountManagement />
       </Layout>
 
-      <button onClick={handleClick}>logout</button>
       <Footer />
     </div>
   );

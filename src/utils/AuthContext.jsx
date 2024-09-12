@@ -4,6 +4,13 @@ import axiosInstance from './axiosInstance';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [activeSectionDefault, setActiveSectionDefault] = useState('account');
+
+  const handleSelectSection = (section) => {
+    console.log('Setting active section to:', section);
+    setActiveSectionDefault(section);
+  };
+
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem('token')
   );
@@ -11,19 +18,13 @@ export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
 
   const login = async (credentials) => {
-    try {
-      const response = await axiosInstance.post('/account/me/', credentials);
-      const { access, refresh } = response.data;
+    const response = await axiosInstance.post('/account/me/', credentials);
+    const { access, user } = response.data;
 
-      localStorage.setItem('token', access);
-      localStorage.setItem('refresh', refresh);
-      setIsAuthenticated(true);
+    localStorage.setItem('token', access);
+    localStorage.setItem('id', user.id);
 
-      return response.data;
-    } catch (error) {
-      console.error('Login failed', error);
-      throw error;
-    }
+    return response.data;
   };
 
   const logout = () => {
@@ -34,7 +35,16 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, login, logout, setUserData, userData }}
+      value={{
+        isAuthenticated,
+        login,
+        logout,
+        setUserData,
+        userData,
+        activeSectionDefault,
+        handleSelectSection,
+        setIsAuthenticated,
+      }}
     >
       {children}
     </AuthContext.Provider>

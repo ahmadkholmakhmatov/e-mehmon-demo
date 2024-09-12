@@ -1,0 +1,16 @@
+.ant-dropdown .notification-menu .ant-dropdown-menu {
+  padding: 0px;
+  border-radius: 16px;
+  width: 390px;
+  overflow: hidden;
+}
+
+.ant-dropdown .notification-menu .ant-dropdown-menu .ant-dropdown-menu-item {
+  border-radius: 0;
+  padding: 16px;
+  color: #232e40;
+  font-size: medium;
+  white-space: normal;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}

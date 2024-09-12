@@ -8,7 +8,7 @@ import HeroCard from '../hero-card/HeroCard';
 
 const HeroSlider = () => {
   return (
-    <div className=" 2xl:w-[1600px] xl:w-[1440px] xl:pl-[120px] sm:w-full lg:pl-[60px] sm:pl-5 esm:pl-[10px] sm:my-0 esm:my-4 mx-auto text-white">
+    <div className=" 2xl:w-[1600px] xl:w-[1440px] xl:pl-[120px] sm:w-full lg:pl-[60px] sm:pl-5 esm:pl-[10px] sm:my-0 esm:my-4 mx-auto text-white ">
       <Swiper
         // install Swiper modules
 
@@ -36,7 +36,7 @@ const HeroSlider = () => {
         }}
         loop={true}
         modules={[Autoplay]}
-        className="lg:-mr-40 sm:-mr-40 esm:-mr-32"
+        className="lg:-mr-40 sm:-mr-40 esm:-mr-32 z-10"
       >
         <SwiperSlide>
           <HeroCard />

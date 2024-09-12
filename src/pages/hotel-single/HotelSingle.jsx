@@ -24,6 +24,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ShareButtons from '../../components/share-buttons/ShareButtons';
 import { AuthContext } from '../../utils/AuthContext';
+import { t } from 'i18next';
+import AccountDropdown from '../../components/account-dropdown/AccountDropdown';
 
 const hotels = [
   {
@@ -147,13 +149,17 @@ const HotelSingle = () => {
           <div className="login flex items-center gap-6">
             <CurrencyDropDown />
             <LanguageDropdown />
-            <button
-              className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl text-white bg-[#232E40]"
-              onClick={handleLogin}
-            >
-              <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
-              {isAuthenticated ? 'Профиль' : 'Войти'}
-            </button>
+            {isAuthenticated && <AccountDropdown />}
+
+            {!isAuthenticated && (
+              <button
+                className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
+                onClick={handleLogin}
+              >
+                <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
+                {t('header.sixWord')}
+              </button>
+            )}
           </div>
         </nav>
 

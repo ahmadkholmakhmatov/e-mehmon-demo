@@ -11,13 +11,16 @@ import CurrencyDropDown from '../../components/currency-dropdown/CurrencyDropdow
 import LanguageDropdown from '../../components/language-dropdown/LanguageDropdown';
 import SearchForm from '../../components/search-form/SearchForm';
 import { Link, useNavigate } from 'react-router-dom';
-import Video from 'yet-another-react-lightbox/plugins/video';
-import Lightbox from 'yet-another-react-lightbox';
+
 import 'yet-another-react-lightbox/styles.css';
 import { useTranslation } from 'react-i18next';
 import { useContext, useRef, useState } from 'react';
 import './home.css';
 import { AuthContext } from '../../utils/AuthContext';
+import { MdOutlineClose } from 'react-icons/md';
+import Modal from 'react-modal';
+import AccountDropdown from '../../components/account-dropdown/AccountDropdown';
+import NotificationDropdown from '../../components/notification-dropdown/NotificationDropdown';
 
 const hotels = [
   {
@@ -114,7 +117,7 @@ const Home = () => {
     navRef.current.classList.toggle('responsive_nav');
   };
 
-  const [basicExampleOpen, setBasicExampleOpen] = useState(false);
+  const [basicModal, setBasicModalOpen] = useState(false);
 
   return (
     <div className="bg-[#fafafa] overflow-hidden">
@@ -148,13 +151,17 @@ const Home = () => {
           <div className="login flex items-center gap-6">
             <CurrencyDropDown />
             <LanguageDropdown />
-            <button
-              className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
-              onClick={handleLogin}
-            >
-              <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
-              {isAuthenticated ? t('header.fifthWord') : t('header.sixWord')}
-            </button>
+            <NotificationDropdown />
+            {isAuthenticated && <AccountDropdown />}
+            {!isAuthenticated && (
+              <button
+                className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
+                onClick={handleLogin}
+              >
+                <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
+                {t('header.sixWord')}
+              </button>
+            )}
           </div>
         </nav>
 
@@ -217,40 +224,43 @@ const Home = () => {
               {t('welcomePortal')}
             </p>
             <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
-              <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] hover:bg-blue-700 hover:text-white rounded-2xl">
+              {/* <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] hover:bg-blue-700 hover:text-white rounded-2xl">
                 {t('firstButton')}
-              </button>
+              </button> */}
               <button
-                onClick={() => setBasicExampleOpen(true)}
-                className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-6 xl:py-4 esm:px-4 esm:py-3"
+                onClick={() => {
+                  setBasicModalOpen(true);
+                  console.log(basicModal);
+                }}
+                className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-0 xl:py-4 esm:px-4 esm:py-3"
               >
                 <PiPlayCircleFill className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5" />
                 {t('secondButton')}
               </button>
 
-              <Lightbox
-                render={{ buttonPrev: () => null, buttonNext: () => null }}
-                plugins={[Video]}
-                open={basicExampleOpen}
-                close={() => setBasicExampleOpen(false)}
-                carousel={{ finite: true }}
-                video={{
-                  loop: false,
-                }}
-                slides={[
-                  {
-                    type: 'video',
-
-                    sources: [
-                      {
-                        src: '/assets/video.mp4',
-                        type: 'video/mp4',
-                      },
-                    ],
-                  },
-                  // ...
-                ]}
-              />
+              <Modal
+                isOpen={basicModal}
+                onRequestClose={() => setBasicModalOpen(false)}
+                contentLabel="Video modal"
+                className="relative mx-auto my-auto w-full max-w-fit rounded-[40px] overflow-hidden outline-none z-30"
+                overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-30"
+              >
+                <div className="modal-body">
+                  <video
+                    src="/assets/video.mp4"
+                    controls
+                    controlsList="nodownload"
+                  ></video>
+                </div>
+                <button
+                  onClick={() => {
+                    setBasicModalOpen(false);
+                  }}
+                  className="absolute bg-white top-6 right-6 p-[10px] border border-[#B7BFD5]/20 rounded-2xl"
+                >
+                  <MdOutlineClose className="w-5 h-5" />
+                </button>
+              </Modal>
             </div>
           </div>
         </div>

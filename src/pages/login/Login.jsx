@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../utils/AuthContext';
 import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input } from 'antd';
 import { HiOutlineMail } from 'react-icons/hi';
 import './login.css';
@@ -9,8 +9,10 @@ import SignUp from '../../components/sign-up/SignUp';
 import { MdLockOutline } from 'react-icons/md';
 import { LuEye } from 'react-icons/lu';
 import { TbEyeClosed } from 'react-icons/tb';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
+  const { setIsAuthenticated } = useContext(AuthContext);
   const [isLogIn, setIsLogin] = useState(true);
   const [isPasswordField, setIsPasswordField] = useState(false);
   const [formData, setFormData] = useState({
@@ -18,7 +20,7 @@ const Login = () => {
     password: '',
   });
 
-  const { login, setUserData, userData } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const accountLoginMutation = useMutation({ mutationFn: login });
@@ -46,37 +48,47 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    accountLoginMutation.mutate(
-      { username: formData.email, password: formData.password },
-      {
-        onSuccess: (data) => {
-          console.log('Response from server:', data);
-          const token = localStorage.getItem('token');
-          setIsPasswordField(true);
-          const { user } = data;
-          if (user) {
-            setUserData(user); // Set userData only if user is present in the response
-          }
-          console.log('UserData after setting:', userData);
+    if (formData.email && formData.password) {
+      console.log(formData.password);
+      accountLoginMutation.mutate(
+        { username: formData.email, password: formData.password },
+        {
+          onSuccess: (data) => {
+            const { access, user } = data;
+            toast.success('Login successful! Redirecting...');
 
-          setTimeout(() => {
-            if (token !== null) {
-              navigate('/');
+            if (user) {
+              setIsPasswordField(true); // Indicate that the password field can be hidden if necessary
             }
-          }, 2000);
-          // You can do something with the response here
-        },
-        onError: (error) => {
-          console.error('Error during registration', error.message);
-        },
-      }
-    );
+
+            setIsAuthenticated(true);
+
+            setTimeout(() => {
+              if (access) {
+                navigate('/'); // Redirect to the homepage after a short delay
+              }
+            }, 1000);
+          },
+          onError: (error) => {
+            console.error(
+              'Error during login:',
+              error.response?.data.message || error.message
+            );
+            toast.error('Login failed. Please check your credentials.');
+          },
+        }
+      );
+    } else {
+      toast.error('Please enter both email and password');
+    }
   };
 
   return (
     <div className="flex bg-[#F8F8FA]">
-      <div className="basis-[35%] h-screen bg-[url('/images/heroBackground.png')] flex justify-center items-start p-[45px]">
-        <img className="w-[180px]" src="/images/logoDark.svg" alt="" />
+      <div className="basis-[35%] h-screen bg-[url('/images/heroBackground.png')] bg-cover flex justify-center items-start p-[45px]">
+        <Link to={'/'}>
+          <img className="w-[180px]" src="/images/logoDark.svg" alt="" />
+        </Link>
       </div>
       {isLogIn &&
         (!isPasswordField ? (
@@ -99,7 +111,6 @@ const Login = () => {
                 className="p-4 text-base text-[#777E90] border-none rounded-2xl mb-4"
                 placeholder="Введите адрес почты"
                 name="email"
-                type="email"
                 value={formData.email}
                 onChange={handleEmail}
                 prefix={
@@ -174,6 +185,17 @@ const Login = () => {
           </div>
         ))}
       {!isLogIn && <SignUp setIsLogin={() => setIsLogin(!isLogIn)} />}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000} // Close toast after 5 seconds
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
