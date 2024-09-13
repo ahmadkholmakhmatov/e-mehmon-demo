@@ -31,7 +31,7 @@ const SignUp = ({ setIsLogin }) => {
   const [isCodeSent, setIsCodeSent] = useState(false);
   const [isCodeCame, setIsCodeCame] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
-
+  const [isCodeReset, setIsCodeReset] = useState(false);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -57,12 +57,13 @@ const SignUp = ({ setIsLogin }) => {
     e.preventDefault();
 
     accountRegisterMutation.mutate(
-      { email },
+      { email: formData.email },
       {
         onSuccess: (data) => {
           console.log('Response from server:', data);
           setIsCodeSent(true);
           setIsCodeCame(true);
+          setIsCodeReset(false);
         },
         onError: (error) => {
           console.error(
@@ -160,7 +161,7 @@ const SignUp = ({ setIsLogin }) => {
 
   const onTimeChange = (val) => {
     if (typeof val === 'number' && 4.95 * 1000 < val && val < 5 * 1000) {
-      console.log('changed!');
+      setIsCodeReset(true);
     }
   };
 
@@ -210,21 +211,30 @@ const SignUp = ({ setIsLogin }) => {
               Подтверждение почты
             </h1>
             <p className="text-[18px] text-[#777E90]">
-              Код подтверждения был отправлен на электронный адрес
+              Код подтверждения был отправлен на электронный адрес{' '}
               {formData.email}
             </p>
           </div>
           <form className="w-[46%] mb-6" onSubmit={handleSentCode}>
             <Input.OTP className="border-none" length={4} {...sharedProps} />
-            <div className="flex justify-center items-center mb-0.5 text-sm text-[#777E90] font-medium">
-              <LuRefreshCw className="w-[14px] h-[14px] mr-[3px]" /> Запросить
-              код еще раз через
-              <Countdown
-                value={Date.now() + 2 * 60 * 1000}
-                format="mm:ss"
-                onChange={onTimeChange}
-              />
-            </div>
+            {!isCodeReset ? (
+              <div className="flex justify-center items-center my-2 text-sm text-[#777E90] font-medium">
+                <LuRefreshCw className="w-[14px] h-[14px] mr-[3px]" /> Запросить
+                код еще раз через
+                <Countdown
+                  value={Date.now() + 2 * 60 * 1000}
+                  format="mm:ss"
+                  onChange={onTimeChange}
+                />
+              </div>
+            ) : (
+              <div className="my-[23px] flex justify-center">
+                <button className="text-[#3276FF]" onClick={handleSubmit}>
+                  New Code
+                </button>
+              </div>
+            )}
+
             <button
               disabled={!formData.code}
               type="submit"
