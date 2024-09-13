@@ -29,12 +29,11 @@ const PersonalData = ({ setActiveDetail }) => {
   const getUserData = useCallback(async () => {
     try {
       const response = await axiosInstance.get(`account/users/${id}/`);
-      console.log(response.data);
       setUser(response.data);
       setUserData(response.data);
       setIsAvatarAvailable(response.data.avatar !== 'users/default.png');
     } catch (error) {
-      console.error('Login failed', error);
+      console.error(error);
     }
   }, [id, setUserData]);
 

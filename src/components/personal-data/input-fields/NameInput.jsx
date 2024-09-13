@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axiosInstance from '../../../utils/axiosInstance';
 import { LuPencilLine } from 'react-icons/lu';
 import { FaRegCircleCheck } from 'react-icons/fa6';
+import { toast, ToastContainer } from 'react-toastify';
 
 const NameInput = ({ user, onUploadSuccess }) => {
   //input field visible
@@ -26,68 +27,82 @@ const NameInput = ({ user, onUploadSuccess }) => {
       onUploadSuccess();
       setFirstName('');
       setLastName('');
-      console.log(response);
+
+      toast.success(response.status && 'Name changed');
     } catch (error) {
-      console.error('Login failed', error);
+      console.error('Error', error);
       throw error;
     }
   };
   return (
-    <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
-      <div className="flex">
-        <div className="font-medium w-[180px] mr-6">Имя</div>
-        {!isInputName ? (
-          <div>
-            <span>{user.first_name ? user.first_name : 'Enter name'}</span>{' '}
-            <span>{user.last_name ? user.last_name : 'Enter lastname'}</span>
-          </div>
-        ) : (
-          <div>
-            <input
-              type="text"
-              placeholder="Имя"
-              className="mr-6 bg-[#F8F8FA] p-4 outline-none rounded-2xl"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <input
-              type="text"
-              className="bg-[#F8F8FA] p-4 outline-none rounded-2xl"
-              placeholder="Фамилья"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
+    <>
+      <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
+        <div className="flex">
+          <div className="font-medium w-[180px] mr-6">Имя</div>
+          {!isInputName ? (
+            <div>
+              <span>{user.first_name ? user.first_name : 'Enter name'}</span>{' '}
+              <span>{user.last_name ? user.last_name : 'Enter lastname'}</span>
+            </div>
+          ) : (
+            <div>
+              <input
+                type="text"
+                placeholder="Имя"
+                className="mr-6 bg-[#F8F8FA] p-4 outline-none rounded-2xl"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <input
+                type="text"
+                className="bg-[#F8F8FA] p-4 outline-none rounded-2xl"
+                placeholder="Фамилья"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+          )}
+        </div>
+
+        {!isInputName && (
+          <button
+            onClick={() => setIsInputName(true)}
+            className="hover:scale-110"
+          >
+            <span className="flex gap-2 items-center text-[#3276FF] text-sm">
+              <LuPencilLine /> Изменить
+            </span>
+          </button>
+        )}
+
+        {isInputName && (
+          <button
+            onClick={handleName}
+            className={`hover:scale-110 ${
+              !firstName || !lastName
+                ? 'text-[#777E90] text-sm cursor-not-allowed'
+                : 'text-[#4DD282] '
+            }`}
+            disabled={!firstName || !lastName} // Disable the button if either field is empty
+          >
+            <span className="flex gap-2 items-center ">
+              <FaRegCircleCheck /> Сохранить
+            </span>
+          </button>
         )}
       </div>
-
-      {!isInputName && (
-        <button
-          onClick={() => setIsInputName(true)}
-          className="hover:scale-110"
-        >
-          <span className="flex gap-2 items-center text-[#3276FF] text-sm">
-            <LuPencilLine /> Изменить
-          </span>
-        </button>
-      )}
-
-      {isInputName && (
-        <button
-          onClick={handleName}
-          className={`hover:scale-110 ${
-            !firstName || !lastName
-              ? 'text-[#777E90] text-sm cursor-not-allowed'
-              : 'text-[#4DD282] '
-          }`}
-          disabled={!firstName || !lastName} // Disable the button if either field is empty
-        >
-          <span className="flex gap-2 items-center ">
-            <FaRegCircleCheck /> Сохранить
-          </span>
-        </button>
-      )}
-    </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000} // Close toast after 5 seconds
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ import { BsArrowRepeat } from 'react-icons/bs';
 import { FiMinusCircle } from 'react-icons/fi';
 import { FiPlusCircle } from 'react-icons/fi';
 import { LuPencilLine } from 'react-icons/lu';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AvatarEditUploader = ({ onUploadSuccess }) => {
   const [image, setImage] = useState(null);
@@ -61,7 +62,7 @@ const AvatarEditUploader = ({ onUploadSuccess }) => {
           }
         );
 
-        console.log('Image uploaded successfully:', response.data);
+        toast.success(response.status && 'Avatar successfully changed');
 
         setIsModalEditOpen(false);
         if (onUploadSuccess) {
@@ -92,10 +93,10 @@ const AvatarEditUploader = ({ onUploadSuccess }) => {
           },
         }
       );
-      console.log(response);
+      toast.success(response && 'Avatar deleted');
       setIsModalDeleteOpen(false);
       if (onUploadSuccess) {
-        onUploadSuccess(); // Trigger the callback to refresh data
+        onUploadSuccess();
       }
     } catch (error) {
       if (error.response) {
@@ -126,130 +127,182 @@ const AvatarEditUploader = ({ onUploadSuccess }) => {
   };
 
   return (
-    <div>
-      <div className="flex gap-4">
-        <button
-          onClick={() => setIsModalEditOpen(true)}
-          className="hover:scale-110 text-sm"
+    <>
+      <div>
+        <div className="flex gap-4">
+          <button
+            onClick={() => setIsModalEditOpen(true)}
+            className="hover:scale-110 text-sm"
+          >
+            <span className="flex gap-2 items-center text-[#3276FF]">
+              <LuPencilLine /> Изменить
+            </span>
+          </button>
+
+          <button
+            onClick={() => setIsModalDeleteOpen(true)}
+            className="hover:scale-110 text-sm"
+          >
+            <span className="flex items-center gap-2 text-[#FF4E4E]">
+              <MdOutlineDeleteOutline /> Удалить
+            </span>
+          </button>
+        </div>
+
+        <Modal
+          isOpen={isModalEditOpen}
+          onRequestClose={handleClose}
+          contentLabel="Avatar Editor"
+          className="relative mx-auto my-auto w-full max-w-fit p-10 bg-white rounded-[40px] outline-none"
+          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
         >
-          <span className="flex gap-2 items-center text-[#3276FF]">
-            <LuPencilLine /> Изменить
-          </span>
-        </button>
-
-        <button
-          onClick={() => setIsModalDeleteOpen(true)}
-          className="hover:scale-110 text-sm"
-        >
-          <span className="flex items-center gap-2 text-[#FF4E4E]">
-            <MdOutlineDeleteOutline /> Удалить
-          </span>
-        </button>
-      </div>
-
-      <Modal
-        isOpen={isModalEditOpen}
-        onRequestClose={handleClose}
-        contentLabel="Avatar Editor"
-        className="relative mx-auto my-auto w-full max-w-fit p-10 bg-white rounded-[40px] outline-none"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-      >
-        {!image ? (
-          <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
-            {({ getRootProps, getInputProps }) => (
-              <div
-                {...getRootProps()}
-                className="flex flex-col gap-8 items-center cursor-pointer"
-              >
-                <input {...getInputProps()} />
-                <div className="p-[118px] bg-[#F8F8FA] border-dashed border-[#3276FF] border-[1.5px] rounded-2xl">
-                  <RxImage className="text-[#B7BFD5] w-16 h-16" />
-                </div>
-                <div>
-                  <p className="text-[#232E40] text-2xl font-bold text-center mb-4">
-                    Обновление фото профиля
-                  </p>
-
-                  <p className="text-[#777E90] w-[486px] text-center">
-                    Вы можете добавлять изображения в следующих форматах: .jpg,
-                    .png, .jpeg. Допустимый размер 10 MB
-                  </p>
-                </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleClose();
-                  }}
-                  className="absolute top-6 right-6 p-[10px] border border-[#B7BFD5]/20 rounded-2xl"
+          {!image ? (
+            <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
+              {({ getRootProps, getInputProps }) => (
+                <div
+                  {...getRootProps()}
+                  className="flex flex-col gap-8 items-center cursor-pointer"
                 >
-                  <MdOutlineClose className="w-5 h-5" />
+                  <input {...getInputProps()} />
+                  <div className="p-[118px] bg-[#F8F8FA] border-dashed border-[#3276FF] border-[1.5px] rounded-2xl">
+                    <RxImage className="text-[#B7BFD5] w-16 h-16" />
+                  </div>
+                  <div>
+                    <p className="text-[#232E40] text-2xl font-bold text-center mb-4">
+                      Обновление фото профиля
+                    </p>
+
+                    <p className="text-[#777E90] w-[486px] text-center">
+                      Вы можете добавлять изображения в следующих форматах:
+                      .jpg, .png, .jpeg. Допустимый размер 10 MB
+                    </p>
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleClose();
+                    }}
+                    className="absolute top-6 right-6 p-[10px] border border-[#B7BFD5]/20 rounded-2xl"
+                  >
+                    <MdOutlineClose className="w-5 h-5" />
+                  </button>
+                </div>
+              )}
+            </Dropzone>
+          ) : (
+            <div className="text-center">
+              <div className="rounded-2xl overflow-hidden">
+                <AvatarEditor
+                  ref={editorRef}
+                  image={image}
+                  width={300}
+                  height={300}
+                  border={0}
+                  borderRadius={250}
+                  color={[255, 255, 255, 0.6]} // RGBA
+                  scale={scale}
+                  className="mx-auto rounded-2xl"
+                />
+              </div>
+
+              <div className="mx-auto my-4 w-[300px] flex items-center justify-between">
+                <button
+                  onClick={() =>
+                    setScale((prevScale) => Math.max(1, prevScale - 0.05))
+                  }
+                  className="mr-6"
+                >
+                  <FiMinusCircle className="w-6 h-6" />
+                </button>
+                <input
+                  type="range"
+                  value={scale}
+                  min="1"
+                  max="2"
+                  step="0.001"
+                  onChange={handleScaleChange}
+                  className="w-full mx-2 text-[#B7BFD5]"
+                />
+                <button
+                  onClick={() =>
+                    setScale((prevScale) => Math.min(2, prevScale + 0.05))
+                  }
+                  className="ml-6"
+                >
+                  <FiPlusCircle className="w-6 h-6" />
                 </button>
               </div>
-            )}
-          </Dropzone>
-        ) : (
-          <div className="text-center">
-            <div className="rounded-2xl overflow-hidden">
-              <AvatarEditor
-                ref={editorRef}
-                image={image}
-                width={300}
-                height={300}
-                border={0}
-                borderRadius={250}
-                color={[255, 255, 255, 0.6]} // RGBA
-                scale={scale}
-                className="mx-auto rounded-2xl"
-              />
-            </div>
 
-            <div className="mx-auto my-4 w-[300px] flex items-center justify-between">
-              <button
-                onClick={() =>
-                  setScale((prevScale) => Math.max(1, prevScale - 0.05))
-                }
-                className="mr-6"
-              >
-                <FiMinusCircle className="w-6 h-6" />
+              <button onClick={handleReplaceImage}>
+                <span className="flex items-center gap-2 text-[#3276FF] font-medium mb-8">
+                  <BsArrowRepeat />
+                  Заменить фотографию
+                </span>
               </button>
-              <input
-                type="range"
-                value={scale}
-                min="1"
-                max="2"
-                step="0.001"
-                onChange={handleScaleChange}
-                className="w-full mx-2 text-[#B7BFD5]"
-              />
+
+              <div>
+                <p className="text-[#232E40] text-2xl font-bold text-center mb-4">
+                  Обновление фото профиля
+                </p>
+
+                <p className="text-[#777E90] w-[486px] text-center">
+                  Вы можете добавлять изображения в следующих форматах: .jpg,
+                  .png, .jpeg. Допустимый размер 10 MB
+                </p>
+              </div>
+
+              <div className="mt-8 flex gap-8 font-medium">
+                <button
+                  onClick={handleClose}
+                  className="py-4 w-full bg-[#F8F8FA] text-[#232E40] rounded-2xl hover:bg-gray-200"
+                >
+                  Отмена
+                </button>
+
+                <button
+                  onClick={handleSave}
+                  className="py-4 w-full bg-[#3276FF] text-white rounded-2xl hover:bg-blue-600"
+                >
+                  Сохранить
+                </button>
+              </div>
+
               <button
-                onClick={() =>
-                  setScale((prevScale) => Math.min(2, prevScale + 0.05))
-                }
-                className="ml-6"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClose();
+                }}
+                className="absolute top-6 right-6 p-[10px] border border-[#B7BFD5]/20 rounded-2xl"
               >
-                <FiPlusCircle className="w-6 h-6" />
+                <MdOutlineClose className="w-5 h-5" />
               </button>
             </div>
+          )}
+        </Modal>
 
-            <button onClick={handleReplaceImage}>
-              <span className="flex items-center gap-2 text-[#3276FF] font-medium mb-8">
-                <BsArrowRepeat />
-                Заменить фотографию
-              </span>
-            </button>
+        <Modal
+          isOpen={isModalDeleteOpen}
+          onRequestClose={handleClose}
+          contentLabel="Avatar Editor"
+          className="relative mx-auto my-auto w-full max-w-fit p-10 bg-white rounded-[40px] outline-none"
+          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+        >
+          <div className="flex flex-col items-center gap-8">
+            <div className="p-4 bg-[#F8F8FA] rounded-3xl">
+              <MdOutlineDeleteOutline className="w-12 h-12" />
+            </div>
 
-            <div>
-              <p className="text-[#232E40] text-2xl font-bold text-center mb-4">
-                Обновление фото профиля
+            <div className="text-center">
+              <p className="text-[#232E40] text-2xl font-bold mb-4">
+                Удаление фотографии
               </p>
-
-              <p className="text-[#777E90] w-[486px] text-center">
-                Вы можете добавлять изображения в следующих форматах: .jpg,
-                .png, .jpeg. Допустимый размер 10 MB
+              <p className="w-[486px] text-[#777E90]">
+                Вы действительно хотите удалить фотографию профиля от своего
+                аккаунта?
               </p>
             </div>
 
-            <div className="mt-8 flex gap-8 font-medium">
+            <div className="flex w-full gap-8 font-medium">
               <button
                 onClick={handleClose}
                 className="py-4 w-full bg-[#F8F8FA] text-[#232E40] rounded-2xl hover:bg-gray-200"
@@ -258,10 +311,10 @@ const AvatarEditUploader = ({ onUploadSuccess }) => {
               </button>
 
               <button
-                onClick={handleSave}
-                className="py-4 w-full bg-[#3276FF] text-white rounded-2xl hover:bg-blue-600"
+                onClick={handleDelete}
+                className="py-4 w-full bg-[#FF4E4E] text-white rounded-2xl hover:bg-red1-600"
               >
-                Сохранить
+                Удалить
               </button>
             </div>
 
@@ -275,59 +328,20 @@ const AvatarEditUploader = ({ onUploadSuccess }) => {
               <MdOutlineClose className="w-5 h-5" />
             </button>
           </div>
-        )}
-      </Modal>
-
-      <Modal
-        isOpen={isModalDeleteOpen}
-        onRequestClose={handleClose}
-        contentLabel="Avatar Editor"
-        className="relative mx-auto my-auto w-full max-w-fit p-10 bg-white rounded-[40px] outline-none"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-      >
-        <div className="flex flex-col items-center gap-8">
-          <div className="p-4 bg-[#F8F8FA] rounded-3xl">
-            <MdOutlineDeleteOutline className="w-12 h-12" />
-          </div>
-
-          <div className="text-center">
-            <p className="text-[#232E40] text-2xl font-bold mb-4">
-              Удаление фотографии
-            </p>
-            <p className="w-[486px] text-[#777E90]">
-              Вы действительно хотите удалить фотографию профиля от своего
-              аккаунта?
-            </p>
-          </div>
-
-          <div className="flex w-full gap-8 font-medium">
-            <button
-              onClick={handleClose}
-              className="py-4 w-full bg-[#F8F8FA] text-[#232E40] rounded-2xl hover:bg-gray-200"
-            >
-              Отмена
-            </button>
-
-            <button
-              onClick={handleDelete}
-              className="py-4 w-full bg-[#FF4E4E] text-white rounded-2xl hover:bg-red1-600"
-            >
-              Удалить
-            </button>
-          </div>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleClose();
-            }}
-            className="absolute top-6 right-6 p-[10px] border border-[#B7BFD5]/20 rounded-2xl"
-          >
-            <MdOutlineClose className="w-5 h-5" />
-          </button>
-        </div>
-      </Modal>
-    </div>
+        </Modal>
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000} // Close toast after 5 seconds
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 };
 

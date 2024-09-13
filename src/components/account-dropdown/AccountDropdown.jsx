@@ -53,7 +53,6 @@ const AccountDropdown = () => {
   const getUserData = useCallback(async () => {
     try {
       const response = await axiosInstance.get(`account/users/${id}/`);
-      console.log(response.data);
       setUser(response.data);
       setUserData(userData);
     } catch (error) {
