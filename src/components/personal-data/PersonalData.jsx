@@ -1,7 +1,7 @@
 // src/components/PersonalData.js
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa6';
-import { LuBellRing, LuPencilLine, LuSettings2 } from 'react-icons/lu';
+import { LuBellRing, LuSettings2 } from 'react-icons/lu';
 import { MdLockOutline } from 'react-icons/md';
 import { TbCreditCard } from 'react-icons/tb';
 
@@ -14,6 +14,7 @@ import GenderInput from './input-fields/GenderInput';
 import PassportDataForm from './input-fields/PassportDataForm';
 import PhoneNumberInput from './input-fields/PhoneNumberInput';
 import { AuthContext } from '../../utils/AuthContext';
+import EmailInput from './input-fields/EmailInput';
 
 const PersonalData = ({ setActiveDetail }) => {
   const [user, setUser] = useState({});
@@ -136,18 +137,7 @@ const PersonalData = ({ setActiveDetail }) => {
 
           <UsernameInput user={user} onUploadSuccess={handleInputField} />
 
-          <div className="flex mb-6 pb-6 border-b border-[#F8F8FA] justify-between">
-            <div className="flex">
-              <div className="font-medium w-[180px] mr-6">Email</div>
-              <div>{user.email}</div>
-            </div>
-
-            <button className="hover:scale-110">
-              <span className="flex gap-2 items-center text-[#3276FF]">
-                <LuPencilLine /> Изменить
-              </span>
-            </button>
-          </div>
+          <EmailInput user={user} onUploadSuccess={handleInputField} />
 
           <PhoneNumberInput user={user} onUploadSuccess={handleInputField} />
 
