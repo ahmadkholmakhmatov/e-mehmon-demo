@@ -111,9 +111,7 @@ const PassportDataForm = ({ user, onUploadSuccess }) => {
         {!isInput ? (
           <div>
             {!user.passport_sn ? (
-              <span className="text-[#777E90]">
-                Укажите имя, которое будет отображаться на сайте
-              </span>
+              <span className="text-[#777E90]">Не указано</span>
             ) : (
               user.passport_sn
             )}
