@@ -26,7 +26,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel1.png',
+    imgSrc: '/assets/places/hotel1.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -35,7 +35,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel2.png',
+    imgSrc: '/assets/places/hotel2.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -44,7 +44,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel3.png',
+    imgSrc: '/assets/places/hotel3.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -53,7 +53,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel4.png',
+    imgSrc: '/assets/places/hotel4.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -63,7 +63,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel3.png',
+    imgSrc: '/assets/places/hotel3.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -72,7 +72,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel4.png',
+    imgSrc: '/assets/places/hotel4.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -81,7 +81,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel1.png',
+    imgSrc: '/assets/places/hotel1.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -90,7 +90,7 @@ const hotels = [
     name: 'Hotel Neptun Tashkent Pool&Spa',
     address: '8 ул. Лянгар, Ташкент',
     price: 120,
-    imgSrc: '/assets/places/hotel2.png',
+    imgSrc: '/assets/places/hotel2.webp',
     rating: 8.9,
     status: 'Популярно',
   },
@@ -119,7 +119,7 @@ const Home = () => {
 
   return (
     <div className="bg-[#fafafa] overflow-hidden">
-      <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] sm:h-[680px] esm:h-[550px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
+      <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] sm:h-[680px] esm:h-[550px] text-white bg-[url('/images/heroBackground.webp')] bg-no-repeat bg-cover">
         <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
           <Link to="/">
             <img
@@ -293,7 +293,7 @@ const Home = () => {
             <div className="xl:w-[453px] xl:h-[644px] xl:ml-[85px] lg:w-[323px] lg:h-[460px] lg:ml-[60px] md:w-[80%] md:h-[400px] esm:h-[380px] esm:w-[86%] lg:mx-0 esm:mx-auto rounded-3xl overflow-hidden">
               <img
                 className="w-full h-full object-cover"
-                src="/images/img.png"
+                src="/images/img.webp"
                 alt=""
               />
             </div>
@@ -301,7 +301,7 @@ const Home = () => {
             <div className="absolute left-0 xl:bottom-[90px] xl:w-[364px] xl:h-64 lg:bottom-[64px] lg:w-[260px] lg:h-[182px] esm:bottom-[15%] md:w-[260px] md:h-[182px] esm:w-[186px] esm:h-[142px] rounded-3xl border-[10px] border-l-0 border-[#F8F8FA] overflow-hidden ">
               <img
                 className="w-full h-full object-cover "
-                src="/images/img2.png"
+                src="/images/img2.webp"
                 alt=""
               />
             </div>
@@ -310,7 +310,7 @@ const Home = () => {
               <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 esm:w-6 esm:h-6 overflow-hidden rounded-full">
                 <img
                   className="xl:w-[140%] xl:h-[140%] esm:w-[120%] esm:h-[120%] object-cover"
-                  src="/assets/avatar/a1.png"
+                  src="/assets/avatar/a1.webp"
                   alt=""
                 />
               </div>
@@ -353,7 +353,7 @@ const Home = () => {
               <div className="xl:w-[44px] xl:h-[44px] lg:w-8 lg:h-8 esm:w-6 esm:h-6 overflow-hidden rounded-full">
                 <img
                   className="xl:w-[140%] xl:h-[140%] md:w-[120%] md:h-[120%] object-cover"
-                  src="/assets/avatar/a2.png"
+                  src="/assets/avatar/a2.webp"
                   alt=""
                 />
               </div>

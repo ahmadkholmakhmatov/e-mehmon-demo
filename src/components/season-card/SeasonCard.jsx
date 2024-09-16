@@ -7,7 +7,7 @@ const SeasonCard = () => {
         </div>
         <img
           className="w-full h-full object-cover"
-          src="/assets/places/n1.png"
+          src="/assets/places/n1.webp"
           alt=""
         />
       </div>

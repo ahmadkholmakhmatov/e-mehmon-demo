@@ -15,7 +15,7 @@ const WelcomeTeam = () => {
         </button>
       </div>
 
-      <div className="flex-grow flex-shrink-0 lg:basis-[50%] lg:inline-block esm:hidden bg-[url('/images/image.png')] bg-cover"></div>
+      <div className="flex-grow flex-shrink-0 lg:basis-[50%] lg:inline-block esm:hidden bg-[url('/images/image.webp')] bg-cover"></div>
     </div>
   );
 };
