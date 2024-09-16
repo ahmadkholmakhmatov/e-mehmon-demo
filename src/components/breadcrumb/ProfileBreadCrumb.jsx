@@ -15,7 +15,7 @@ const ProfileBreadCrumb = ({ activeSection, activeDetail, onBack }) => {
 
   const detailNames = {
     personal: 'Персональные данные',
-    notification: 'Предпочтения',
+    preferences: 'Предпочтения',
     // Add other details if needed
   };
 

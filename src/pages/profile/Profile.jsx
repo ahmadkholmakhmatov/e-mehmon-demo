@@ -3,7 +3,6 @@ import { AuthContext } from '../../utils/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import CurrencyDropDown from '../../components/currency-dropdown/CurrencyDropdown';
 import LanguageDropdown from '../../components/language-dropdown/LanguageDropdown';
-import { LiaUserCircleSolid } from 'react-icons/lia';
 import { FaTimes } from 'react-icons/fa';
 import { FaBars } from 'react-icons/fa6';
 import Footer from '../../components/footer/Footer';
@@ -71,7 +70,26 @@ const Profile = () => {
                 className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
                 onClick={handleLogin}
               >
-                <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
+                <svg
+                  className="xl:w-6 xl:h-6 lg:w-5 lg:h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M7.5 17C9.8317 14.5578 14.1432 14.4428 16.5 17M14.4951 9.5C14.4951 10.8807 13.3742 12 11.9915 12C10.6089 12 9.48797 10.8807 9.48797 9.5C9.48797 8.11929 10.6089 7 11.9915 7C13.3742 7 14.4951 8.11929 14.4951 9.5Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
                 {t('header.sixWord')}
               </button>
             )}
@@ -116,7 +134,26 @@ const Profile = () => {
                 className="flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40] text-white"
                 onClick={handleLogin}
               >
-                <LiaUserCircleSolid className="w-6 h-6" />
+                <svg
+                  className="xl:w-6 xl:h-6 lg:w-5 lg:h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M7.5 17C9.8317 14.5578 14.1432 14.4428 16.5 17M14.4951 9.5C14.4951 10.8807 13.3742 12 11.9915 12C10.6089 12 9.48797 10.8807 9.48797 9.5C9.48797 8.11929 10.6089 7 11.9915 7C13.3742 7 14.4951 8.11929 14.4951 9.5Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
                 {isAuthenticated ? 'Профиль' : 'Войти'}
               </button>
               <button className="nav-btn close-btn p-0" onClick={showNavbar}>

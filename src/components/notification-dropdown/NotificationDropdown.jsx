@@ -108,14 +108,14 @@ const NotificationDropdown = () => {
           viewBox="0 0 18 20"
         >
           <path
-            stroke="#fff"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="1.5"
             d="M1.109 12.307c-.177 1.162.615 1.968 1.585 2.37 3.719 1.54 8.894 1.54 12.613 0 .97-.402 1.763-1.208 1.585-2.37-.108-.714-.647-1.308-1.046-1.889-.523-.77-.575-1.609-.575-2.502 0-3.452-2.807-6.25-6.27-6.25-3.464 0-6.271 2.798-6.271 6.25 0 .893-.052 1.733-.575 2.502-.399.581-.937 1.175-1.046 1.89z"
           ></path>
           <path
-            stroke="#fff"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="1.5"
