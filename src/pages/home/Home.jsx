@@ -269,6 +269,7 @@ const Home = () => {
                     src="/assets/video.mp4"
                     controls
                     controlsList="nodownload"
+                    preload="auto"
                   ></video>
                 </div>
                 <button
