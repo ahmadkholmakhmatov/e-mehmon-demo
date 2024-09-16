@@ -119,7 +119,7 @@ const Home = () => {
 
   return (
     <div className="bg-[#fafafa] overflow-hidden">
-      <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] sm:h-[680px] esm:h-[550px] text-white bg-[url('/images/heroBackground.webp')] bg-no-repeat bg-cover">
+      <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] sm:h-[680px] esm:h-[550px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
         <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
           <Link to="/">
             <img
