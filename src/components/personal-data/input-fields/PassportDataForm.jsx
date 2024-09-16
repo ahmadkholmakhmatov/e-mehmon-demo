@@ -4,7 +4,7 @@ import { LuPencilLine } from 'react-icons/lu';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import { Select } from 'antd';
 import './passportDataForm.css';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const PassportDataForm = ({ user, onUploadSuccess }) => {
   const [firstName, setFirstName] = useState('');
@@ -300,17 +300,6 @@ const PassportDataForm = ({ user, onUploadSuccess }) => {
           </button>
         )}
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000} // Close toast after 5 seconds
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 };

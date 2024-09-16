@@ -5,7 +5,7 @@ import axiosInstance from '../../../utils/axiosInstance';
 import { LuPencilLine } from 'react-icons/lu';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import './phoneNumberInput.css';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function PhoneNumberInput({ user, onUploadSuccess }) {
   const [isInput, setIsInput] = useState(null);
@@ -85,17 +85,6 @@ function PhoneNumberInput({ user, onUploadSuccess }) {
           </button>
         )}
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000} // Close toast after 5 seconds
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 }

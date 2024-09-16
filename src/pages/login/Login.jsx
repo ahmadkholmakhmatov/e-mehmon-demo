@@ -9,7 +9,7 @@ import SignUp from '../../components/sign-up/SignUp';
 import { MdLockOutline } from 'react-icons/md';
 import { LuEye } from 'react-icons/lu';
 import { TbEyeClosed } from 'react-icons/tb';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const { setIsAuthenticated } = useContext(AuthContext);
@@ -185,17 +185,6 @@ const Login = () => {
           </div>
         ))}
       {!isLogIn && <SignUp setIsLogin={() => setIsLogin(!isLogIn)} />}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000} // Close toast after 5 seconds
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };

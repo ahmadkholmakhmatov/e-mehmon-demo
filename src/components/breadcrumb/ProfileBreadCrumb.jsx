@@ -52,7 +52,9 @@ const ProfileBreadCrumb = ({ activeSection, activeDetail, onBack }) => {
           >
             {item.name}
           </button>
-          {index < breadcrumbItems.length - 1 && <span> &gt; </span>}
+          {index < breadcrumbItems.length - 1 && (
+            <span className="important-text"> &gt; </span>
+          )}
         </span>
       ))}
     </nav>
