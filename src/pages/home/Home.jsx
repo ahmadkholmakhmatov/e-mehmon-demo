@@ -1,4 +1,3 @@
-import { PiPlayCircleFill } from 'react-icons/pi';
 import { LiaUserCircleSolid } from 'react-icons/lia';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import HotelList from '../../components/hotel-list/HotelList';
@@ -17,7 +16,6 @@ import { useTranslation } from 'react-i18next';
 import { useContext, useRef, useState } from 'react';
 import './home.css';
 import { AuthContext } from '../../utils/AuthContext';
-import { MdOutlineClose } from 'react-icons/md';
 import Modal from 'react-modal';
 import AccountDropdown from '../../components/account-dropdown/AccountDropdown';
 import NotificationDropdown from '../../components/notification-dropdown/NotificationDropdown';
@@ -148,7 +146,7 @@ const Home = () => {
               <li className="xl:text-sm lg:text-xs">{t('header.forthWord')}</li>
             </a>
           </ul>
-          <div className="login flex items-center gap-6">
+          <div className="login flex items-center gap-6 text-white">
             <CurrencyDropDown />
             <LanguageDropdown />
             <NotificationDropdown />
@@ -224,9 +222,6 @@ const Home = () => {
               {t('welcomePortal')}
             </p>
             <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
-              {/* <button className="xl:px-6 xl:py-4 esm:px-4 esm:py-3 bg-[#3276FF] hover:bg-blue-700 hover:text-white rounded-2xl">
-                {t('firstButton')}
-              </button> */}
               <button
                 onClick={() => {
                   setBasicModalOpen(true);
@@ -234,7 +229,11 @@ const Home = () => {
                 }}
                 className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-0 xl:py-4 esm:px-4 esm:py-3"
               >
-                <PiPlayCircleFill className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5" />
+                <img
+                  src="/assets/icons/play.svg"
+                  className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5"
+                  alt=""
+                />
                 {t('secondButton')}
               </button>
 
@@ -258,7 +257,11 @@ const Home = () => {
                   }}
                   className="absolute bg-white top-6 right-6 p-[10px] border border-[#B7BFD5]/20 rounded-2xl"
                 >
-                  <MdOutlineClose className="w-5 h-5" />
+                  <img
+                    src="/assets/icons/cancel.svg"
+                    className="sm:w-6 sm:h-6 lg:w-5 lg:h-5 esm:w-5 esm:h-5 text-[#777E90]"
+                    alt=""
+                  />
                 </button>
               </Modal>
             </div>

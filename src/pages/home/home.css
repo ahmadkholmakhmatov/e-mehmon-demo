@@ -6,6 +6,7 @@ header {
   padding: 0 2rem;
   background-color: var(--mainColor);
   color: var(--textColor);
+  font-display: swap;
 }
 
 .h-mobile-nav a {

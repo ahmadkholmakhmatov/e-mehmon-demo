@@ -1,6 +1,5 @@
 import { Tabs, DatePicker, Select } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { LuSearch } from 'react-icons/lu';
 import { useState } from 'react';
 import { PiCalendarDotsLight } from 'react-icons/pi';
 import './searchForm.css';
@@ -111,7 +110,25 @@ const SearchForm = () => {
             className="hover:scale-105 transition-transform duration-500 lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] h-14 flex items-center justify-center gap-2 px-0 sm:px-2 bg-[#3276FF] text-white rounded-2xl cursor-pointer"
             type="submit"
           >
-            <LuSearch className="xl:w-6 xl:h-6 lg:w-4 lg:h-4 esm:w-4 esm:h-4" />
+            <svg
+              className="xl:w-6 xl:h-6 lg:w-4 lg:h-4 esm:w-4 esm:h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="#fff"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M17.5 17.5L22 22"
+              ></path>
+              <path
+                stroke="#fff"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M20 11a9 9 0 10-18 0 9 9 0 0018 0z"
+              ></path>
+            </svg>
             Начать поиск
           </button>
         </form>
