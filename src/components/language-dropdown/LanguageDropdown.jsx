@@ -11,14 +11,20 @@ const LanguageModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [language, setLanguage] = useState('');
   const { i18n } = useTranslation();
+  const savedLanguage = localStorage.getItem('i18nextLng');
 
   useEffect(() => {
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+    }
+
+    // Update the UI based on the current language
     if (i18n.language === 'en') {
       setLanguage('English');
     } else if (i18n.language === 'ru') {
       setLanguage('Русский');
     }
-  }, [i18n.language]);
+  }, [i18n, i18n.language, savedLanguage]);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -30,6 +36,7 @@ const LanguageModal = () => {
 
   const selectLanguage = (key) => {
     i18n.changeLanguage(key);
+    localStorage.setItem('i18nextLng', key);
     setIsModalOpen(false);
   };
 
@@ -69,7 +76,7 @@ const LanguageModal = () => {
             </h3>
             <div className="grid grid-cols-5 gap-4">
               <button
-                className="p-4 border border-[#FFFFFF] hover:border hover:border-[#3276FF] rounded-lg group"
+                className={`p-4 border  hover:border hover:border-[#3276FF] rounded-lg group ${savedLanguage === 'ru' ? 'border-grey-400' : 'border-[#FFFFFF]'}`}
                 onClick={() => selectLanguage('ru')}
               >
                 <span className="flex items-center gap-2 font-medium group-hover:text-[#3276FF]">
@@ -79,7 +86,7 @@ const LanguageModal = () => {
               </button>
 
               <button
-                className="p-4 border border-[#FFFFFF] hover:border hover:border-[#3276FF] rounded-lg group"
+                className={`p-4 border  hover:border hover:border-[#3276FF] rounded-lg group ${savedLanguage === 'en' ? 'border-grey-400' : 'border-[#FFFFFF]'}`}
                 onClick={() => selectLanguage('en')}
               >
                 <span className="flex items-center gap-2 font-medium group-hover:text-[#3276FF]">

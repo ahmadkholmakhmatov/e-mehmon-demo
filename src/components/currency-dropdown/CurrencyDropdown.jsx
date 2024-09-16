@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useCurrency } from '../../utils/CurrencyContext';
@@ -10,6 +10,13 @@ Modal.setAppElement('#root');
 const CurrencyDropDown = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { currency, setCurrency } = useCurrency();
+  const savedCurreny = localStorage.getItem('curreny');
+
+  useEffect(() => {
+    if (savedCurreny) {
+      setCurrency(savedCurreny);
+    }
+  }, [setCurrency, savedCurreny]);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -21,6 +28,7 @@ const CurrencyDropDown = () => {
 
   const selectCurrency = (key) => {
     setCurrency(key);
+    localStorage.setItem('currency', key);
     closeModal();
   };
 
@@ -65,7 +73,7 @@ const CurrencyDropDown = () => {
             </h3>
             <div className="grid grid-cols-5 gap-4 text-[#3276FF]">
               <button
-                className="p-4 border border-[#FFFFFF] hover:border hover:border-[#3276FF] rounded-lg group"
+                className={`p-4 border  hover:border hover:border-[#3276FF] rounded-lg group ${currency === 'USD' ? 'border-grey-400' : 'border-[#FFFFFF]'}`}
                 onClick={() => selectCurrency('USD')}
               >
                 <span className="text-left">
@@ -79,7 +87,7 @@ const CurrencyDropDown = () => {
               </button>
 
               <button
-                className="p-4 border border-[#FFFFFF] hover:border hover:border-[#3276FF] rounded-lg group"
+                className={`p-4 border  hover:border hover:border-[#3276FF] rounded-lg group ${currency === 'UZS' ? 'border-grey-400' : 'border-[#FFFFFF]'}`}
                 onClick={() => selectCurrency('UZS')}
               >
                 <span className="text-left">
@@ -100,7 +108,7 @@ const CurrencyDropDown = () => {
             </h3>
             <div className="grid grid-cols-5 gap-4 text-[#3276FF]">
               <button
-                className="p-4  hover:bg-[#F8F8FA] rounded-lg "
+                className={`p-4 border  hover:border hover:border-[#3276FF] rounded-lg group ${currency === 'BGN' ? 'border-grey-400' : 'border-[#FFFFFF]'}`}
                 onClick={() => selectCurrency('BGN')}
               >
                 <span className="text-left">
@@ -109,7 +117,7 @@ const CurrencyDropDown = () => {
                 </span>
               </button>
               <button
-                className="p-4  hover:bg-[#F8F8FA] rounded-lg "
+                className={`p-4 border  hover:border hover:border-[#3276FF] rounded-lg group ${currency === 'BGN' ? 'border-grey-400' : 'border-[#FFFFFF]'}`}
                 onClick={() => selectCurrency('BGN')}
               >
                 <span className="text-left">
