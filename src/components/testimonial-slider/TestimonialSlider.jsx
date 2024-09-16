@@ -4,8 +4,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { FaArrowRightLong } from 'react-icons/fa6';
-import { FaArrowLeftLong } from 'react-icons/fa6';
 import TestimonialCard from '../testimonial-card/TestimonialCard';
 
 const TestimonialSlider = () => {
@@ -32,13 +30,53 @@ const TestimonialSlider = () => {
             className="prev-arrow md:px-[15px] md:py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handlePrev}
           >
-            <FaArrowLeftLong className="md:w-4 text-white" />
+            <svg
+              className="md:w-6 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 12L20 12"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M8.99996 17C8.99996 17 4.00001 13.3176 4 12C3.99999 10.6824 9 7 9 7"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
           <div
             className="next-arrow md:px-[15px] md:py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handleNext}
           >
-            <FaArrowRightLong className="md:w-4 text-white" />
+            <svg
+              className="md:w-6 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 12L3.99998 12"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M15 17C15 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
         </div>
       </div>

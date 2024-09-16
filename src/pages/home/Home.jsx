@@ -118,7 +118,7 @@ const Home = () => {
   const [basicModal, setBasicModalOpen] = useState(false);
 
   return (
-    <div className="bg-[#fafafa] overflow-hidden">
+    <div className="bg-customBg overflow-hidden">
       <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] sm:h-[680px] esm:h-[550px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
         <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
           <Link to="/">
@@ -156,7 +156,27 @@ const Home = () => {
                 className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
                 onClick={handleLogin}
               >
-                <LiaUserCircleSolid className="xl:w-6 xl:h-6 lg:w-5 lg:h-5" />
+                <svg
+                  className="xl:w-6 xl:h-6 lg:w-5 lg:h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <path
+                    d="M7.5 17C9.8317 14.5578 14.1432 14.4428 16.5 17M14.4951 9.5C14.4951 10.8807 13.3742 12 11.9915 12C10.6089 12 9.48797 10.8807 9.48797 9.5C9.48797 8.11929 10.6089 7 11.9915 7C13.3742 7 14.4951 8.11929 14.4951 9.5Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+
                 {t('header.sixWord')}
               </button>
             )}
@@ -218,7 +238,7 @@ const Home = () => {
             {t('packSuit')}
           </h1>
           <div className="xl:max-w-[384px] lg:max-w-[300px] esm:basis-[100%] lg:px-0 sm:px-10">
-            <p className="xl:text-[16px] xl:leading-[25.6px] lg:text-xs sm:text-[20px] esm:text-[14px] text-[#B7BFD5] mb-4">
+            <p className="xl:text-[16px] xl:leading-[25.6px] lg:text-xs sm:text-[20px] esm:text-[14px] text-greyParaText mb-4">
               {t('welcomePortal')}
             </p>
             <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
@@ -255,7 +275,7 @@ const Home = () => {
                   onClick={() => {
                     setBasicModalOpen(false);
                   }}
-                  className="absolute bg-white top-6 right-6 p-[10px] border border-[#B7BFD5]/20 rounded-2xl"
+                  className="absolute bg-white top-6 right-6 p-[10px] border border-greyParaText/20 rounded-2xl"
                 >
                   <img
                     src="/assets/icons/cancel.svg"

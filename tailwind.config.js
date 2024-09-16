@@ -8,6 +8,8 @@ export default {
       },
       colors: {
         'blue-20': 'rgba(50, 118, 255, 0.2)',
+        customBg: '#FAFAFA',
+        greyParaText: '#B7BFD5',
       },
       screens: {
         esm: '340px',

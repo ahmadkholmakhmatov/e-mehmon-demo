@@ -4,7 +4,10 @@ import { createContext, useState, useContext } from 'react';
 const CurrencyContext = createContext();
 
 export const CurrencyProvider = ({ children }) => {
-  const [currency, setCurrency] = useState('USD');
+  const localCurrency = localStorage.getItem('currency');
+  const [currency, setCurrency] = useState(
+    localCurrency ? localCurrency : 'USD'
+  );
 
   return (
     <CurrencyContext.Provider value={{ currency, setCurrency }}>
