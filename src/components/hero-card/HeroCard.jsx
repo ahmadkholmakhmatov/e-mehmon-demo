@@ -20,6 +20,7 @@ const HeroCard = () => {
         </div>
       </div>
       <img
+        loading="lazy"
         className="w-full h-full object-cover"
         src="/assets/places/hotel1.png"
         alt=""

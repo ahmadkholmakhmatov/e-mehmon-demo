@@ -111,23 +111,26 @@ const SearchForm = () => {
             type="submit"
           >
             <svg
-              className="xl:w-6 xl:h-6 lg:w-4 lg:h-4 esm:w-4 esm:h-4"
-              xmlns="http://www.w3.org/2000/svg"
+              className=""
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                stroke="#fff"
+                d="M17.5 17.5L22 22"
+                stroke="currentColor"
+                strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="1.5"
-                d="M17.5 17.5L22 22"
-              ></path>
+              />
               <path
-                stroke="#fff"
-                strokeLinejoin="round"
+                d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z"
+                stroke="currentColor"
                 strokeWidth="1.5"
-                d="M20 11a9 9 0 10-18 0 9 9 0 0018 0z"
-              ></path>
+                strokeLinejoin="round"
+              />
             </svg>
             Начать поиск
           </button>
