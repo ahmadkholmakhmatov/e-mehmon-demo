@@ -9,8 +9,15 @@
 .home-selector .ant-select .ant-select-selector {
   padding: 0 16px;
   background-color: #f8f8fa;
-  border: none;
+  border: 1px;
 }
+
+.home-selector .ant-select .ant-select-selector:focus {
+  padding: 0 16px;
+  border-color: #3276ff;
+  border: 1px;
+}
+
 .home-selector .ant-select {
   border-radius: 16px;
   overflow: hidden;

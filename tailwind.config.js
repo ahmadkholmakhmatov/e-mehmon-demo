@@ -11,6 +11,9 @@ export default {
         customBg: '#FAFAFA',
         greyParaText: '#B7BFD5',
       },
+      fontFamily: {
+        onest: ['Onest', 'sans-serif'],
+      },
       screens: {
         esm: '340px',
       },

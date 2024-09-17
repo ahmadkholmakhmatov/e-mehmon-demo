@@ -120,7 +120,7 @@ const Home = () => {
   return (
     <div className="bg-customBg overflow-hidden">
       <div className="hero w-full xl:h-[848px] lg:h-[628px] md:h-[670px] sm:h-[680px] esm:h-[550px] text-white bg-[url('/images/heroBackground.png')] bg-no-repeat bg-cover">
-        <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
+        <nav className="text-onest lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[45px] esm:hidden font-medium  mx-auto ">
           <Link to="/">
             <img
               className="lg:w-40  xl:w-[184px]"
@@ -238,7 +238,7 @@ const Home = () => {
             {t('packSuit')}
           </h1>
           <div className="xl:max-w-[384px] lg:max-w-[300px] esm:basis-[100%] lg:px-0 sm:px-10">
-            <p className="xl:text-[16px] xl:leading-[25.6px] lg:text-xs sm:text-[20px] esm:text-[14px] text-greyParaText mb-4">
+            <p className="xl:text-[16px] xl:leading-[25.6px] lg:text-xs sm:text-[20px] esm:text-[14px] text-greyParaText font-onest mb-4">
               {t('welcomePortal')}
             </p>
             <div className="flex lg:justify-between items-center xl:text-[16px] lg:text-xs sm:text-[18px] esm:text-[14px] esm:gap-4">
@@ -247,7 +247,7 @@ const Home = () => {
                   setBasicModalOpen(true);
                   console.log(basicModal);
                 }}
-                className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 xl:px-0 xl:py-4 esm:px-4 esm:py-3"
+                className="hover:scale-110 font-onest font-medium transition-transform duration-500 flex items-center gap-x-2 xl:px-0 xl:py-4 esm:px-4 esm:py-3"
               >
                 <img
                   src="/assets/icons/play.svg"
