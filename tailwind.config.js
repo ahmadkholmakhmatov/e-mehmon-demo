@@ -10,9 +10,13 @@ export default {
         'blue-20': 'rgba(50, 118, 255, 0.2)',
         customBg: '#FAFAFA',
         greyParaText: '#B7BFD5',
+        mainDark: '#232E40',
+        mainGrey: '#777E90',
+        mainBlue: '#3276FF',
       },
       fontFamily: {
         onest: ['Onest', 'sans-serif'],
+        fdeck: ['Forma DJR Deck', 'sans-serif'],
       },
       screens: {
         esm: '340px',

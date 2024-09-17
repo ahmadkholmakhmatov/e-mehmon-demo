@@ -153,7 +153,7 @@ const Home = () => {
             {isAuthenticated && <AccountDropdown />}
             {!isAuthenticated && (
               <button
-                className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-[#232E40]"
+                className="flex items-center gap-x-2 lg:px-4 lg:py-3 xl:px-6 xl:py-4 rounded-2xl bg-mainDark"
                 onClick={handleLogin}
               >
                 <svg
@@ -217,7 +217,7 @@ const Home = () => {
                 </a>
               </ul>
               <button
-                className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-[#232E40]"
+                className="hover:scale-110 transition-transform duration-500 flex items-center gap-x-2 px-6 py-4 rounded-2xl bg-mainDark"
                 onClick={handleLogin}
               >
                 <LiaUserCircleSolid className="w-6 h-6" />
@@ -234,7 +234,7 @@ const Home = () => {
         </header>
 
         <div className="flex lg:flex-nowrap esm:flex-wrap justify-between 2xl:w-[1600px] xl:gap-x-28 xl:px-[120px] xl:my-[50px] lg:gap-x-20 lg:px-[60px] lg:my-[40px] sm:px-5 esm:px-[10px] sm:my-6 esm:my-2 sm:gap-y-8 esm:gap-y-5 esm:w-full mx-auto">
-          <h1 className="xl:max-w-[700px] xl:text-[49px] xl:leading-[68.6px] lg:max-w-[560px] lg:text-[32px] esm:basis-[100%] sm:text-[30px] esm:text-2xl lg:text-left sm:text-center">
+          <h1 className="xl:max-w-[720px] xl:text-[49px] xl:leading-[68.6px] lg:max-w-[560px] lg:text-[32px] esm:basis-[100%] sm:text-[30px] esm:text-2xl lg:text-left sm:text-center font-fdeck font-bold">
             {t('packSuit')}
           </h1>
           <div className="xl:max-w-[384px] lg:max-w-[300px] esm:basis-[100%] lg:px-0 sm:px-10">
@@ -251,7 +251,7 @@ const Home = () => {
               >
                 <img
                   src="/assets/icons/play.svg"
-                  className="sm:w-6 sm:h-6 lg:w-4 lg:h-4 esm:w-5 esm:h-5"
+                  className="sm:w-6 sm:h-6 lg:w-6 lg:h-6 esm:w-5 esm:h-5"
                   alt=""
                 />
                 {t('secondButton')}
@@ -280,7 +280,7 @@ const Home = () => {
                 >
                   <img
                     src="/assets/icons/cancel.svg"
-                    className="sm:w-6 sm:h-6 lg:w-5 lg:h-5 esm:w-5 esm:h-5 text-[#777E90]"
+                    className="sm:w-6 sm:h-6 lg:w-5 lg:h-5 esm:w-5 esm:h-5 text-mainGrey"
                     alt=""
                   />
                 </button>
@@ -301,10 +301,10 @@ const Home = () => {
 
       <div className="info mx-auto 2xl:w-[1600px] xl:px-[120px] xl:mt-[70px] lg:px-[60px] lg:mt-12 md:px-5 md:my-6 esm:px-[10px] esm:my-5 esm:w-full">
         <div className="text-center xl:mb-10 lg:mb-7 md:mb-5 esm:mb-3">
-          <h1 className="xl:text-[32px] xl:mb-4 lg:text-[28px] lg:mb-3 md:text-2xl esm:text-xl esm:mb-3 font-bold ">
+          <h1 className="xl:text-[32px] xl:mb-4 lg:text-[28px] lg:mb-3 md:text-2xl esm:text-xl esm:mb-3 font-bold font-fdeck text-mainDark">
             Простые 3 шага для вашего идеального путешествия
           </h1>
-          <p className="xl:text-[18px] xl:leading-6 lg:text-base lg:leading-5 esm:text-sm esm:leading-4">
+          <p className="xl:text-[18px] xl:leading-6 lg:text-base lg:leading-5 esm:text-sm esm:leading-4 font-onest text-mainGrey ">
             Упростите свои планы для путешествия – с нами это легко!
           </p>
         </div>
@@ -337,7 +337,7 @@ const Home = () => {
               </div>
 
               <div>
-                <h2 className="xl:mb-2 md:text-[10px] esm:text-[9px] xl:text-xs esm:mb-1 ">
+                <h2 className="xl:mb-2 md:text-[10px] esm:text-[9px] xl:text-xs esm:mb-1 text-mainDark italic">
                   Азиза Муминова
                 </h2>
                 <div className="star flex lg:gap-2 esm:gap-1">
@@ -380,7 +380,7 @@ const Home = () => {
               </div>
 
               <div>
-                <h2 className="xl:mb-2 md:text-[10px] esm:text-[9px] xl:text-xs esm:mb-1 ">
+                <h2 className="xl:mb-2 md:text-[10px] esm:text-[9px] xl:text-xs esm:mb-1 text-mainDark italic">
                   Андрей Туйгунов
                 </h2>
                 <div className="star flex lg:gap-2 esm:gap-1">
@@ -414,46 +414,46 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex xl:gap-6 esm:gap-4 flex-col flex-grow flex-shrink-0 lg:basis-[52%] esm:basis-full xl:pl-10 xl:py-14 xl:pr-[100px] lg:pl-7 lg:py-10 lg:pr-[72px]">
-            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-[#232E40]">
-              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
+          <div className="flex xl:gap-6 esm:gap-4 flex-col flex-grow flex-shrink-0 lg:basis-[52%] esm:basis-full xl:pl-10 xl:py-14 xl:pr-[100px] lg:pl-7 lg:py-10 lg:pr-[72px] font-onest">
+            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-mainDark">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-mainBlue">
                 01
               </div>
 
-              <h1 className="font-medium xl:mb-2 esm:mb-[6px] esm:text-base">
+              <h1 className="font-fdeck font-medium text-mainDark xl:mb-2 esm:mb-[6px] esm:text-base">
                 Регистрация
               </h1>
-              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-[#777E90]">
+              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-mainGrey">
                 Зарегистрируйтесь на нашем сайте, чтобы начать путешествие.
                 Укажите свое имя, адрес электронной почты и пароль, чтобы
                 создать учетную запись.
               </p>
             </div>
 
-            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-[#232E40]">
-              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
+            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-mainDark">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-mainBlue">
                 02
               </div>
 
-              <h1 className="font-medium xl:mb-2 esm:mb-[6px] esm:text-base">
+              <h1 className="font-fdeck font-medium text-mainDark xl:mb-2 esm:mb-[6px] esm:text-base">
                 Выбор отели и даты
               </h1>
-              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-[#777E90]">
+              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-mainGrey">
                 Выберите желаемое место проживания и укажите даты вашего
                 пребывания. Просматривайте доступные варианты и добавляйте их в
                 корзину.
               </p>
             </div>
 
-            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-[#232E40]">
-              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-[#3276FF]">
+            <div className="xl:text-lg md:text-lg lg:text-sm esm:text-xs text-mainDark">
+              <div className="bg-[#D3DFFB] xl:w-11 xl:h-[34px] xl:mb-4 md:w-11 md:h-[34px] md:mb-4 lg:mb-2 lg:w-7 lg:h-6 esm:w-7 esm:h-6 esm:mb-1 rounded-xl flex justify-center items-center  font-medium  text-mainBlue">
                 03
               </div>
 
-              <h1 className="font-medium xl:mb-2 esm:mb-[6px] esm:text-base">
+              <h1 className="font-fdeck font-medium text-mainDark xl:mb-2 esm:mb-[6px] esm:text-base">
                 Бронирование и оплата
               </h1>
-              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-[#777E90]">
+              <p className="xl:text-[16px] xl:leading-6 md:text-[16px] md:leading-6 lg:text-[10px] lg:leading-5 esm:text-[12px] esm:leading-4 text-mainGrey">
                 Перейдите к корзине, где вы сможете проверить и подтвердить ваш
                 выбор. Затем выберите удобный способ оплаты и завершите
                 бронирование. Готово, ваше путешествие официально начато!
@@ -465,10 +465,10 @@ const Home = () => {
 
       <div className="2xl:w-[1600px] xl:px-[120px] xl:mt-[100px] mx-auto xl:mb-[100px] lg:mt-[72px] lg:px-[60px] lg:mb-[60px] md:mt-[50px] md:px-[20px] md:mb-7 esm:px-[10px] esm:mb-5">
         <div className="heading text-center xl:mb-10 md:mb-7 esm:mb-5">
-          <h1 className="xl:text-[32px] md:text-[26px] esm:text-[24px] font-bold text-[#232E40] xl:mb-4 esm:mb-1">
+          <h1 className="xl:text-[32px] md:text-[26px] esm:text-[24px] font-fdeck font-bold text-mainDark xl:mb-4 esm:mb-1">
             Дома, которые нравятся гостям
           </h1>
-          <p className="xl:text-[18px] esm:text-sm  font-normal text-[#777E90]">
+          <p className="xl:text-[18px] esm:text-sm font-onest  font-normal text-mainGrey">
             Упростите свои планы для путешествия – с нами это легко!
           </p>
         </div>

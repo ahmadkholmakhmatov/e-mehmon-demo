@@ -62,15 +62,15 @@ const SearchForm = () => {
   };
 
   return (
-    <Tabs defaultActiveKey="1">
-      <TabPane tab="Отели" key="1">
+    <Tabs className="font-onest font-medium text-mainDark" defaultActiveKey="1">
+      <TabPane className="text-[15px]" tab="Отели" key="1">
         <form
           onSubmit={handleSumbit}
-          className="flex lg:flex-nowrap esm:flex-wrap justify-between xl:gap-6 lg:gap-5 md:gap-3 esm:gap-2 items-end xl:mt-8 lg:mt-5 md:mt-4 text-[#777E90] xl:text-sm md:text-xs"
+          className="flex lg:flex-nowrap esm:flex-wrap justify-between xl:gap-6 lg:gap-5 md:gap-3 esm:gap-2 items-end xl:mt-8 lg:mt-5 md:mt-4 text-mainGrey xl:text-sm md:text-xs"
           action="sumbit"
         >
           <div className="home-selector lg:basis-[calc(20%-20px)] sm:basis-full esm:basis-full -mb-1">
-            <div className="mb-3">Куда хотите поехать?</div>
+            <div className="mb-3 font-normal">Куда хотите поехать?</div>
             <Select
               placeholder="г. Ташкент"
               suffixIcon={null}
@@ -83,7 +83,7 @@ const SearchForm = () => {
           </div>
 
           <div className="lg:basis-[calc(40%-20px)] esm:basis-[calc(100%-8px)]">
-            <div className="mb-3">Длительность пребывания</div>
+            <div className="mb-3 font-normal">Длительность пребывания</div>
             <RangePicker
               onChange={onDateChange}
               className="bg-[#F8F8FA] w-full text-[#1D2635] flex border-none rounded-2xl p-[17px]"
@@ -143,7 +143,7 @@ const SearchForm = () => {
           </div>
 
           <div className="home-selector lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] -mb-1">
-            <div className="mb-3">Кол-во гостей</div>
+            <div className="mb-3 font-normal">Кол-во гостей</div>
             <Select
               placeholder="2 взрослых"
               prefix={<UserOutlined />}
@@ -155,7 +155,7 @@ const SearchForm = () => {
           </div>
 
           <button
-            className="hover:scale-105 transition-transform duration-500 lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] h-14 flex items-center justify-center gap-2 px-0 sm:px-2 bg-[#3276FF] text-white rounded-2xl cursor-pointer"
+            className="hover:scale-105 transition-transform duration-500 lg:basis-[calc(20%-20px)] esm:basis-[calc(50%-8px)] h-14 flex items-center justify-center gap-2 px-0 sm:px-2  bg-mainBlue text-base text-white rounded-2xl cursor-pointer"
             type="submit"
           >
             <svg
@@ -185,15 +185,15 @@ const SearchForm = () => {
         </form>
       </TabPane>
 
-      <TabPane tab="Туры" key="2">
+      <TabPane className="text-[15px]" tab="Туры" key="2">
         {/* Similar fields for Tours */}
       </TabPane>
 
-      <TabPane tab="Авиабилеты" key="3">
+      <TabPane className="text-[15px]" tab="Авиабилеты" key="3">
         {/* Similar fields for Flights */}
       </TabPane>
 
-      <TabPane tab="Транспорт" key="4">
+      <TabPane className="text-[15px]" tab="Транспорт" key="4">
         {/* Similar fields for Transport */}
       </TabPane>
     </Tabs>

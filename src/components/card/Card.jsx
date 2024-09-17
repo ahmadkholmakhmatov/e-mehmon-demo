@@ -27,28 +27,26 @@ const Card = ({ hotel }) => {
         <img className="w-full h-full object-cover" src={hotel.imgSrc} alt="" />
       </div>
       <div>
-        <h4 className="lg:text-[16px] md:text-lg esm:text-sm text-[#232E40] font-bold esm:mb-1">
+        <h4 className="lg:text-[16px] md:text-lg esm:text-sm font-onest text-mainDark font-bold esm:mb-1">
           {hotel.name}
         </h4>
-        <p className="md:text-sm esm:text-xs text-[#777E90] lg:mb-3 md:mb-2 esm:mb-1">
+        <p className="font-onest md:text-sm esm:text-xs text-mainGrey lg:mb-3 md:mb-2 esm:mb-1">
           {hotel.address}
         </p>
 
         <div className="flex md:flex-nowrap esm:flex-wrap items-center justify-between md:gap-4 esm:gap-2">
           <button
             onClick={handleClick}
-            className="bg-blue-20 md:px-6 md:py-4 esm:px-2 esm:py-3 md:order-1 esm:order-2 md:text-base hover:bg-blue-600 hover:text-white transition-colors duration-500  text-[#3276FF] rounded-2xl"
+            className="bg-blue-20 md:px-6 md:py-4 esm:px-2 esm:py-3 md:order-1 esm:order-2 md:text-base hover:bg-blue-600 hover:text-white transition-colors duration-500  text-mainBlue rounded-2xl font-onest"
           >
             Забронировать
           </button>
-          <div className="esm:w-full md:text-base esm:text-sm font-bold md:order-2 esm:order-1">
+          <div className="esm:w-full md:text-base esm:text-sm font-onest font-bold md:order-2 esm:order-1">
             от{' '}
             {currency === 'USD'
               ? `$${convertedPrice.toFixed(0)}`
               : `${convertedPrice.toFixed(0)}`}
-            <span className="esm:text-xs font-normal text-[#777E90]">
-              /ночь
-            </span>
+            <span className="esm:text-xs font-normal text-mainGrey">/ночь</span>
           </div>
         </div>
       </div>

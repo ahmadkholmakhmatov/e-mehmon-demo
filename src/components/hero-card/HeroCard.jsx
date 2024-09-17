@@ -7,15 +7,15 @@ const HeroCard = () => {
 
       <div className="absolute hidden group-hover:flex w-full text-white justify-between sm:gap-0 esm:gap-2 bg-[#1C253480] backdrop-blur-[2px] xl:px-6 xl:py-4 lg:px-5 lg:py-4 sm:px-4 sm:py-3 esm:px-2.5 esm:py-1 bottom-0">
         <div>
-          <div className="xl:text-base sm:text-xs esm:text-[10px] font-bold xl:mb-1 sm:mb-0.5">
+          <div className="xl:text-base sm:text-xs esm:text-[10px] font-semibold xl:mb-1 sm:mb-0.5 font-fdeck">
             Hotel Neptun Tashkent Pool&Spa
           </div>
-          <div className="xl:text-sm sm:text-[10px] esm:text-[8px] text-[#B7BFD5] font-medium">
+          <div className="xl:text-sm sm:text-[10px] esm:text-[8px] text-greyParaText font-medium font-onest">
             8 ул. Лянгар, Ташкент
           </div>
         </div>
 
-        <div className="xl:text-lg sm:text-xs esm:text-[10px] w-fit text-white font-bold">
+        <div className="xl:text-lg sm:text-xs esm:text-[10px] w-fit text-white font-semibold font-fdeck">
           от $120
         </div>
       </div>

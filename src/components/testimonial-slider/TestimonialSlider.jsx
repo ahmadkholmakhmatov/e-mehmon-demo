@@ -21,17 +21,19 @@ const TestimonialSlider = () => {
 
   return (
     <div className="bg-[#394253] text-white xl:pl-[120px] lg:pl-[60px] md:px-5 sm:px-5 esm:px-[10px] xl:py-20 md:py-12 esm:py-[20px] overflow-hidden">
-      <div className="flex justify-between 2xl:w-[1470px] mx-auto xl:pr-[120px] lg:pr-[60px] md:pr-5 esm:pr-[10px] xl:mb-10 md:mb-9 esm:mb-5">
+      <div className="flex justify-between items-center 2xl:w-[1470px] mx-auto xl:pr-[120px] lg:pr-[60px] md:pr-5 esm:pr-[10px] xl:mb-10 md:mb-9 esm:mb-5">
         <h1 className="xl:text-[32px] lg:text-[26px] esm:text-[22px] font-bold">
           Что думают о нас туристы?
         </h1>
         <div className="navigation-buttons md:flex xl:gap-4 md:gap-3 esm:hidden">
           <div
-            className="prev-arrow md:px-[15px] md:py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="prev-arrow md:p-[10px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handlePrev}
           >
             <svg
-              className="md:w-6 text-white"
+              className=" text-white"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -53,11 +55,13 @@ const TestimonialSlider = () => {
             </svg>
           </div>
           <div
-            className="next-arrow md:px-[15px] md:py-[14px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
+            className="next-arrow md:p-[10px] border-[1px] border-[#394253] hover:border-[1px] hover:border-[#B7BFD533] rounded-full"
             onClick={handleNext}
           >
             <svg
-              className="md:w-6 text-white"
+              className=" text-white"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
