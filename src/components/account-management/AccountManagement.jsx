@@ -252,10 +252,10 @@ const AccountManagement = ({
       ) : (
         <>
           <div className="mb-6">
-            <h1 className="text-[#1a1c1e] text-2xl font-bold mb-2">
+            <h1 className="text-mainDark font-fdeck text-2xl font-bold mb-2">
               Управление аккаунтом
             </h1>
-            <p className="text-[#777E90] text-sm">
+            <p className="font-onest text-mainGrey text-sm">
               Настройте свой аккаунт под себя
             </p>
           </div>
@@ -279,14 +279,14 @@ const AccountManagement = ({
 
 const Card = ({ title, description, icon, onClick }) => (
   <div
-    className="flex gap-4 items-start w-full hover:bg-[#F8F8FA]/60 rounded-2xl p-4 border-[#F8F8FA] border cursor-pointer"
+    className="flex gap-4 items-start w-full font-onest hover:bg-[#F8F8FA]/60 rounded-2xl p-4 border-customBg border cursor-pointer"
     onClick={onClick}
   >
-    <div className="bg-[#F8F8FA] p-[10px] rounded-lg">{icon}</div>
+    <div className="bg-customBg p-[10px] rounded-lg">{icon}</div>
     <div>
-      <h3 className="text-[#232E40] font-semibold mb-1">{title}</h3>
-      <p className="text-[#777E90] text-sm mb-3">{description}</p>
-      <div className="flex items-center gap-2 text-sm text-[#3276FF] font-medium">
+      <h3 className="text-mainDark font-semibold mb-1">{title}</h3>
+      <p className="text-mainGrey text-sm mb-3">{description}</p>
+      <div className="flex items-center gap-2 text-sm text-mainBlue font-medium">
         Настроить{' '}
         <svg
           width="16"

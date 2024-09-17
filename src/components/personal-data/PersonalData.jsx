@@ -42,13 +42,13 @@ const PersonalData = ({ setActiveDetail }) => {
 
   return (
     <div className="flex">
-      <aside className="pr-6 border-r border-[#F8F8FA]">
+      <aside className="pr-6 border-r border-customBg font-onest font-medium text-mainDark">
         <nav>
           <ul className="flex flex-col gap-4">
             <li>
               <button
                 onClick={() => handleSectionClick('personal')}
-                className="text-[#232E40] rounded-2xl bg-[#F8F8FA]"
+                className="w-full rounded-2xl bg-[#F8F8FA]"
               >
                 <span className="flex items-center whitespace-nowrap gap-3 p-4">
                   <svg
@@ -78,7 +78,7 @@ const PersonalData = ({ setActiveDetail }) => {
             <li>
               <button
                 onClick={() => handleSectionClick('preferences')}
-                className="text-[#232E40] rounded-2xl"
+                className="w-full rounded-2xl"
               >
                 <span className="flex items-center whitespace-nowrap gap-3 p-4">
                   <svg
@@ -134,7 +134,7 @@ const PersonalData = ({ setActiveDetail }) => {
             <li>
               <button
                 onClick={() => handleSectionClick('security')}
-                className="text-[#232E40] rounded-2xl"
+                className="w-full rounded-2xl"
               >
                 <span className="flex items-center whitespace-nowrap gap-3 p-4">
                   <svg
@@ -170,7 +170,7 @@ const PersonalData = ({ setActiveDetail }) => {
             <li>
               <button
                 onClick={() => handleSectionClick('payment')}
-                className="text-[#232E40] rounded-2xl"
+                className="w-full rounded-2xl"
               >
                 <span className="flex items-center whitespace-nowrap gap-3 p-4">
                   <svg
@@ -253,7 +253,7 @@ const PersonalData = ({ setActiveDetail }) => {
             <li>
               <button
                 onClick={() => handleSectionClick('newsletter')}
-                className="text-[#232E40] rounded-2xl"
+                className="w-full rounded-2xl"
               >
                 <span className="flex items-center whitespace-nowrap gap-3 p-4">
                   <svg
@@ -287,22 +287,22 @@ const PersonalData = ({ setActiveDetail }) => {
       </aside>
       <main className="pl-6 w-full">
         <div className="mb-6">
-          <h1 className="text-[#232E40] text-2xl font-bold mb-2">
+          <h1 className="text-mainDark font-fdeck text-2xl font-bold mb-2">
             Персональные данные
           </h1>
-          <p className="text-[#777E90] text-sm">
+          <p className="text-mainGrey font-onest text-sm">
             Обновите свои данные и узнайте, как мы их используем.
           </p>
         </div>
 
-        <div className="flex gap-4 mb-6">
+        <div className="flex items-center gap-4 mb-6">
           <img
             className="w-16 h-16 rounded-full"
             src={`https://api.emehmon.xdevs.uz/media/${user.avatar}`}
             alt=""
           />
           <div>
-            <p className="text-[#777E90] mb-3">
+            <p className="text-mainGrey font-onest text-sm mb-3">
               Выберите изображение для загрузки
             </p>
             {isAvatarAvailable ? (

@@ -33,9 +33,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="bg-[#fafafa] ">
+    <div className="bg-customBg">
       <div className="bg-white">
-        <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[21px] esm:hidden font-medium  mx-auto ">
+        <nav className="lg:flex lg:justify-between lg:items-center 2xl:w-[1600px] lg:px-[60px] lg:py-[25px] xl:text-sm lg:text-xs xl:px-[120px] xl:py-[21px] esm:hidden font-onest font-medium  mx-auto text-mainDark">
           <Link to="/">
             <img
               className="lg:w-40  xl:w-[184px]"
@@ -59,7 +59,7 @@ const Profile = () => {
               <li className="xl:text-sm lg:text-xs">Транспорт</li>
             </a>
           </ul>
-          <div className="login flex items-center gap-6 text-black">
+          <div className="login flex items-center gap-6 ">
             <CurrencyDropDown />
             <LanguageDropdown />
             <NotificationDropdown />
@@ -96,10 +96,7 @@ const Profile = () => {
           </div>
         </nav>
 
-        <header
-          x
-          className="esm:flex items-center justify-between py-5 text-[#232E40] sm:px-[20px] esm:px-[10px] lg:hidden"
-        >
+        <header className="esm:flex items-center justify-between py-5 text-mainDark font-onest sm:px-[20px] esm:px-[10px] lg:hidden">
           <Link to="/">
             <img
               className="sm:w-[142px] esm:w-[120px]"

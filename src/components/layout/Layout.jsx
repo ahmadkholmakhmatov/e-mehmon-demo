@@ -72,13 +72,13 @@ const Layout = () => {
       </div>
       <div className="flex  mx-[120px] bg-[#FFFFFF] mt-[30px] mb-6 rounded-3xl">
         {showSidebar && (
-          <aside className="p-6 border-r border-[#F8F8FA]">
+          <aside className="p-6 border-r border-customBg text-mainDark font-onest font-medium">
             <nav>
               <ul className="flex flex-col gap-4">
                 <li>
                   <button
                     onClick={() => setActiveSection('account')}
-                    className={`text-[#232E40] rounded-2xl ${
+                    className={`w-full rounded-2xl ${
                       activeSection === 'account' ? 'bg-[#F8F8FA]' : ''
                     }`}
                   >
@@ -110,7 +110,7 @@ const Layout = () => {
                 <li>
                   <button
                     onClick={() => setActiveSection('notification')}
-                    className={`text-[#232E40] rounded-2xl ${
+                    className={`w-full rounded-2xl ${
                       activeSection === 'notification' ? 'bg-[#F8F8FA]' : ''
                     }`}
                   >
@@ -144,7 +144,7 @@ const Layout = () => {
                 <li>
                   <button
                     onClick={() => setActiveSection('reservation')}
-                    className={`text-[#232E40] rounded-2xl ${
+                    className={`w-full rounded-2xl ${
                       activeSection === 'reservation' ? 'bg-[#F8F8FA]' : ''
                     }`}
                   >
@@ -181,7 +181,7 @@ const Layout = () => {
                 <li>
                   <button
                     onClick={() => setActiveSection('houses')}
-                    className={`text-[#232E40] rounded-2xl ${
+                    className={`w-full rounded-2xl ${
                       activeSection === 'houses' ? 'bg-[#F8F8FA]' : ''
                     }`}
                   >
@@ -243,7 +243,7 @@ const Layout = () => {
                 <li>
                   <button
                     onClick={() => setActiveSection('review')}
-                    className={`text-[#232E40] rounded-2xl ${
+                    className={`w-full rounded-2xl ${
                       activeSection === 'review' ? 'bg-[#F8F8FA]' : ''
                     }`}
                   >
@@ -276,7 +276,7 @@ const Layout = () => {
                 <li>
                   <button
                     onClick={() => setActiveSection('saved')}
-                    className={`text-[#232E40] rounded-2xl ${
+                    className={`w-full rounded-2xl ${
                       activeSection === 'saved' ? 'bg-[#F8F8FA]' : ''
                     }`}
                   >
