@@ -13,6 +13,7 @@ export default {
         mainDark: '#232E40',
         mainGrey: '#777E90',
         mainBlue: '#3276FF',
+        mainGreen: '#4DD282',
       },
       fontFamily: {
         onest: ['Onest', 'sans-serif'],
