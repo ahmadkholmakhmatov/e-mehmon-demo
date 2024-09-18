@@ -1,0 +1,10 @@
+.modalBody :global(.ant-otp .ant-otp-input) {
+  background-color: #f8f8fa;
+  border: none;
+  user-select: none;
+}
+
+.modalBody :global(.ant-otp .ant-otp-input):focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const UsernameInput = ({ user, onUploadSuccess }) => {
   //input field visible
   const [isInput, setIsInput] = useState(null);
-  const [username, setUsername] = useState(user?.first_name || '');
+  const [username, setUsername] = useState(user?.username || '');
 
   const token = localStorage.getItem('token');
 
