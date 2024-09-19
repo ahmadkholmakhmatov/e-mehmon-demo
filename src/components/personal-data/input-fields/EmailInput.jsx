@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { toast } from 'react-toastify';
 import { Input, Statistic } from 'antd';
 import styles from './emailInput.module.css';
+import { useMutation } from '@tanstack/react-query';
 
 const EmailInput = ({ user }) => {
   //input field visible
@@ -18,73 +19,114 @@ const EmailInput = ({ user }) => {
   const [formPassword, setFormPassword] = useState({});
   const token = localStorage.getItem('token');
 
+  const profileVerification = async (email) => {
+    const response = await axiosInstance.post('/account/register/', email);
+    return response;
+  };
+
+  const profileVerifyCode = async (data) => {
+    const response = await axiosInstance.post('/account/verify-code/', data);
+    return response;
+  };
+
+  const profileChangeEmail = async (data) => {
+    const response = await axiosInstance.post(
+      '/account/users/update_email/',
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    return response;
+  };
+
   const { Countdown } = Statistic;
 
-  const handleVerifyCode = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axiosInstance.post(`/account/verify-code/`, {
-        email: newEmail,
-        old_email: oldEmail,
-        code: code,
-      });
-      setIsInput(null);
-      setIsPassword(response.data.new_password);
-      console.log(response.data.new_password);
-      console.log(response);
-    } catch (error) {
-      console.error('Error', error);
-      setIsInput(null);
-      setIsVerified(false);
-      throw error;
-    }
-  };
+  const profileVerificationMutation = useMutation({
+    mutationFn: profileVerification,
+  });
 
   const handleVerification = async () => {
     console.log(newEmail);
-    try {
-      const response = await axiosInstance.post(`/account/register/`, {
-        email: newEmail,
-      });
-      setIsInput(null);
-      setIsModalOpen(true);
-      console.log(response);
-    } catch (error) {
-      toast.error(error.response.data.email[0]);
-      console.error('Error', error);
-      setIsInput(null);
-      setIsVerified(false);
-      throw error;
-    }
+    profileVerificationMutation.mutate(
+      { email: newEmail },
+      {
+        onSuccess: (data) => {
+          setIsInput(null);
+          setIsModalOpen(true);
+          setIsCodeReset(false);
+          console.log(data);
+        },
+        onError: (error) => {
+          toast.error(error.response.data.email[0]);
+          console.error('Error', error);
+          setIsInput(null);
+          setIsVerified(false);
+        },
+      }
+    );
   };
+
+  const profileVerifyCodeMutation = useMutation({
+    mutationFn: profileVerifyCode,
+  });
+
+  const handleVerifyCode = async (e) => {
+    e.preventDefault();
+    profileVerifyCodeMutation.mutate(
+      {
+        email: newEmail,
+        old_email: oldEmail,
+        code: code,
+      },
+      {
+        onSuccess: (data) => {
+          setIsInput(null);
+          setIsPassword(data.data.new_password);
+          console.log(data.data.new_password);
+          console.log(data);
+        },
+        onError: (error) => {
+          console.error('Error', error);
+          setIsInput(null);
+          setIsVerified(false);
+        },
+      }
+    );
+  };
+
+  const profileChangeEmailMutation = useMutation({
+    mutationFn: profileChangeEmail,
+  });
 
   const handleChangeEmail = async (e) => {
     e.preventDefault();
+
     if (formPassword.password === formPassword.confirmPassword) {
-      try {
-        const response = await axiosInstance.post(
-          `/account/users/update_email/`,
-          {
-            email: newEmail,
-            password: formPassword.password,
+      profileChangeEmailMutation.mutate(
+        {
+          email: newEmail,
+          password: formPassword.password,
+        },
+        {
+          onSuccess: (data) => {
+            setIsInput(null);
+            setIsVerified(true);
+            setIsModalOpen(false);
+            console.log(data);
           },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        setIsInput(null);
-        setIsVerified(true);
-        setIsModalOpen(false);
-        console.log(response);
-      } catch (error) {
-        console.error('Error', error);
-        setIsInput(null);
-        setIsVerified(true);
-        throw error;
-      }
+          onError: (error) => {
+            console.error('Error', error);
+            setIsInput(null);
+            setIsVerified(true);
+          },
+        }
+      );
+    } else {
+      toast.error('Passwords should be same!');
     }
   };
 
@@ -666,9 +708,7 @@ const EmailInput = ({ user }) => {
           <button
             onClick={handleInput}
             className={`hover:scale-110 ${
-              !newEmail
-                ? 'text-mainGrey  cursor-not-allowed'
-                : 'text-mainGreen '
+              !newEmail ? 'text-mainGrey cursor-not-allowed' : 'text-mainGreen '
             }`}
             disabled={!newEmail} // Disable the button if either field is empty
           >

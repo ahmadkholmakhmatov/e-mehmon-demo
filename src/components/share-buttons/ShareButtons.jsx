@@ -12,7 +12,7 @@ const ShareButtons = ({ url, title, toggleVisibility }) => {
     toggleVisibility();
   };
   return (
-    <div className="flex p-2 rounded-xl gap-3 bg-[#394253]">
+    <div className="flex p-2 rounded-xl gap-3 bg-white border-mainDark border">
       <FacebookShareButton onClick={handleIsVisible} url={url} quote={title}>
         <FacebookIcon size={32} round />
       </FacebookShareButton>

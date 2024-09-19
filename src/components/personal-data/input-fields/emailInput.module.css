@@ -1,7 +1,9 @@
 .modalBody :global(.ant-otp .ant-otp-input) {
   background-color: #f8f8fa;
   border: none;
-  user-select: none;
+  border-radius: 16px;
+  height: 64px;
+  width: 54px;
 }
 
 .modalBody :global(.ant-otp .ant-otp-input):focus {

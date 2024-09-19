@@ -7,7 +7,7 @@ const Footer = () => {
           src="/images/logoLight.svg"
           alt=""
         />
-        <div className="flex esm:items-top esm:justify-center xl:gap-[145px] lg:gap-[70px] 2xl:w-[1600px] ">
+        <div className="flex 2xl:justify-between esm:items-top esm:justify-center xl:gap-[145px] lg:gap-[70px] mx-auto">
           <div>
             <h5 className="esm:text-sm lg:mb-12 md:mb-10 esm:mb-6">
               Лучшая платформа для бронирования отелей в Узбекистане

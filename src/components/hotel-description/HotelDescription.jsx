@@ -4,19 +4,33 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import RatingCard from '../rating-card/RatingCard';
-import { FaAngleRight } from 'react-icons/fa6';
 import { Space, Tabs } from 'antd';
 import './hotelDescription.css';
+
+const amenities = [
+  { icon: '/assets/amenties/hotel.svg', label: 'Роскошные номера' },
+  { icon: '/assets/amenties/pool.svg', label: 'Превосходные бассейны' },
+  { icon: '/assets/amenties/drink.svg', label: 'Элегантные бары' },
+  { icon: '/assets/amenties/dish.svg', label: 'Изысканные рестораны' },
+  { icon: '/assets/amenties/tv.svg', label: 'Техника высшего класса' },
+  { icon: '/assets/amenties/towels.svg', label: 'Спа-центр' },
+  { icon: '/assets/amenties/drink.svg', label: 'Элегантные бары' },
+  { icon: '/assets/amenties/bed.svg', label: 'Качественная мебель' },
+  { icon: '/assets/amenties/hotel.svg', label: 'Роскошные номера' },
+  { icon: '/assets/amenties/towels.svg', label: 'Спа-центр' },
+  { icon: '/assets/amenties/bucket.svg', label: 'Обслуживание на уровне' },
+  { icon: '/assets/amenties/pool.svg', label: 'Превосходные бассейны' },
+];
 
 const { TabPane } = Tabs;
 
 const HotelDescription = () => {
   return (
-    <div className="w-full md:mt-10 esm:mt-5 overflow-hidden">
+    <div className="w-full md:mt-10 esm:mt-5 overflow-hidden font-onest">
       <Tabs defaultActiveKey="1">
         <TabPane style={{ padding: 0 }} tab="Описание" key="1">
           <Space className="block text-[#1D2635] ">
-            <div className="mb-8 pb-8 border-b border-[#777E90]">
+            <div className="mb-8 pb-8 border-b border-mainGrey/30">
               <h1 className="text-2xl text-[#1D2635] font-bold mb-4">
                 Описание отеля
               </h1>
@@ -33,7 +47,7 @@ const HotelDescription = () => {
                 обеспечивающем высший уровень сервиса читать далее
               </p>
             </div>
-            <div className="mb-8 pb-8 border-b border-[#777E90]">
+            <div className="mb-8 pb-8 border-b border-mainGrey/30">
               <div className="mb-6">
                 <h1 className="text-2xl font-bold mb-4">Удобства отеля</h1>
                 <div className="text-[15px]">
@@ -42,89 +56,42 @@ const HotelDescription = () => {
                 </div>
               </div>
               <div className="grid md:grid-cols-3 md:grid-rows-4 md:gap-x-10 md:gap-y-6 esm:grid-cols-2 esm:gap-x-5 esm:gap-y-5">
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/hotel.svg" alt="" />
+                {amenities.map((amenity, index) => (
+                  <div
+                    key={index}
+                    className="flex md:gap-4 esm:gap-2 items-center min-w-fit"
+                  >
+                    <div className="bg-mainBlue bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
+                      <img src={amenity.icon} alt={amenity.label} />
+                    </div>
+                    {amenity.label}
                   </div>
-                  Роскошные номера
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/pool.svg" alt="" />
-                  </div>
-                  Превосходные бассейны
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/drink.svg" alt="" />
-                  </div>
-                  Элегантные бары
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/dish.svg" alt="" />
-                  </div>
-                  Изысканные рестораны
-                </div>
-
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/tv.svg" alt="" />
-                  </div>
-                  Техника высшего класса
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/towels.svg" alt="" />
-                  </div>
-                  Спа-центр
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/drink.svg" alt="" />
-                  </div>
-                  Элегантные бары
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/bed.svg" alt="" />
-                  </div>
-                  Качественная мебель
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/hotel.svg" alt="" />
-                  </div>
-                  Роскошные номера
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/towels.svg" alt="" />
-                  </div>
-                  Спа-центр
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/bucket.svg" alt="" />
-                  </div>
-                  Обслуживание на уровне
-                </div>
-                <div className="flex md:gap-4 esm:gap-2 items-center min-w-fit">
-                  <div className="bg-[#3276FF] bg-opacity-[8%] md:p-2 esm:p-1.5 rounded-full">
-                    <img src="/assets/amenties/pool.svg" alt="" />
-                  </div>
-                  Превосходные бассейны
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="pb-8 border-b border-[#777E90]">
+            <div className="pb-8 border-b border-mainGrey/30">
               <div className="flex justify-between mb-4">
                 <h1 className="text-[#1D2635] text-2xl font-bold">
                   Отзывы посетилетей
                 </h1>
-                <a href="#" className="text-blue-500">
-                  Все отзывы <FaAngleRight className="inline-block w-3 h-3" />
+                <a href="#" className="text-mainBlue">
+                  Все отзывы
+                  <svg
+                    className="inline-block w-3 h-3"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.50003 10.0001L8.5 6.00009L4.5 2.00012"
+                      stroke="#3B71FE"
+                      strokeWidth="1.5"
+                      strokeMiterlimit="16"
+                    />
+                  </svg>
                 </a>
               </div>
               <Swiper
