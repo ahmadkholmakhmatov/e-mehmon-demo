@@ -14,7 +14,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import 'yet-another-react-lightbox/styles.css';
 import { useTranslation } from 'react-i18next';
 import { useContext, useRef, useState } from 'react';
-import './home.css';
+import sytles from './home.module.css';
 import { AuthContext } from '../../utils/AuthContext';
 import Modal from 'react-modal';
 import AccountDropdown from '../../components/account-dropdown/AccountDropdown';
